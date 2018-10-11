@@ -209,6 +209,86 @@ Igen, az algoritmus hibás, mert először kell a stopszószűrés, és csak ut�
 Diff: a CN-növelés következtében még feljebb kerültek a diff értékek, de lényegében (kiszűretlenül maradt) stopszavak vannak az elején a listának (betűk és számok főleg). Néhány érdekes elemet kiboldoltam.
 
 
+# 2018-10-11
+
+Git: 8 MB-nél kisebb fájlok feltöltése.
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ git add *
+bz@bz-HP-EliteBook-8530p:~/similarities$ git config --global user.email "szvbinjomin@gmail.com"
+bz@bz-HP-EliteBook-8530p:~/similarities$ git commit
+[master eee3a36] first upload
+ 17 files changed, 157387 insertions(+)
+ create mode 100644 TODO.md
+ create mode 100644 aps-cn-kk-perc.txt
+ create mode 100644 aps-cn-kk.ods
+ create mode 100644 aps-cn-pdf.txt
+ create mode 100644 aps-cn-perc.txt
+ create mode 100644 aps-cn-perc.txt.2
+ create mode 100644 aps-cn-words.txt
+ create mode 100644 aps-kk-pdf.txt
+ create mode 100644 aps-kk-perc.txt
+ create mode 100644 aps-kk-words.txt
+ create mode 100644 aps-pdf.ods
+ create mode 100755 cn-kk-perc-unify.pl
+ create mode 100755 cn-kk-perc.pl
+ create mode 100755 cn.pl
+ create mode 100755 kk.pl
+ create mode 100644 stopwords-en.txt
+ create mode 100755 words-list.pl
+bz@bz-HP-EliteBook-8530p:~/similarities$ git push
+warning: push.default is unset; its implicit value has changed in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the traditional behavior, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+Since Git 2.0, Git defaults to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Username for 'https://github.com': binyominzeev
+Password for 'https://binyominzeev@github.com': 
+Counting objects: 19, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (19/19), done.
+Writing objects: 100% (19/19), 2.01 MiB | 701.00 KiB/s, done.
+Total 19 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/binyominzeev/similarities.git
+   129f435..eee3a36  master -> master
+
+Többi fájlt is bemásolom, de csak egyesével merem push-olni, egyelőre. Itt tartunk: 
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ ls -laS
+total 157732
+-rwxrwxr-x  1 bz bz 62815057 okt    8 11:53 aps_edges.txt
+-rwxrwxrwx  1 bz bz 45837175 aug   24  2017 records.txt
+-rw-rw-r--  1 bz bz 17321484 okt   10 06:37 aps-cn.txt
+-rwxrwxr-x  1 bz bz 14801725 okt    7 16:46 aps_nodes.txt
+-rw-r--r--  1 bz bz  8978432 okt    8 14:14 aps-kk.txt
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
