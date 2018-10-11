@@ -278,15 +278,20 @@ total 157732
 -rwxrwxr-x  1 bz bz 14801725 okt    7 16:46 aps_nodes.txt
 -rw-r--r--  1 bz bz  8978432 okt    8 14:14 aps-kk.txt
 
+De amúgy ki is írja, hogy mi kéne még, ha git commitot kérünk anélkül, hogy bejelölnénk kézzel a változtatásokat. Ez praktikus, mert ébren tart, hogy mivel hogy állunk.
 
+---
 
+A folytatási terv: csak az 5x4-es táblázatot készítsük el arról, hogy melyik adatsorhoz melyik similarity illeszkedik a legjobban. Ezzel nagyon nagy szolgálatot teszünk a társadalomnak, mert kimutatjuk az összefüggéseket, és az utánunk jövőknek talán nem is kell legenerálnia, hanem a kritériumok alapján választhatnak. Szó volt róla, hogy nagy előnyünk lehet a versenytársakhoz képest a különböző adatsorok használata.
 
+Eszerint a következő challenge a „háromdimenziós” könyvelés lesz: adatsor, similarity, és a process lépés. (Lehet, hogy érdemes lesz számot rendelni mindháromhoz? Esetleg README.md-be kiírni ezeket?) Utána, ha megvan, a fő ábra így néz ki: minden adatsorra külön ábra, oszlopdiagram, kezd a legerősebb similarity-vel, és folyamatosan csökken. Tehát mindegyikre csökkenő, mini-Zipf-plot szerű, az összehasonlítás kedvéért színes ábra.
 
+Végül, ami máris megvan: APS CN-KK összehasonlítás. Hány szóban melyik measure prevails. (Noha még egy szűrésre szükség lesz, ld. előző nap, és a diff lista teteje.)
 
+- KK: 33208
+- CN: 1297
 
-
-
-
+Szép az eredmény, KK sokkal hatékonyabbnak bizonyul ebben az adatsorban. Igazán szép akkor lesz, ha kontextusba helyezzük.
 
 
 
