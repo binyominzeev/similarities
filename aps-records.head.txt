@@ -1,0 +1,100 @@
+PhysRevA.51.3355	1995	Z_{1} oscillations of the mean charge for isotachic ions in carbon foils
+PhysRevA.26.1228	1982	Rydberg states of helium: An optical-potential analysis
+PhysRevA.57.4778	1998	Saturated operation of a transient collisional x-ray laser
+PhysRevA.67.033603	2003	Superfluid transition temperature in a trapped gas of Fermi atoms with a Feshbach resonance
+PhysRevA.62.042708	2000	Dissociative ionization of D_{2} in intense laser fields: D^{+}-ion production perpendicular to the polarization of a 400-nm laser field
+PhysRevA.78.053820	2008	Quantum theory of optical temporal phase and instantaneous frequency
+PhysRevA.39.4162	1989	Oscillatory instability of deep cells in directional solidification
+PhysRevA.44.4430	1991	Exact solutions for the resonant response of multiplets undergoing stochastic modulation
+PhysRevA.4.313	1971	Theory of Defects in Quantum Crystals
+PhysRevA.72.069907	2004	Erratum: Ionization of N_{2}, O_{2}, and linear carbon clusters in a strong laser pulse [Phys. Rev. A 69, 023410 (2004)]
+PhysRevA.46.5885	1992	Generation of squeezing for a charged oscillator and for a charged particle in a time-dependent electromagnetic field
+PhysRevA.40.4237	1989	Mapping of a classical transformation in Grassmann number space to a Fermi unitary operator
+PhysRevA.48.3191	1993	Micromaser with Kerr nonlinearity
+PhysRevA.58.2191	1998	Multiple scattering effects on stopping power of large clusters in solids
+PhysRevA.40.6685	1989	Electron affinities for rare gases and some actinides from local-spin-density-functional theory
+PhysRevA.26.1816	1982	Phase transition from an intercalated to a nonintercalated structure in a lipid bilayer
+PhysRevA.42.5730	1990	Gauge invariance and binding-energy regularization of bound-state infrared divergences
+PhysRevA.38.3664	1988	Random bias as an example of global dynamical disorder in continuous-time random-walk theories
+PhysRevA.65.022318	2002	Possible realization of Josephson charge qubits in two coupled Bose-Einstein condensates
+PhysRevA.30.3175	1984	Thermodynamic properties of classical plasmas in a polarizing background: Numerical experiments
+PhysRevA.22.336	1980	Independent-particle models for light negative atomic ions
+PhysRevA.68.042714	2003	Electron-impact dissociation of CH^{+} ions: Measurement of C^{+} fragment ions
+PhysRevA.72.062715	2005	Electronic excitation of CO by positron impact
+PhysRevA.55.2413	1997	Squeezing of light by a collection of atoms
+PhysRevA.46.2966	1992	Erratum: Entangled coherent states [Phys. Rev. A 45, 6811 (1992)]
+PhysRevA.78.013401	2008	Lithium ionization by an intense laser field using classical ensemble simulation
+PhysRevA.63.051402	2001	Vacuum-mediated multiphoton transitions
+PhysRevA.35.5046	1987	Radiative lifetimes in Ni ii
+PhysRevA.18.1057	1978	Observation of the Bloch-Siegert effect in the Ramsey separated-oscillatory-field technique
+PhysRevA.63.043605	2001	Kohn mode for trapped Bose gases within the dielectric formalism
+PhysRevA.75.062329	2007	Quantification of quantum correlation of ensembles of states
+PhysRevA.73.033412	2006	Fluorescence profiles and cooling dynamics of laser-cooled Mg^{+} ions in a linear rf ion trap
+PhysRevA.39.2776	1989	Interaction between atomic bound and free electrons in high-Z atoms under non-local-thermodynamic-equilibrium conditions
+PhysRevA.23.3094	1981	Study of collisionless multiphoton absorption in SF_{6} using picosecond CO_{2} laser pulses
+PhysRevA.48.3991	1993	Preparation of high-principal-quantum-number ‘‘circular’’ states of rubidium
+PhysRevA.42.775	1990	Breakup of Kolmogorov-Arnol’d-Moser tori of arbitrary frequency in a two-parameter system
+PhysRevA.20.1890	1979	Excitation and deexcitation processes in slow collisions of Rydberg atoms with ground-state parent atoms
+PhysRevA.51.1597	1995	Uncertainties of Schwinger angular-momentum operators for squeezed radiation in interferometers
+PhysRevA.27.2785	1983	Complex virial theorem and complex scaling
+PhysRevA.41.2862	1990	Radiative and collisional excitation rates for transitions between the fine-structure levels within the ground-state term of Si^{5+}
+PhysRevA.40.6748	1989	Elimination of hysteresis in a system of coupled Ginzburg-Landau equations
+PhysRevA.32.1605	1985	Generalized perturbation theory of coherent optical emission
+PhysRevA.15.272	1977	Light-beating spectroscopy with collisionless sources
+PhysRevA.78.015801	2008	Derivation of Maxwell-Bloch-type equations by projection of quantum models
+PhysRevA.57.4998	1998	Vibrationally state-selective electronic excitation of diatomic molecules by ultrashort laser pulses
+PhysRevA.51.3104	1995	High-order harmonic generation and above-threshold ionization in H: Calculations using expansions over field-free state-specific wave functions
+PhysRevA.70.042308	2004	Kraus representation of a damped harmonic oscillator and its application
+PhysRevA.2.1238	1970	Transport of Resonance Radiation in an Infinite Cylinder
+PhysRevA.79.050702	2009	Inelastic titanium-titanium collisions
+PhysRevA.78.012108	2008	Quantum mechanics with extended probabilities
+PhysRevA.73.022306	2006	Optimal generation of single-qubit operation from an always-on interaction by algebraic decoupling
+PhysRevA.22.956	1980	Large-momentum-transfer limit of some matrix elements
+PhysRevA.62.052717	2000	Measurement of resonant strengths for dielectronic recombination in heliumlike Ar^{16+}
+PhysRevA.51.R4341	1995	Spatial position of prepulse induced J=0→1, 3p-3s lasing in low-Z neonlike ions
+PhysRevA.79.043410	2009	Effect of realistic focal conditions on the strong-field ionization of helium
+PhysRevA.77.051602	2008	Equation of state and phases of a polarized unitary Fermi gas
+PhysRevA.57.762	1998	Probability distribution of arrival times in quantum mechanics
+PhysRevA.41.1808	1990	Tricritical trails on a square lattice with impenetrable linear boundary: Computer simulation and analytic bounds
+PhysRevA.41.5528	1990	Stationary equal-frequency two-wave mixing with gain in a bipolar birefringent nonlinear medium
+PhysRevA.57.1583	1998	Strict bounds on the Franson inequality
+PhysRevA.49.3610	1994	Collision integral for ionization by electron impact for nonisotropic electron distribution functions
+PhysRevA.77.052706	2008	Polarization effects on low-energy electron collisions with propane
+PhysRevA.39.320	1989	Velocity distribution for a gas with steady heat flow
+PhysRevA.43.568	1991	Classical mnemonic approach for obtaining hydrogenic expectation values of r^{P}
+PhysRevA.54.2022	1996	Theory of slow-atom collisions
+PhysRevA.46.4586	1992	Planar version of Baym-Kadanoff theory
+PhysRevA.59.295	1999	Inclusion of the generalized Breit interaction in electron-impact excitation of ions to specific magnetic sublevels
+PhysRevA.34.3543	1986	Diffusion-limited aggregation without branching
+PhysRevA.66.022311	2002	Quantum universal variable-length source coding
+PhysRevA.2.260	1970	Reply to Leiter's Comment
+PhysRevA.78.053410	2008	Adiabatic fidelity for atom-molecule conversion in a nonlinear three-level Λ system
+PhysRevA.68.022323	2003	Maximal violation of the Clauser-Horne-Shimony-Holt inequality for two qutrits
+PhysRevA.75.032338	2007	Experimental determination of entanglement by a projective measurement
+PhysRevA.80.030301	2009	Fast high-fidelity information transmission through spin-chain quantum wires
+PhysRevA.27.187	1983	Theory of atom-diatom rearrangement collisions based on the coupled-channel Born approximation
+PhysRevA.75.032301	2007	Linear entropy as an entanglement measure in two-fermion systems
+PhysRevA.50.R4457	1994	Dark and bright photovoltaic spatial solitons
+PhysRevA.31.432	1985	Monte Carlo data processing for invasion-percolation experiments
+PhysRevA.40.2689	1989	Universal properties at the onset of chaos in diode resonator systems
+PhysRevA.73.042321	2006	Arbitrary state controlled-unitary gate by adiabatic passage
+PhysRevA.25.3446	1982	Transverse coherence and scaling in four-dimensional simulations of superfluorescence
+PhysRevA.78.013822	2008	Cavity-assisted spontaneous emission as a single-photon source: Pulse shape and efficiency of one-photon Fock-state preparation
+PhysRevA.8.1988	1973	Acoustoelectric Amplification—A Phonon-Laser Approach: Theory of a Single Acoustic Mode
+PhysRevA.16.1352	1977	Accurate electronic energies of He_{2}^{++}
+PhysRevA.54.4032	1996	Dissociative recombination of CH^{+}: Cross section and final states
+PhysRevA.54.1739	1996	Erratum: Simultaneous trapping of two different atomic species in a vapor-cell magneto-optical trap
+PhysRevA.34.4669	1986	Alignment and orientation parameters for proton-impact ionization of the 2p and 3p shells of argon
+PhysRevA.23.388	1981	Erratum: Foundations of the relativistic theory of many-electron atoms
+PhysRevA.27.285	1983	Elastic photon scattering at small momentum transfer and validity of form-factor theories
+PhysRevA.50.2517	1994	Stimulated magneto-optical force in the dressed-atom picture
+PhysRevA.13.528	1976	Some expectation values for Be-like ions derived from pair-correlated wave functions
+PhysRevA.75.042323	2007	Weak nonlinearities and cluster states
+PhysRevA.65.012706	2002	Full quantum-mechanical study of protonium formation in slow collisions of antiprotons with hydrogen atoms
+PhysRevA.48.732	1993	Quantum optical master equations: The one-atom laser
+PhysRevA.47.3080	1993	Wavelengths and isotope shifts for lines of astrophysical interest in the spectrum of doubly ionized mercury (Hg iii)
+PhysRevA.34.4490	1986	Impact-energy dependence of quasimolecular Auger emission in Kr-Kr collisions
+PhysRevA.68.022703	2003	Asymptotic behavior of the Coulomb three-body scattered wave
+PhysRevA.63.052507	2001	Coordinate-space approach to the bound-electron self-energy: Self-energy screening calculation
+PhysRevA.72.065803	2005	Permutation-parity exchange at a beam splitter: Application to Heisenberg-limited interferometry
+PhysRevA.63.062302	2001	Classical wave-optics analogy of quantum-information processing
