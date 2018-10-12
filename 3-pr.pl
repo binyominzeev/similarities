@@ -6,51 +6,54 @@ use Data::Dumper;
 
 # ======== initialize ========
 
-my $mode="cn";
-my $log_cn_max=log(4532);
+my $dataset="1-aps";
 
-#my $mode="kk";
-#my $log_cn_max=log(36901);	# igen, betolteni elegansabb lenne, de egy plusz lepes, egyelore felesleges
+#my $mode="1-cn";
+#my $mode="2-kk";
+my $mode="4-oc";
 
 # ======== load words ========
 
 my %words;
-my @words=split/\n/, `cat aps-$mode-words.txt`;
+my @words=split/\n/, `cat 2-wd-$dataset-$mode.txt`;
 map { $words{$_}="" } @words;
 
 # ======== initialize ========
 
-my %words_cn;
+my %words_vals;
+my $max=0;
 my $i=1;
 
-open IN, "<aps-$mode.txt";
+open IN, "<1-mes-$dataset-$mode.txt";
 while (<IN>) {
 	chomp;
 	my ($a, $b, $val)=split/\t/, $_;
 	
 	if (exists $words{$a}) {
-		$words_cn{$a}=log($val)/$log_cn_max;
+		$words_vals{$a}=log($val);
+		if ($words_vals{$a} > $max) { $max=$words_vals{$a}; }
+		
 		delete $words{$a};
 	}
 
 	if (exists $words{$b}) {
-		$words_cn{$b}=log($val)/$log_cn_max;
+		$words_vals{$b}=log($val);
+		if ($words_vals{$b} > $max) { $max=$words_vals{$b}; }
+		
 		delete $words{$b};
 	}
 	
 	$i++;
-	
 	if (scalar keys %words == 0) { last; }
 }
 close IN;
 
-print "$i\n";
-
 # ======== output ========
 
-open OUT, ">aps-$mode-perc.txt";
-for my $word (sort keys %words_cn) {
-	my $perc=int($words_cn{$word}*10000)/100;
+open OUT, ">3-pr-$dataset-$mode.txt";
+for my $word (sort keys %words_vals) {
+	my $ratio=$words_vals{$word}/$max;
+	my $perc=int($ratio*10000)/100;
 	
 	print OUT "$word\t$perc\n";
 }

@@ -17,7 +17,6 @@ map { $stopwords{$_}=""; } @stopwords;
 
 # ========== process ==========
 
-#my @results=split/\n/, `grep -i "$word" $file`;
 my @results=split/\n/, `cat $file`;
 
 my $progress=new Term::ProgressBar::Simple(scalar @results);
@@ -31,25 +30,22 @@ for my $line (@results) {
 	@szavak=grep { !exists $stopwords{$_} } @szavak;
 	
 	for my $i (0..$#szavak-1) {
-		my $x=lc $szavak[$i];
-		my $y=lc $szavak[$i+1];
-		
-		#if (!exists $stopwords{$x} && !exists $stopwords{$y}) {
-			$pairs{"$x\t$y"}++;
-		#}
+		for my $j ($i+1..$#szavak) {
+			my $x=lc $szavak[$i];
+			my $y=lc $szavak[$j];
+			
+			my @xy=sort($x, $y);
+			my $xy=join "\t", @xy;
+			
+			$pairs{$xy}++;
+		}
 	}
-	
 	$progress++;
-	
-#	print "---\n$title\n";
-#	print Dumper \@szavak;
-
-	
 }
 
 # ========== output ==========
 
-open OUT, ">1-mes-1-aps-1-cn.txt";
+open OUT, ">1-mes-1-aps-4-oc.txt";
 for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
 	print OUT "$pair\t$pairs{$pair}\n";
 }

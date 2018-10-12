@@ -2,6 +2,8 @@
 
 Comparison of similarity measures on different datasets
 
+PL and TXT files are following the file naming patterns, consisting of the following three components:
+
 ## 1. Processing steps
 
 1. MES: Calculating the measure word by word (cn.pl, kk.pl, aps-cn.txt, ...)
@@ -24,5 +26,10 @@ Comparison of similarity measures on different datasets
 2. KK: connections
 3. TD: time-diagram
 4. OC: word co-occurrence
+
+## Current status
+
+- 2018-10-11: 1-APS-1-CN, 1-APS-2-KK ready
+
 
 

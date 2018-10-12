@@ -6,13 +6,14 @@ use Data::Dumper;
 
 # ======== initialize ========
 
-my $mode="cn";
+my $dataset="1-aps";
+my $mode="4-oc";
 
 # ======== process ========
 
 my %words;
 
-open IN, "<aps-$mode.txt";
+open IN, "<1-mes-$dataset-$mode.txt";
 while (<IN>) {
 	chomp;
 	my ($a, $b, $val)=split/\t/, $_;
@@ -26,7 +27,7 @@ close IN;
 
 # ======== output ========
 
-open OUT, ">aps-$mode-words.txt";
+open OUT, ">2-wd-$dataset-$mode.txt";
 for my $word (sort keys %words) {
 	print OUT "$word\n";
 }

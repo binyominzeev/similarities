@@ -304,6 +304,33 @@ aps:
 kk	33208
 cn	1297
 
+Érdekes, hogy most, hogy az OC-t is hozzáadtam, megváltozott a szituáció, és az utóbbi kettő sorrendje is megfordult (erre van vajon magyarázat?):
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ cat 5-ev.txt 
+1-aps:
+
+4-oc	10025
+1-cn	6069
+2-kk	5028
+
+Azért lesz szükség némi debugra, mert ha csak kettőt generálok, akkor:
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ cat 5-ev.txt 
+1-aps:
+
+1-cn	11560
+2-kk	5070
+
+Szóval nem egészen ugyanazok a számok jöttek ki itt. Hol kezdődik az eltérés? Percentílisek megegyezni látszanak. Sok jobbat nem tudok tenni, mint szúrópróbát, esetleg fent leírt példára: matrix (tökéletes), hexagons (nem egyezik, nem tudok mit csinálni). Mindenesetre: 
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ grep matrix 3-pr-1-aps-1-cn.txt 
+matrix	73.91
+bz@bz-HP-EliteBook-8530p:~/similarities$ grep matrix 3-pr-1-aps-2-kk.txt 
+matrix	78
+bz@bz-HP-EliteBook-8530p:~/similarities$ grep matrix 3-pr-1-aps-4-oc.txt 
+matrix	72.93
+
+Eszerint itt KK győzedelmeskedik, nézzük meg, hogy azt számolja-e, és akkor elégedjünk meg. (Úgyis a jelenlegi verzió az áttekinthetőbb az előzőnél, szóval ha valamiben bug volt, akkor az az előző volt.) Igen, hibátlan.
 
 
 

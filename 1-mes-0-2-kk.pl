@@ -84,7 +84,7 @@ close IN;
 
 # ========== output ==========
 
-open OUT, ">aps-kk.txt";
+open OUT, ">1-mes-1-aps-2-kk.txt";
 for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
 	print OUT "$pair\t$pairs{$pair}\n";
 }
