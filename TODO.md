@@ -293,8 +293,16 @@ Végül, ami máris megvan: APS CN-KK összehasonlítás. Hány szóban melyik m
 
 Szép az eredmény, KK sokkal hatékonyabbnak bizonyul ebben az adatsorban. Igazán szép akkor lesz, ha kontextusba helyezzük.
 
+2018-10-12
 
+Mai teendő: APS maradékok kiszámolása, rendezés a terv szerint.
 
+Új lépés: evaluation. Output format:
+
+aps:
+
+kk	33208
+cn	1297
 
 
 
