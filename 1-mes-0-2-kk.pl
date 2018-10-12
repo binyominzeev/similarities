@@ -7,7 +7,7 @@ use Term::ProgressBar::Simple;
 
 # ========== parameters ==========
 
-my $file="records.txt";
+my $file="aps-records.txt";
 
 # ========== stopwords ==========
 
@@ -38,7 +38,7 @@ print "loading %nodes...";
 my %nodes;
 my $progress=new Term::ProgressBar::Simple(463347);
 
-open IN, "<records.txt";
+open IN, "<$file";
 while (<IN>) {
 	chomp;
 	my ($node, $year, $title)=split/\t/, $_;
