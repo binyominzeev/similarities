@@ -1,11 +1,10 @@
-# similarities
-
-Comparison of similarity measures on different datasets
+# Comparison of similarity measures on different datasets
 
 PL and TXT files are following the file naming patterns, consisting of the following three components:
 
 ## 1. Processing steps
 
+0. WDC: word count, word toplist of dataset
 1. MES: Calculating the measure word by word (cn.pl, kk.pl, aps-cn.txt, ...)
 2. WD: Words-list.pl
 3. PR: Calculating the percentage (cn-kk-perc.pl)
@@ -30,6 +29,6 @@ PL and TXT files are following the file naming patterns, consisting of the follo
 ## Current status
 
 - 2018-10-11: 1-APS-1-CN, 1-APS-2-KK ready
-
+- 2018-10-12: 1-APS-4-OC ready
 
 

@@ -332,6 +332,227 @@ matrix	72.93
 
 Eszerint itt KK győzedelmeskedik, nézzük meg, hogy azt számolja-e, és akkor elégedjünk meg. (Úgyis a jelenlegi verzió az áttekinthetőbb az előzőnél, szóval ha valamiben bug volt, akkor az az előző volt.) Igen, hibátlan.
 
+---
+
+Következő lépés a 3-TD. Ehhez először köztes fájlt kell generálni (pl. 1-mes-1-aps-3-td.diagrams.txt):
+
+word num1 num2 num3 ...
+
+Ha ez megvan, az elv az, hogy minden szót mindenhez hasonlíthatunk. De lehet, hogy ezen a ponton szükség lesz hatékonyításra. Például a diagram egyszerűsítésére, felbontására, szavak csoportokba helyezésére. Becslés kedvéért:
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ wc -l 2-wd-*
+ 16594 2-wd-1-aps-1-cn.txt
+ 34090 2-wd-1-aps-2-kk.txt
+ 21104 2-wd-1-aps-4-oc.txt
+
+És ezek csak azok a szavak, amiknek valamilyen más hálózat szerint kapcsolatai vannak. Világos, hogy sosem fog a négyzetes összehasonlítása lefutni, még a legkisebb hálózatra sem. A felbontás X és Y koordináták szerint történik, és csoportokat hoz létre.
+
+Ha egy csoportba kerül több szó, azok távolsága 0 (vagy: maximális). Ha nem elég felosztott a mértékegység, az percentílisek és összehasonlítás terén okozhat nehézségeket. De: ha csak 10 vagy 100 szó kerül egy csoportba, az már jelentős segítség, mert pl. 10,000 szót 100-ra csökkent, ami négyzetreemelés során ismét 10,000 lesz, szóval lineáris lépésszámot redményez.
+
+Valamint: a csoport-kódok önmagukban is rendezhetőek, és a lineáris skálán mért távolságuk is vizsgálható (ugyan az nem túl hasznos, mert pl. 1010001 és 1000001 nagyon távolinak tűnik, közben pedig szomszédok).
+
+Emlékeztetőül, a hasonlóság hatékonyságát úgy definiáltuk, hogy hány olyan szó van, aminek eszerint van a legközelebbi (N – ezt még nem mértük meg, ha 1-nél nagyobb) szomszédja. Ha csoportokat generálunk, akkor nem létezhet az egy csoportba tartozásnál nagyobb közelség. (Hacsaknem a csoportokon belül másodlagos felosztást definiálunk.) Illetve, a forgalmatlan elemek nagyon közelinek fognak tűnni (hacsaknem vezetünk be valami fura átskálázást).
+
+Ezek alapján ezen a ponton a fő kihívás e két definíció összehangolása: közelség-mérőszám és idődiagram-közelség. Minden más mértékre triviális, mert a CN-KK-val kezdtünk, az OC majdnem ugyanaz mint CN, és csak a TD marad.
+
+Talán így a legegyszerűbb: jelentős szavakra nincsen probléma, mert két jelentős szó idő-diagramja aligha fog egybeesni. Csak a kicsi szavaknak lesz rengeteg szomszédjuk ebben a hálózatban, ami félrevezető, mert jellemzően éppen a hubok a jelentősek. Elvileg akár magába a mérőszám kiértékelésébe is belefoglalható lenne pl. szimpla előfordulásszám szerinti súlyozás, ami képes lenne ellensúlyozni ezt.
+
+Persze az meg akkor lenne furcsa, ha egy normálisan működő mérőszámot ellensúlyozna, amit nem kell, így abban elvileg kétszeres ellensúly lenne. De ezt sem gondolom, mert mi baj lehet abból, ha a tényleg releváns elemeknek nagyobb a szerepe? Talán ez a legjobb: csak fontos szavak kerüljenek bele minden mérésbe. Idődiagram ügyében amúgy is ezt tettük.
+
+Súlyozás esetén az adódna, hogy a valóságban gyakori szavak a hálózatban is sok szomszéddal rendelkeznek-e. Világos, hogy a TD-mérték számára ez teljesíthetetlennek látszó kihívás. Hiszen minél nagyobb, annál változatosabb, és nem sok szomszédja lesz. De mondjuk ha eleve csak nagyokkal versenyez, akkor ez nem így van. Mindkét korrekcióra amúgy sem lesz szükség.
+
+Konklúzió: nézzük meg a szavak forgalmát, toplistáját, és konstruáljuk a TD hálózatot csak a nagy elemekre. Korábban már szerepelt hasonló nagyság-definíció, talán épp a publikációban, de most még erősebb feltételhez kötnénk.
+
+Kezdjünk 5000-el próbálkozni, és utána majd meglátjuk.
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ head -n5000 0-wdc-1-aps.txt | tail
+solve	43
+surrounding	43
+alkanes	43
+environmental	43
+decorated	43
+waiting	43
+caesium	43
+architecture	43
+bunched	43
+radion	43
+
+Évek száma: 1893 - 2009 + 1 = 117. Eszerint lehetünk kicsit bátrabbak és mehetünk évi 2 átlagos előfordulásra:
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ head -n2080 0-wdc-1-aps.txt | tail
+blue	236
+centered	236
+lennard	236
+quadrupolar	235
+orthorhombic	235
+residual	235
+fractions	234
+uncertainty	234
+langmuir	234
+coarsening	234
+
+Szóval elég az első 2080 elem. Felosztás: lehet 10x10-es. Ugyan lehet, hogy normalizálni is érdemes (SVD), mert biztos a későbbi években jellemző bármi. De talán lefut a Wekán a sima SVD, ha 2080 elemre és 117 dimenzióra futtatjuk.
+
+Még ez is jó:
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ cut -f2 aps-records.txt | sort | pdf.pl
+1893 20
+1894 36
+1895 36
+1896 36
+1897 54
+1898 61
+1899 57
+1900 63
+1901 69
+1902 75
+1903 87
+1904 79
+1905 67
+1906 120
+1907 88
+1908 80
+1909 73
+1910 116
+1911 171
+1912 81
+1913 82
+1914 166
+1915 97
+1916 145
+1917 127
+1918 92
+1919 88
+1920 100
+1921 92
+1922 241
+1923 134
+1924 160
+1925 191
+1926 208
+1927 200
+1928 249
+1929 362
+1930 521
+1931 606
+1932 559
+1933 493
+1934 547
+1935 493
+1936 483
+1937 546
+1938 504
+1939 651
+1940 559
+1941 451
+1942 299
+1943 153
+1944 165
+1945 182
+1946 427
+1947 651
+1948 929
+1949 1238
+1950 1380
+1951 1534
+1952 1372
+1953 1575
+1954 1659
+1955 1522
+1956 1474
+1957 1471
+1958 1714
+1959 1672
+1960 1733
+1961 1748
+1962 1947
+1963 2164
+1964 2689
+1965 2985
+1966 3316
+1967 3902
+1968 4374
+1969 4433
+1970 4498
+1971 4596
+1972 4652
+1973 4838
+1974 4594
+1975 4654
+1976 4599
+1977 4611
+1978 4772
+1979 4649
+1980 4714
+1981 5168
+1982 5524
+1983 5797
+1984 6091
+1985 6949
+1986 7603
+1987 7996
+1988 8624
+1989 9278
+1990 9123
+1991 9690
+1992 10575
+1993 11956
+1994 12341
+1995 13032
+1996 13024
+1997 13032
+1998 13553
+1999 13687
+2000 14379
+2001 14809
+2002 16705
+2003 15035
+2004 16483
+2005 18361
+2006 17944
+2007 17889
+2008 19179
+2009 18732
+
+Azt hiszem, ki lett zárva a korábbi mérésből a néhány kezdeti év, mondjuk, 1949-ig, és akkor az már csak 61 év. (Mérjünk szavakat ugyaneddig, és hátha akkor megússzuk az SVD-t. Persze minden más adatot újra kell generálni ezen évekre vonatkoztatva.) Alaposabb vizuális analízis eredményeként láthatjuk, hogy még jelentősebb és tartósabb ugrás történt 1968-tól számítva (így 42 év adódik).
+
+UPDATE: a publikáció Table 1.-ben 1965-2009 áll, 45 év (legyen 5 évenként 9, vagy 4 évenként 11, és az utolsót is belevéve, ami átlag miatt nem probléma).
+
+Első kísérletként készítsük el ezt az adatsort, és osszuk be 3-asával, 14 csoportra, Y skálát pedig meglátjuk, hogy hogy mozog (évcsoportok átlagával dolgozzunk, a publikációban szereplő Fig. 3-al konzisztens módon).
+
+Ehhez már több szó kell, mert 90-ig (2 x 45) kell lemenni:
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ head -n3330 0-wdc-1-aps.txt | tail
+sudden	90
+identity	90
+ns	90
+sustained	90
+dimerization	90
+millimeter	90
+branched	90
+pathways	90
+poissonian	90
+compositional	90
+
+Vagy követeljünk évi 3 átlagos cikket (135), és akkor:
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ head -n2700 0-wdc-1-aps.txt | tail
+hypernuclei	133
+texture	133
+mnf	133
+annealed	133
+rest	133
+technicolor	133
+plateau	133
+nondemolition	133
+tree	133
+neutralization	133
+
+Legközelebb innentől folytatjuk: a szódiagramok legyártása erre. (Vagy megkeresése, mert a pred-hez már legyártottuk, csak kevésbé szűrve.)
+
+
+
+
 
 
 
