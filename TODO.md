@@ -293,7 +293,7 @@ Végül, ami máris megvan: APS CN-KK összehasonlítás. Hány szóban melyik m
 
 Szép az eredmény, KK sokkal hatékonyabbnak bizonyul ebben az adatsorban. Igazán szép akkor lesz, ha kontextusba helyezzük.
 
-2018-10-12
+# 2018-10-12
 
 Mai teendő: APS maradékok kiszámolása, rendezés a terv szerint.
 
@@ -550,16 +550,90 @@ neutralization	133
 
 Legközelebb innentől folytatjuk: a szódiagramok legyártása erre. (Vagy megkeresése, mert a pred-hez már legyártottuk, csak kevésbé szűrve.)
 
+# 2018-10-16
+
+A szódiagramok előállítása a fenti specifikáció alapján.
+
+# 2018-10-21
+
+Kategóriák: minél több, annál jobb, feltéve, hogy nem marad üresen egyik sem. 1-0 sorozatok, és az egyik 1-0 sorozat szomszédai azok, akik tőle csak 1 karakterben különböznek. Szóval annyi szomszéda van, amennyire hosszú. Az algoritmus a saját dobozát hasonlítja a szomszédaival, szóval 1 dobozba átlagosan N/2^k elem kerül, és a szomszédos k dobozzal kell összehasonlítani, ezért a végső képlet kN/2^k.
+
+2700 elem van, és 9 számjegy kezdetben, és 2 ^ 9 = 512. Eszerint elvileg lehetséges, hogy ne legyen minden üres. Ehelyett jelenleg 164 van (32%). Próbáljuk ezért 7 számjeggyel (noha elképzelhető, hogy „sarokba” tömörülnek). Ahogy sejtettem, így már csak 86 szomszéd van. Ez az SVD irányába mutat. Azért megpróbálunk még egy lépést: 6 számjegy, 64 teljes, 54 jelenlegi. Ez már egyáltalán nem rossz arány (84%). Talán feltételezhető, hogy nem is veszítünk általa – egy próbát megér talán.
+
+Van amúgy SVD Perlben is:
+
+https://metacpan.org/pod/Math::GSL::Linalg::SVD
+https://metacpan.org/pod/release/SWALTERS/Math-Preference-SVD-0.01/lib/Math/Preference/SVD.pm
+http://pdl.perl.org/PDLdocs/MatrixOps.html
+
+Noha nem értem, hogy miért nem ugyanazt adja, mint a Weka (test.csv):
+
+=== Run information ===
+
+Evaluator:    weka.attributeSelection.PrincipalComponents -R 0.95 -A 5
+Search:weka.attributeSelection.Ranker -T -1.7976931348623157E308 -N -1
+Relation:     test
+Instances:    4
+Attributes:   10
+              word
+              a1
+              a2
+              a3
+              a4
+              a5
+              a6
+              a7
+              a8
+              a9
+Evaluation mode:evaluate on all training data
 
 
 
+=== Attribute Selection on all input data ===
+
+Search Method:
+	Attribute ranking.
+
+Attribute Evaluator (unsupervised):
+	Principal Components Attribute Transformer
+
+Correlation matrix
+  1      0      0.71   0.9    1      0      0.69  -0.3  
+  0      1      0.5    0.43   0      0.71  -0.32  -0.43 
+  0.71   0.5    1      0.85   0.71   0      0     -0.85 
+  0.9    0.43   0.85   1      0.9    0.3    0.48  -0.45 
+  1      0      0.71   0.9    1      0      0.69  -0.3  
+  0      0.71   0      0.3    0      1      0.23   0.3  
+  0.69  -0.32   0      0.48   0.69   0.23   1      0.48 
+ -0.3   -0.43  -0.85  -0.45  -0.3    0.3    0.48   1    
 
 
+eigenvalue	proportion	cumulative
+  4.13392	  0.51674	  0.51674	-0.486a5-0.46a6-0.46a2-0.436a4+0.258a9...
+  2.19318	  0.27415	  0.79089	0.579a8+0.489a9-0.487a3-0.289a4+0.226a6...
+  1.6729 	  0.20911	  1      	0.761a7+0.469a3+0.346a9+0.179a8-0.134a4...
 
+Eigenvectors
+ V1	 V2	 V3	
+-0.4599	 0.2256	-0.0917	a2
+-0.1645	-0.487 	 0.469 	a3
+-0.4363	-0.2889	-0.1342	a4
+-0.4862	-0.0036	 0.1171	a5
+-0.4599	 0.2256	-0.0917	a6
+-0.0756	-0.0545	 0.7614	a7
+-0.2258	 0.5792	 0.1791	a8
+ 0.258 	 0.4891	 0.3459	a9
 
+Ranked attributes:
+ 0.483  1 -0.486a5-0.46a6-0.46a2-0.436a4+0.258a9...
+ 0.209  2 0.579a8+0.489a9-0.487a3-0.289a4+0.226a6...
+ 0      3 0.761a7+0.469a3+0.346a9+0.179a8-0.134a4...
 
+Selected attributes: 1,2,3 : 3
 
+Legközelebb ennek futtatását próbáljuk (már fel van installálva):
 
+http://pdl-stats.sourceforge.net/GLM.htm#pca
 
 
 

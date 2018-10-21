@@ -13,6 +13,8 @@ use List::Util qw(sum max);
 my $wd=5;
 my $ht=9;
 
+my $categ_wd=$wd+3;
+
 my $first_year=1965;
 my $last_year=2009;
 
@@ -51,32 +53,10 @@ for my $line (@results) {
 
 open OUT, ">1-mes-$dataset-3-td-diagrams.txt";
 for my $word (sort keys %words) {
-	my $code="";
-	my @current_box;
+	my $code=produce_code($wd, $ht, $words{$word});
+	my $categ=produce_code($categ_wd, 2, $words{$word});		# same as $code, just 0-1 seq
 	
-	my $max=max (values %{$words{$word}});
-	
-	#for my $year (sort { $a <=> $b } keys %{$words{$word}}) {
-	for my $year ($first_year..$last_year) {
-		my $val=0;
-		if (exists $words{$word}->{$year}) {
-			$val=$words{$word}->{$year};
-		}
-		
-		push @current_box, $val;
-		if (@current_box >= $wd) {
-			my $current_val=int((my_avg(@current_box)/$max)*$ht);
-			$code.=$current_val;
-			@current_box=();
-		}
-	}
-
-	if (@current_box > 0) {
-		my $current_val=int((my_avg(@current_box)/$max)*$ht);
-		$code.=$current_val;
-	}
-	
-	print OUT "$word\t$code\n";
+	print OUT "$word\t$code\t$categ\n";
 }
 close OUT;
 
@@ -84,4 +64,35 @@ close OUT;
 
 sub my_avg {
 	return sum(@_)/(scalar @_);
+}
+
+sub produce_code {
+	my ($wd, $ht, $word)=@_;
+	
+	my $code="";
+	my @current_box;
+	
+	my $max=max (values %$word);
+	
+	for my $year ($first_year..$last_year) {
+		my $val=0;
+		if (exists $word->{$year}) {
+			$val=$word->{$year};
+		}
+		
+		push @current_box, $val;
+		if (@current_box >= $wd) {
+			my $current_val=my_avg(@current_box)/$max;
+			$code.=int($current_val*$ht);
+			
+			@current_box=();
+		}
+	}
+
+	if (@current_box > 0) {
+		my $current_val=my_avg(@current_box)/$max;
+		$code.=int($current_val*$ht);
+	}
+	
+	return $code;
 }
