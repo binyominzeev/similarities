@@ -6,7 +6,7 @@ use Data::Dumper;
 use Term::ProgressBar::Simple;
 
 use Scalar::Util qw(looks_like_number);
-use List::Util qw(sum max);
+use List::Util qw(sum max min);
 
 # ======== parameters ========
 
@@ -51,12 +51,21 @@ for my $line (@results) {
 
 # ========== output ==========
 
-open OUT, ">1-mes-$dataset-3-td-diagrams.txt";
+open OUT, ">1-mes-$dataset-3-td-1-norm.txt";
 for my $word (sort keys %words) {
-	my $code=produce_code($wd, $ht, $words{$word});
-	my $categ=produce_code($categ_wd, 2, $words{$word});		# same as $code, just 0-1 seq
+	my @a;
 	
-	print OUT "$word\t$code\t$categ\n";
+	for my $year ($first_year..$last_year) {
+		my $val=0;
+		if (exists $words{$word}->{$year}) {
+			$val=$words{$word}->{$year};
+		}
+		push @a, $val;
+	}
+	my $b=min_max_norm(\@a);
+	
+	my $vals=join ",", @$b;
+	print OUT "$word,$vals\n";
 }
 close OUT;
 
@@ -66,33 +75,19 @@ sub my_avg {
 	return sum(@_)/(scalar @_);
 }
 
-sub produce_code {
-	my ($wd, $ht, $word)=@_;
+sub min_max_norm {
+	my ($a)=@_;
 	
-	my $code="";
-	my @current_box;
+	my $min=min(@$a);
+	my $max=max(@$a);
+	my $all=($max-$min);
 	
-	my $max=max (values %$word);
-	
-	for my $year ($first_year..$last_year) {
-		my $val=0;
-		if (exists $word->{$year}) {
-			$val=$word->{$year};
-		}
-		
-		push @current_box, $val;
-		if (@current_box >= $wd) {
-			my $current_val=my_avg(@current_box)/$max;
-			$code.=int($current_val*$ht);
-			
-			@current_box=();
-		}
-	}
-
-	if (@current_box > 0) {
-		my $current_val=my_avg(@current_box)/$max;
-		$code.=int($current_val*$ht);
+	my @b;
+	for my $val (@$a) {
+		push @b, int(100*($val-$min)/$all);
 	}
 	
-	return $code;
+	return \@b;
 }
+
+

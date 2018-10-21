@@ -886,6 +886,33 @@ OK, ez a Statistics::PCA nagyszerű, 34. rankra már eléri a 95%-os kumulatív 
 
 https://metacpan.org/pod/Statistics::PCA
 
+Távoli szerveren mindkét felajánlott algoritmussal futtattam, nincs hibahatáron túli különbség közöttük, mindkettő 34-ig megy el, 6-7 másodperc alatt (itthon 10-11).
+
+OK, fut, és Excel-lel teszteltem, hogy az első néhány érték egyezik. Következő lépés: rendet csinálni az adatsorban. Step-by-step:
+
+1.1. 1-TD-1-NORM: Szavak értékei min-max norma szerint.
+1.2. 1-TD-2-SVD: Koordináták transzformálása SVD szerint.
+1.3. 1-TD-3-BOX: Ezek beolvasása és kódokká alakítása: 0-9 és 0-1 dobozok.
+1.4. 1-TD-4-NGB: Szavanként legközelebbi szomszédok megkeresése a fentiek alapján.
+
+Mindez az eredeti listában 1-en belül: újrakódolandó.
+
+TODO: "hidden" és "revealed" az eredetiben (https://raw.githubusercontent.com/binyominzeev/similarities/884d71cffc61302f11fda940a83ba8c7660d27f0/1-mes-1-aps-3-td-diagrams.txt) szép közeli, de a transzformáltban nem:
+
+hidden	4545454	11111
+revealed	4554555	11111
+
+A normalizálásokon lenne mit javítani. Talán: nézzünk rá a valós görbéjükre, meg a transzformáltakra, csak erre a kettőre, vagy még néhányra. Eszerint azt is külön érdemes előállítani. És akkor jobban böngészhető lenne.
+
+Itt böngészhetőek a korábbi változatok:
+
+https://github.com/binyominzeev/similarities/commits/master
+
+És itt van az a változat, amiben transzformáció nélkül számoltunk kódokat:
+
+884d71c: categories and first attempts for PCA/SVD
+
+
 
 
 
