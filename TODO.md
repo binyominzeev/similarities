@@ -929,7 +929,7 @@ Mégis csak 2-szeres gyorsítás adódik, mert csak 59 doboz van tele a 625-ből
 
 Üres doboz nem adódott, aminek nincsen szomszédja, a legkisebbnek 2 szomszédja van, de a legnagyobbnak 2496, ami nem nagyon szignifikáns javítás, de sok legalább nincsen belőle. (Ezt az ellenőrzést viszont lehet, hogy el kell majd végezni külön.)
 
-
+Topinavon viszont szépen fut. Lefutott, de legközelebb vizsgálatra lesz szükség, mert a távoli szerveren most minden szó-ra 0-át ír ki, vagyis minden szóhoz van közelebbi. (Hát persze, hiszen saját magával is össze lett hasonlítva.)
 
 
 

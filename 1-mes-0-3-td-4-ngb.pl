@@ -52,8 +52,10 @@ for my $box (sort keys %box_codes) {
 	for my $word (keys %{$box_codes{$box}}) {
 		my $min_dist=10000;
 		for my $neighbor_word (@neighbor_words) {
-			my $dist=my_distance($word, $neighbor_word);
-			if ($dist < $min_dist) { $min_dist=$dist; }
+			if ($word ne $neighbor_word) {
+				my $dist=my_distance($word, $neighbor_word);
+				if ($dist < $min_dist) { $min_dist=$dist; }
+			}
 		}
 		$word_distances{$word}=$min_dist;
 	}
