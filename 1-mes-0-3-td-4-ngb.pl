@@ -61,7 +61,7 @@ for my $box (sort keys %box_codes) {
 
 # ========== output ==========
 
-open OUT, "<1-mes-$dataset-3-td-4-ngb.txt";
+open OUT, ">1-mes-$dataset-3-td-4-ngb.txt";
 for my $word (sort keys %word_distances) {
 	print OUT "$word\t$word_distances{$word}\n";
 }
