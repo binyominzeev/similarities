@@ -912,6 +912,23 @@ https://github.com/binyominzeev/similarities/commits/master
 
 884d71c: categories and first attempts for PCA/SVD
 
+# 2018-10-27
+
+Sokkal egyszerűbben kellene. Az ötlet: a kocka „körbevevése”. Ez az, ami garantálja, hogy ebben a halmazban csak a legközelebbi szomszéd lehet, és nem magában a kockában. Legkönnyebben körbevehető kocka, minél rövidebb. Ha három karakter van, akkor mindegyik +/-/0, azaz 3 x 3 x 3 = 27 szomszéd ellenőrizendő. Ha valójában 4-es kódot ír le, az 4 x 4 x 4 = 64 részre osztja a 3000 méretű teret. Ez 27/64, azaz kb. kétszeres gyorsítást eredményez. Még jobb, ha 5 részre osztjuk, abból 625 adódik, ami éppen 5-szörös gyorsítást eredményez. Próbáljuk meg ezért így.
+
+Noha: nagyon nagy ugrások nem várhatóak, ezért ez a leírás, három részre osztva nem feltétlenül tökéletes. 4 részre osztás esetén 81 a minimum, a következő réteg 256-ot, azaz 3-szoros gyorsítást eredményez, és még egész reálisan hangzik. Azonban a következő lépés már 625*5=3125, nagyobb mint 3000, bár lehet, hogy pont ezt kellene, és esetleg még az input is növelhető, hiszen ez már majdnem 40-szeres (!) gyorsítást jelent.
+
+A fájlstruktúrát úgy alakítjuk át, hogy az 1-NORM lépés után rögtön a 3-BOX lépés következzen, a 2-PCA most nem lényeges. (Mivel nem vagyunk biztosak benne, hogy tökéletesen működik, akár csak elméleti szinten, a tér „deformálása” miatt.)
+
+Szomszéd-gyártás: noha lehetne valamennyire gyorsítani azáltal, ha az egyes hasonló dobozok egymást követve sem számolnák mind a 27 szomszédot újra, hanem csak egy részét módosítanák, de ezt nem valószínű, hogy megéri leprogramozni, mert amúgy is max. 3000 x 27 lépés, ami összesen sem sok. Ezért inkább rendezzük, és az azonos elemeken spóroljunk csak, és ahhoz nem is kell új algoritmus. 
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ cut -f3 1-mes-1-aps-3-td-3-box.txt | sort | uniq | wc -l
+59
+
+Mégis csak 2-szeres gyorsítás adódik, mert csak 59 doboz van tele a 625-ből. Ez sem annyira rossz.
+
+Üres doboz nem adódott, aminek nincsen szomszédja, a legkisebbnek 2 szomszédja van, de a legnagyobbnak 2496, ami nem nagyon szignifikáns javítás, de sok legalább nincsen belőle. (Ezt az ellenőrzést viszont lehet, hogy el kell majd végezni külön.)
+
 
 
 
