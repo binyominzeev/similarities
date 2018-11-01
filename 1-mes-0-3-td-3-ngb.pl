@@ -21,10 +21,12 @@ my $pmz=pmz_combinations($len);
 # ========== read ==========
 
 my %box_codes;
-my %word_distances;
 my %word_codes;
 
-open IN, "<1-mes-$dataset-3-td-3-box.txt";
+my %word_distances;
+my %word_neighbors;
+
+open IN, "<1-mes-$dataset-3-td-2-box.txt";
 while (<IN>) {
 	chomp;
 
@@ -45,27 +47,36 @@ for my $box (sort keys %box_codes) {
 		}
 	}
 	
-	print "$box\t";
-	print scalar @neighbor_words;
-	print "\n";
+	my $x=scalar keys %{$box_codes{$box}};
+	my $y=scalar @neighbor_words;
+	my $xy=$x*$y;
+	
+	print "$box\t$x *\t$y =\t$xy\n";
 	
 	for my $word (keys %{$box_codes{$box}}) {
 		my $min_dist=10000;
+		my $min_neighbor="";
+		
 		for my $neighbor_word (@neighbor_words) {
 			if ($word ne $neighbor_word) {
 				my $dist=my_distance($word, $neighbor_word);
-				if ($dist < $min_dist) { $min_dist=$dist; }
+				if ($dist < $min_dist) {
+					$min_dist=$dist;
+					$min_neighbor=$neighbor_word;
+				}
 			}
 		}
+		
 		$word_distances{$word}=$min_dist;
+		$word_neighbors{$word}=$neighbor_word;
 	}
 }
 
 # ========== output ==========
 
-open OUT, ">1-mes-$dataset-3-td-4-ngb.txt";
+open OUT, ">1-mes-$dataset-3-td.txt";
 for my $word (sort keys %word_distances) {
-	print OUT "$word\t$word_distances{$word}\n";
+	print OUT "$word\t$word_neighbors{$word}\t$word_distances{$word}\n";
 }
 close OUT;
 

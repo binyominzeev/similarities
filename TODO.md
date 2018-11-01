@@ -931,6 +931,48 @@ Mégis csak 2-szeres gyorsítás adódik, mert csak 59 doboz van tele a 625-ből
 
 Topinavon viszont szépen fut. Lefutott, de legközelebb vizsgálatra lesz szükség, mert a távoli szerveren most minden szó-ra 0-át ír ki, vagyis minden szóhoz van közelebbi. (Hát persze, hiszen saját magával is össze lett hasonlítva.)
 
+OK, így már szép:
+
+root@topinav:~/similarities# cut -f2 1-mes-1-aps-3-td-4-ngb.txt | sort -n | uniq 
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+20
+
+# 2018-11-01
+
+Következő fontos cél az APS-re a négy measure-t összehasonlító diagram. Ezelőtt szükséges az NGB measure normalizálása, összevetni, hogy megfelelő versenytársa-e a többinek. Valamint, adminisztratíve ki kell iktatni a queue-ból a szükségtelenné vált 2-es lépést.
+
+Az alapötlet mindig az, hogy a 0-1 skálára vetítsük a mértéket, ami egyszerűen megfordítható. Lássuk az eloszlásokat összehasonlítva.
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ cut -f2 1-mes-1-aps-3-td-3-ngb.txt | pdf.pl 
+input read.
+0 668
+1 737
+2 497
+3 353
+4 222
+5 131
+6 59
+7 22
+8 6
+9 2
+10 1
+11 1
+20 1
+
+A többi mérték esetében 1-MES lépésben mindkét szomszéd meg van adva, preprocesszálatlan formában, míg 3-PR lépésben már csak a szavak, százalékos értékek szerint. Kövessük, térjünk át erre a jelölésre.
+
+
 
 
 
