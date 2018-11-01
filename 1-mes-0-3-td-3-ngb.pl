@@ -68,7 +68,7 @@ for my $box (sort keys %box_codes) {
 		}
 		
 		$word_distances{$word}=$min_dist;
-		$word_neighbors{$word}=$neighbor_word;
+		$word_neighbors{$word}=$min_neighbor;
 	}
 }
 

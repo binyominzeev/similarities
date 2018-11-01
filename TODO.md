@@ -972,10 +972,99 @@ input read.
 
 A többi mérték esetében 1-MES lépésben mindkét szomszéd meg van adva, preprocesszálatlan formában, míg 3-PR lépésben már csak a szavak, százalékos értékek szerint. Kövessük, térjünk át erre a jelölésre.
 
+Most már sokkal szebben néz ki a szorzótábla is, a kódokkal:
 
+root@topinav:~/similarities# ./1-mes-0-3-td-3-ngb.pl 
+000	1 *	163 =	163
+001	58 *	1038 =	60204
+002	485 *	1967 =	953995
+003	210 *	1900 =	399000
+004	3 *	985 =	2955
+010	3 *	261 =	783
+011	18 *	1238 =	22284
+012	322 *	2388 =	768936
+013	644 *	2316 =	1491504
+014	37 *	1254 =	46398
+020	2 *	192 =	384
+021	29 *	684 =	19836
+022	78 *	1659 =	129402
+023	152 *	1652 =	251104
+024	41 *	1072 =	43952
+030	1 *	109 =	109
+031	2 *	223 =	446
+032	6 *	472 =	2832
+033	13 *	469 =	6097
+034	2 *	304 =	608
+100	10 *	208 =	2080
+101	8 *	1113 =	8904
+102	15 *	2034 =	30510
+103	4 *	1941 =	7764
+110	2 *	319 =	638
+111	23 *	1347 =	30981
+112	93 *	2496 =	232128
+113	87 *	2386 =	207582
+120	1 *	242 =	242
+121	21 *	785 =	16485
+122	69 *	1765 =	121785
+123	72 *	1724 =	124128
+124	4 *	1093 =	4372
+131	2 *	261 =	522
+132	12 *	520 =	6240
+133	16 *	504 =	8064
+134	4 *	315 =	1260
+200	4 *	92 =	368
+201	5 *	232 =	1160
+202	3 *	300 =	900
+203	1 *	242 =	242
+210	15 *	136 =	2040
+211	21 *	365 =	7665
+212	27 *	510 =	13770
+213	10 *	419 =	4190
+220	1 *	115 =	115
+221	12 *	337 =	4044
+222	21 *	510 =	10710
+223	8 *	434 =	3472
+231	1 *	153 =	153
+232	3 *	247 =	741
+233	3 *	215 =	645
+301	1 *	81 =	81
+310	2 *	67 =	134
+312	2 *	118 =	236
+320	2 *	58 =	116
+321	4 *	114 =	456
+322	3 *	115 =	345
+340	1 *	2 =	2
 
+Eszerint már látszik, mi mitől mennyire van messze. Ez már ellenőrizhető. Pl. a-properties elvileg 0:
 
+a	properties	0
 
+a		011134578	000111
+properties	111235578	000111
+
+B"H nem jól működik, és látjuk is, hogy mi a hiba, egyszerűen. Csak a box értékek vannak összevetve, és nem a véglegesek. Megtérül a pontos könyvelés! Make sure, egy másik példával:
+
+late	spreading	0
+
+late		000012455	000011
+spreading	000012455	000011
+
+Hm, érdekes, pedig ez jó.
+
+method	atoms	0
+
+method	222345568	000111
+atoms	122235668	000111
+
+OK, akkor csak véletlen volt. Lássuk a kódot. Első látásra pedig azt veti össze. Akkor lássuk kézzel ezeket a példákat közelebbről. a-properties és method-atoms valóságos távolsága 3. Lehet, hogy normalizálva lett, más módon, az általam vizsgált verzióhoz képest? Valóban, mert én 1-mes-1-aps-3-td-diagrams.txt-t vizsgálom (ami törlendő, zavaró!), míg a program 1-mes-1-aps-3-td-2-box.txt-t. Nézzük meg majd utoljára, mi a különbség. A mostani állás szerint:
+
+a		000124568	013
+properties	000124568	013
+
+method	011234568	013
+atoms	011234568	013
+
+OK, valóban ez volt a probléma.
 
 
 
