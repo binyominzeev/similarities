@@ -1066,6 +1066,30 @@ atoms	011234568	013
 
 OK, valóban ez volt a probléma.
 
+# 2018-11-02
+
+Most megnéztem görbéken hogy mutatnak a fenti szavak. Jó, hát minden nagyon hasonlít mindenhez, mivel minden nő, szóval le kellene normálni az éves átlaggal, mindenekelőtt. Az lenne nagy dolog, ha különbözőeket sikerülne találni, ezek szerint. Sikerül? Igen:
+
+incident	gev	10
+
+(Úgy látom, 1-mes-1-aps-3-td-3-ngb.txt nem érdekes már, helyébe lépett 1-mes-1-aps-3-td.txt. Törlöm.)
+
+Valóban, különböznek, de nem nagyon. Ugyanakkor, ha már erre járunk: mi a helyzet a min-max-normával? Nagyon felerősíti a zajokat. Nincs jobb? Talán a szum-norma, ami 1-re növeli az integrált. Próbáljuk meg azzal.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
