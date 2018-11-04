@@ -10,11 +10,6 @@ use List::Util qw(sum max min);
 
 # ======== parameters ========
 
-my $wd=5;
-my $ht=9;
-
-my $categ_wd=$wd+3;
-
 my $first_year=1965;
 my $last_year=2009;
 
@@ -59,24 +54,10 @@ my @year_count=map { $year_count{$_} }
 	sort { $a <=> $b }
 	keys %year_count;
 
+#print Dumper \@year_count;
+#exit;
+
 # ========== output ==========
-
-open OUT, ">teszt.txt";
-for my $word (@test_words) {
-	my @a;
-	
-	for my $year ($first_year..$last_year) {
-		my $val=0;
-		if (exists $words{$word}->{$year}) {
-			$val=$words{$word}->{$year};
-		}
-		push @a, $val;
-	}
-
-	my $vals=join ",", @a;
-	print OUT "$word,$vals\n";
-}
-close OUT;
 
 open OUT, ">1-mes-$dataset-3-td-1-norm.txt";
 for my $word (sort keys %words) {
@@ -91,8 +72,8 @@ for my $word (sort keys %words) {
 	}
 
 	#my $b=min_max_norm(\@a);
-	my $b=yearly_norm(\@a);
-	$b=sum_norm($b);
+	my $b=yearly_max_norm(\@a);
+#	$b=sum_norm($b);
 	
 	my $vals=join ",", @$b;
 	print OUT "$word,$vals\n";
@@ -101,13 +82,16 @@ close OUT;
 
 # ========== functions ==========
 
-sub yearly_norm {
+sub yearly_max_norm {
 	my ($a)=@_;
 	
 	my @b;
 	for my $i (0..$#$a) {
-		push @b, 1000*($a->[$i]/$year_count[$i]);
+		push @b, $a->[$i]/$year_count[$i];
 	}
+
+	my $max=max(@b);
+	@b=map { int(100*$_/$max) } @b;
 	
 	return \@b;
 }

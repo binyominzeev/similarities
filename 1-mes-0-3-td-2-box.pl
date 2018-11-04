@@ -9,7 +9,8 @@ use List::Util qw(sum max min);
 
 # ======== parameters ========
 
-my $wd=5;
+#my $wd=5;
+my $wd=3;
 my $ht=9;
 
 my $categ_wd=15;
