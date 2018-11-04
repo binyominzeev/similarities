@@ -1076,19 +1076,38 @@ incident	gev	10
 
 Valóban, különböznek, de nem nagyon. Ugyanakkor, ha már erre járunk: mi a helyzet a min-max-normával? Nagyon felerősíti a zajokat. Nincs jobb? Talán a szum-norma, ami 1-re növeli az integrált. Próbáljuk meg azzal.
 
+# 2018-11-04
+
+Szükség lesz egy listára a cikkek éves alakulásáról. Jelenleg a saját átlaghoz képest normáljuk, ez nem tudom, mit változtat. Úgy tűnik, semmit.
+
+Noha viszonylag kis (azaz tipikus) szavakra továbbra is hasonló növekedést produkál, feltételezem, hogy azért, mert ők éppen a korai években nem szerepelnek. Rejtélyes némileg, de futtassuk, próbáljuk, ingyen van. Jó, néha valóban nő, de alapvetően sokkal hatékonyabban szétdobja a görbéket. Lássuk a konkrét mérőszámokat.
+
+2-BOX lépésben most is min-max-normát használ, ezt vajon szükséges kicserélni? A kód létrehozásához nélkülözhetetlen, hogy 0 és 1 közötti értékek szerepeljenek. De lehet, hogy ez globális maximummal legyen normálva, ha létezik ilyesmi. Próbáljuk első körből normális lokális maximummal, és hasonlítsuk össze a látvánnyal.
 
 
+method,95,106,92,113,107,112,115,104,155,111,98,103,90,117,104,104,104,115,106,129,98,120,98,105,111,101,104,97,94,105,87,83,84,86,78,89,81,79,94,74,78,95,83,86,86
+atoms,63,99,88,103,122,115,111,133,104,111,102,101,106,121,110,121,126,106,106,87,103,106,97,87,97,95,102,101,88,98,102,106,89,83,93,93,73,74,102,93,84,97,102,90,84
+late,0,0,0,0,83,0,0,0,76,0,0,0,0,77,79,0,71,67,63,0,53,97,46,171,119,202,152,140,92,179,198,85,85,245,270,102,224,88,246,291,120,226,186,270,79
+properties,80,92,91,94,84,98,85,82,96,82,86,97,101,88,94,93,100,84,75,96,83,100,103,122,114,115,122,104,110,119,105,113,101,96,107,104,113,106,106,102,112,117,112,101,92
+spreading,0,0,0,0,0,0,0,52,50,53,52,53,106,0,105,156,0,0,42,0,176,96,30,28,79,80,50,162,164,238,131,319,131,144,214,187,198,190,97,312,160,122,246,63,196
 
+method	565665444	332
+atoms	677766656	333
+late	000134555	013
+properties	666678777	344
+spreading	001123554	012
 
+Nehéz a kis és nagy számok összehasonlítása. Talán erre lenne való a log-skála?
 
+Összes említés. Tegyük be a két legnagyobb szót is, hogy láthassuk jó görbén:
 
-
-
-
-
-
-
-
+method,30,37,38,52,50,53,56,51,79,54,48,50,44,59,51,52,57,67,65,83,72,96,83,96,109,97,107,108,119,137,120,115,116,123,113,136,127,140,149,129,152,181,158,175,171
+atoms,26,45,47,62,74,71,70,85,69,70,65,64,67,79,70,78,89,80,84,73,98,111,106,103,124,119,136,147,145,166,183,190,160,155,174,184,149,170,211,210,211,239,249,237,216
+late,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,1,1,1,0,1,2,1,4,3,5,4,4,3,6,7,3,3,9,10,4,9,4,10,13,6,11,9,14,4
+properties,69,88,102,118,107,126,112,110,134,108,115,128,133,120,125,126,149,133,125,168,165,219,236,302,303,301,338,317,378,422,393,422,378,374,421,431,481,509,456,482,589,600,576,555,493
+spreading,0,0,0,0,0,0,0,1,1,1,1,1,2,0,2,3,0,0,1,0,5,3,1,1,3,3,2,7,8,12,7,17,7,8,12,11,12,13,6,21,12,9,18,5,15
+quantum,52,63,87,96,79,95,102,63,83,74,109,85,113,133,168,141,161,192,213,257,342,371,396,474,566,614,688,785,964,953,974,1138,1061,1097,1136,1219,1293,1548,1453,1493,1912,1793,1828,1970,1814
+model,100,142,183,201,247,261,266,244,310,276,280,273,284,283,266,280,317,326,340,351,389,487,448,525,606,606,670,752,788,844,806,813,769,802,791,794,880,969,804,901,965,943,917,1034,1006
 
 
 

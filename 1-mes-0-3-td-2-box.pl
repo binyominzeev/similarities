@@ -56,8 +56,8 @@ sub produce_code {
 	for my $val (@$word) {
 		push @current_box, $val;
 		if (@current_box >= $wd) {
-			#my $current_val=my_avg(@current_box)/$max;
-			my $current_val=min_max_norm($min, $max, my_avg(@current_box));
+			my $current_val=my_avg(@current_box)/$max;
+			#my $current_val=min_max_norm($min, $max, my_avg(@current_box));
 			$code.=int($current_val*$ht);
 			
 			@current_box=();
@@ -65,8 +65,8 @@ sub produce_code {
 	}
 
 	if (@current_box > 0) {
-#		my $current_val=my_avg(@current_box)/$max;
-		my $current_val=min_max_norm($min, $max, my_avg(@current_box));
+		my $current_val=my_avg(@current_box)/$max;
+#		my $current_val=min_max_norm($min, $max, my_avg(@current_box));
 		$code.=int($current_val*$ht);
 	}
 	

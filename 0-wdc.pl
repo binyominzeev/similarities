@@ -33,7 +33,7 @@ for my $line (@results) {
 	
 	if ($first_year <= $year && $year <= $last_year) {
 		my @szavak=$title=~/[a-zA-Z]+/g;
-		@szavak=grep { !exists $stopwords{$_} } @szavak;
+		@szavak=grep { !exists $stopwords{lc $_} } @szavak;
 		
 		map { $words{lc $_}++ } @szavak;
 	}
