@@ -35,4 +35,5 @@ PL and TXT files are following the file naming patterns, consisting of the follo
 - 2018-10-11: 1-APS-1-CN, 1-APS-2-KK ready
 - 2018-10-12: 1-APS-4-OC ready
 - 2018-11-04: 1-APS-3-TD ready
+- 2018-11-11: 1-APS comparison/evaluation ready
 

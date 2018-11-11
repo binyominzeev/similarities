@@ -8,8 +8,8 @@ use List::Util qw/max/;
 # ======== parameters ========
 
 my @dataset=qw/1-aps/;
-my @stats=qw/1-cn 2-kk 4-oc/;
-#my @stats=qw/1-cn 2-kk/;
+
+my @stats=qw/1-cn 2-kk 3-td 4-oc/;
 
 # ======== process ========
 
@@ -27,6 +27,10 @@ for my $dataset (@dataset) {
 			if ($line[$i] == $max) {
 				$count{$dataset}->{$stats[$i]}++;
 				#print "$stats[$i]\t$word\n";
+				
+				if ($i == 2) {
+					print "$stats[$i]\t$word\n";
+				}
 			}
 		}
 	}

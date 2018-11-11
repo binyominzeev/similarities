@@ -8,7 +8,7 @@ use Data::Dumper;
 
 my $dataset="1-aps";
 #my @stats=qw/1-cn 2-kk/;
-my @stats=qw/1-cn 2-kk 4-oc/;
+my @stats=qw/1-cn 2-kk 3-td 4-oc/;
 
 # ======== process ========
 

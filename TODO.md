@@ -1170,6 +1170,144 @@ vibration	625252222311222	211
 
 OK, nem olyan rossz ez, mert alapvetően valóban közeli, de van 1-2 ponton nagy eltérés. Higgyük el az eredményt egyelőre, és dolgozzunk ezzel tovább.
 
+# 2018-11-11
+
+Időterv (óránkénti):
+
+- Programozás: összehasonlítás, kimutatások (10)
+- 1-2. fejezet: átnézni (2)
+- 3. fejezet: átmásolni (5)
+- 4. fejezet: megírni (10)
+- Bevezetők, befejezések, tézisek (3)
+- Összesen: 30 óra
+- Illést megkérdezni, hogy mikorra küldjem
+
+Hátralévő órák száma:
+
+- Dec 23.-Jan 1. Winter break – 7 teljes nap, 1 péntek (de.), 1 szombat (este) – napi 3 óra – 24 óra
+- Szombat, vasárnap: 1,5-1,5 óra (3)
+- H-P: 0,5 óra (2,5)
+- Heti: 5,5
+- 6 hét (33)
+- 6 hét + Winter break = 57 óra. Elégnek kell lennie. Lehet kérdezni Illést, hogy jó-e, ha utána küldöm.
+
+Hetenkénti időbeosztás:
+
+- Eszerint 2 hét alatt véget ér a programozás
+- Utána 2 hét alatt 1-3. fejezet
+- Újabb 2 hét alatt 4. fejezet
+- Szünetre marad: bevezetők, befejezések, tézisek
+
+APS adathalmaz összes értékének összehasonlítása. 0-100-sűrűségek ábrázolása, TD levetítése erre, ellenőrizni, hogy realisztikusan néz-e ki, mielőtt egy az egyben átvezetjük.
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ cut -f2 3-pr-1-aps-1-cn.txt | perlawk.pl "s/\..*//g" | pdf.pl > 
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ cut -f3 1-mes-1-aps-3-td.txt | pdf.pl 
+input read.
+0 10
+1 34
+2 57
+3 96
+4 140
+5 190
+6 299
+7 409
+8 366
+9 381
+10 284
+11 197
+12 114
+13 66
+14 29
+15 18
+16 7
+17 3
+
+Most nem pontosan értem, hogy 3-PR miért mindkét oszlop szavait veszi figyelembe. Ja, igen, hogy az első legyen az, amit elsőre figyelembe vesz, így minden szóhoz a lehető legközelebbi szomszédot találja meg. Esetünkben (3-TD) éppen 2 x 2700 = 5400 szó szerepel a listában, tehát minden szó pontosan kétszer, és valószínű, hogy még szimmetrikusan is.
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ cut -f2 1-mes-1-aps-3-td.txt > 2.txt
+bz@bz-HP-EliteBook-8530p:~/similarities$ cut -f1 1-mes-1-aps-3-td.txt > 1.txt
+bz@bz-HP-EliteBook-8530p:~/similarities$ cat 1.txt 2.txt | wc -l
+5400
+bz@bz-HP-EliteBook-8530p:~/similarities$ cat 1.txt 2.txt | sort| uniq| wc -l
+2700
+
+Mégsem ez a gyakorlat:
+
+theories	unified	10
+gauge	theories	10
+isoscalar	gauge	11
+
+Eszerint a cél: minden szóhoz a lehető legközelebbit megtalálni. Pl. esetünkben gauge-hoz 10-et, theories-hez is, isoscalar-ból érdekes módon viszont csak 1-et találtam. Én azt mondanám, hogy csak az első elem legyen érdekes.
+
+A kész diagram: percents.[ods|png], majd a disszertáció céljára ebből könnyebb lesz Gnuplotot gyártani. Az ábra jóslata alapján a 3-td-ből nem nagyon lesz tuti befutó, de azért próbáljuk meg belefoglalni az általános statisztikába.
+
+Nagyszerű, 676 szóra mégiscsak a TD a legerősebb. Talán ezek egyáltalán nem is szerepelnek a többiben? A legigazságosabb az lenne, ha lehetne egyetlen, közös szólistát találni, amiből az összes mérés fut, mert jelenleg az "a" szó is benne van, amiről pedig nemrég észrevettük, hogy tévedés, mert a stopszólistának szűrnie kellene eleve, és csak valami elírás miatt maradt bent.
+
+Mindennel együtt, vannak érdekes szavak. Pl. (/home/bz/similarities/4-un-1-aps.txt):
+
+multifractal	41.53	53.85	76	41.3
+nanoscale	32.93	59.39	88	43.08
+sulfur	30.46	51.67	52	35.09
+synthesis	32.16	52.27	64	39.2
+wall	74.62	75.59	82	72.96
+water	53.31	65.05	70	57.28
+
+Következő izgalmas kísérlet, hogy ellenőrizzük ezekre a szavakra az összes mértékeket. Pl. multifractal:
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ grep multifractal 1-mes-1-aps-1-cn.txt | head
+
+1. CN: consecutive words
+
+multifractal	analysis	33
+
+2. KK: connections
+
+multifractal	fractal	288
+
+3. TD: time-diagram
+
+multifractal	cuo	4
+
+multifractal	000000047544331	021
+cuo		000000057644322	021
+
+multifractal,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,87,73,90,99,72,53,52,68,48,53,59,72,41,34,42,46,28,34,30,39,15,21,26
+cuo,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,100,67,74,95,72,66,81,67,53,52,46,44,47,44,37,38,41,34,36,26,31,25,26
+
+4. OC: word co-occurrence
+
+analysis	multifractal	36
+
+Valóban eléggé hasonlóak. Ám a nehézség jelenleg a többi mértékegységgel, hogy azért nem gyakoriak, mert maga a szó nem gyakori. Ebből a szokásos gondolatmenet indítható el, hogy melyikkel osszuk le, vagy mindkettővel, vagy az uniójukkal, és minek.
+
+A kérdés az, hogy akarunk-e még ezzel foglalkozni, vagy továbblépünk, finomítunk, és megyünk a többi adatsorra. OK, mondható, hogy a multifractal annyira nem sok mindenkinek érdekes, de legábé water máj iká lemémár?
+
+1-cn:
+
+liquid	water	89
+
+2-kk:
+
+water	liquid	936
+
+3-td:
+
+water	mapping	5
+
+water	010001232345577	013
+mapping	010011224344577	013
+
+water,0,5,4,16,36,4,3,15,15,7,15,0,19,3,11,7,24,29,18,26,39,40,43,48,45,27,24,34,56,42,46,50,44,54,61,63,60,55,77,80,100,78,87,82,76
+mapping,0,0,15,13,0,27,0,0,0,0,0,0,39,0,0,12,0,44,21,20,35,32,30,35,65,46,25,23,40,54,56,56,46,58,44,50,53,69,56,100,63,78,68,76,97
+
+4-oc:
+
+liquid	water	144
+
+
+
+
 
 
 
