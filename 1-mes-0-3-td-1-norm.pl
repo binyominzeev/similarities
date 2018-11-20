@@ -20,7 +20,7 @@ my @test_words=qw/quantum model/;
 my $dataset="1-aps";
 my $file="aps-records.txt";
 
-# ========== stopwords ==========
+# ========== top words ==========
 
 my %words;
 my @words=split/\n/, `head -n2700 0-wdc-1-aps.txt | cut -f1`;

@@ -4,10 +4,17 @@ use warnings;
 
 use Data::Dumper;
 use Term::ProgressBar::Simple;
+use List::Util qw(sum max min);
 
 # ========== parameters ==========
 
 my $file="aps-records.txt";
+
+# ========== top words ==========
+
+my %words;
+my @words=split/\n/, `head -n2700 0-wdc-1-aps.txt`;
+map { /\t/; $words{$`}=$'; } @words;
 
 # ========== stopwords ==========
 
@@ -17,7 +24,6 @@ map { $stopwords{$_}=""; } @stopwords;
 
 # ========== process ==========
 
-#my @results=split/\n/, `grep -i "$word" $file`;
 my @results=split/\n/, `cat $file`;
 
 my $progress=new Term::ProgressBar::Simple(scalar @results);
@@ -28,7 +34,7 @@ for my $line (@results) {
 	my ($id, $year, $title)=split/\t/, $line;
 	
 	my @szavak=$title=~/[a-zA-Z]+/g;
-	@szavak=grep { !exists $stopwords{$_} } @szavak;
+	@szavak=grep { exists $words{$_} } @szavak;
 	
 	for my $i (0..$#szavak-1) {
 		my $x=lc $szavak[$i];
@@ -40,17 +46,17 @@ for my $line (@results) {
 	}
 	
 	$progress++;
-	
-#	print "---\n$title\n";
-#	print Dumper \@szavak;
-
-	
 }
 
 # ========== output ==========
 
 open OUT, ">1-mes-1-aps-1-cn.txt";
 for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
-	print OUT "$pair\t$pairs{$pair}\n";
+	my ($a, $b)=split/\t/, $pair;
+	
+	my $max=max($words{$a}, $words{$b});
+	my $val=int(($pairs{$pair}/$max)*10000)/100;
+	
+	print OUT "$pair\t$val\n";
 }
 close OUT;

@@ -1305,6 +1305,52 @@ mapping,0,0,15,13,0,27,0,0,0,0,0,0,39,0,0,12,0,44,21,20,35,32,30,35,65,46,25,23,
 
 liquid	water	144
 
+# 2011-11-15
+
+Két hátralévő teendő az első adatsor összehasonlítása előtt:
+
+- Többi mérték normálása
+- Analizált szavak listájának egyesítése
+
+Utóbbit úgy kezdjük orvosolni, hogy elevenítsük fel, értsük meg a jelenlegi helyzetet.
+
+Normálás veszélye: akkor is alacsonyt adhat, ha amúgy magas. Pl. ha az unió szerint normálunk, és az egyik szó nagy, a másik kicsi. Persze, akkor mondhatjuk, hogy a kettő közül a kisebb szerint normáljunk (a szimmetrikus differencia Venn-diagramja szerint). Ugyanakkor az is lehet, hogy a normálás a szólista-problémán is segít valamennyire, legalábbis kezelhetőbbé rövidíti. OC és CN majdnem ugyanaz, csak mondaton belül vagy közvetlen egymás mellett. KK kicsit más, az éleket is figyelembe veszi.
+
+A két szó között menő élek száma – hogyan lehetne elvileg normálni? Az egyik szóból is kijön néhány él (az összes cikk, ami tartalmazza a szót, és az abból kijövő élek – gigantikus szám), és ugyanez a másikra. Ezt elvileg sem lehetne nagyon normálni. Bár hasonló a helyzet a CN-nel.
+
+# 2018-11-20
+
+Normálás: mindig a nagyobbal a kettő közül. Pl. CN esetén a kettő közül többször előforduló szó előfordulásai. Ami szerepel is elvileg, 0-WDC-ben. Próbáljuk ki.
+
+Eszerint legyártva 1-CN, jónak tűnik. Ellenőrizendő: mi van a tetején?
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ wc -l 1-mes-1-aps-1-cn.txt 
+378055 1-mes-1-aps-1-cn.txt
+bz@bz-HP-EliteBook-8530p:~/similarities$ head 1-mes-1-aps-1-cn.txt 
+magnetic	field	13.45
+cross	sections	39.9
+phase	transition	12.07
+quantum	dots	6.14
+thin	films	25.66
+electronic	structure	9.14
+field	theory	7.99
+phase	transitions	8.45
+heavy	ion	22.49
+magnetic	fields	6.66
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
