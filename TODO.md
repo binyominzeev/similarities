@@ -1368,12 +1368,23 @@ blende	zinc	36.31
 circular	dichroism	35.12
 bang	nucleosynthesis	34.58
 
-Hasonlónak tűnik, érdekes lenne látni egy közelebbi összehasonlítást.
+Hasonlónak tűnik, érdekes lenne látni egy közelebbi összehasonlítást. Ez is lényegesen kisebb lett, 54MB helyett 17MB (de továbbra sem töltöm fel).
 
+1-MES, 2-KK 9MB eredetileg, újonnan: 107MB. Érdekes, a többi felére csökkent, ez tízszeresére nőtt.
 
+root@topinav:~/similarities# head 1-mes-1-aps-2-kk.txt 
+einstein	bose	726.94
+bose	einstein	719.73
+condensates	bose	407.64
+condensates	einstein	386.4
+nanotubes	carbon	372.64
+black	holes	361.19
+carbon	nanotubes	360
+condensates	condensate	355.18
+holes	black	347.74
+binaries	post	341.66
 
-
-
+Ebből látszik, hogy 1. nem szimmetrikus (ez jó), 2. nem normál (ezt még nem értem).
 
 
 
