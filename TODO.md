@@ -1338,11 +1338,37 @@ phase	transitions	8.45
 heavy	ion	22.49
 magnetic	fields	6.66
 
+# 2018-11-21
 
+Vicces.
 
+bz@bz-HP-EliteBook-8530p:~/similarities$ head 1-mes-1-aps-1-cn.txt 
+nearest	neighbor	61.19
+degrees	freedom	55.29
+van	der	44.02
+cross	sections	39.9
+black	holes	37.96
+penetration	depth	37.9
+rare	earth	37.62
+zinc	blende	36.31
+bang	nucleosynthesis	33.83
+isoelectronic	sequence	32.38
 
+De legalább hatékony. Mehet végig. Méretében is úgy látom, hogy a felére csökkent.
 
+bz@bz-HP-EliteBook-8530p:~/similarities$ head 1-mes-1-aps-4-oc.txt 
+nearest	neighbor	70.78
+degrees	freedom	55.82
+der	van	44.36
+cross	sections	40.59
+earth	rare	39.46
+black	holes	39.27
+depth	penetration	37.9
+blende	zinc	36.31
+circular	dichroism	35.12
+bang	nucleosynthesis	34.58
 
+Hasonlónak tűnik, érdekes lenne látni egy közelebbi összehasonlítást.
 
 
 

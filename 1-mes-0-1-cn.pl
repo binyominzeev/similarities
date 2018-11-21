@@ -16,12 +16,6 @@ my %words;
 my @words=split/\n/, `head -n2700 0-wdc-1-aps.txt`;
 map { /\t/; $words{$`}=$'; } @words;
 
-# ========== stopwords ==========
-
-my %stopwords;
-my @stopwords=split/\n/, `cat stopwords-en.txt`;
-map { $stopwords{$_}=""; } @stopwords;
-
 # ========== process ==========
 
 my @results=split/\n/, `cat $file`;
@@ -40,23 +34,29 @@ for my $line (@results) {
 		my $x=lc $szavak[$i];
 		my $y=lc $szavak[$i+1];
 		
-		#if (!exists $stopwords{$x} && !exists $stopwords{$y}) {
-			$pairs{"$x\t$y"}++;
-		#}
+		$pairs{"$x\t$y"}++;
 	}
 	
 	$progress++;
 }
 
-# ========== output ==========
+# ========== output hash ==========
 
-open OUT, ">1-mes-1-aps-1-cn.txt";
+my %output;
+
 for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
 	my ($a, $b)=split/\t/, $pair;
 	
 	my $max=max($words{$a}, $words{$b});
 	my $val=int(($pairs{$pair}/$max)*10000)/100;
 	
-	print OUT "$pair\t$val\n";
+	$output{$pair}=$val;
+}
+
+# ========== output ==========
+
+open OUT, ">1-mes-1-aps-1-cn.txt";
+for my $pair (sort { $output{$b} <=> $output{$a} } keys %output) {
+	print OUT "$pair\t$output{$pair}\n";
 }
 close OUT;

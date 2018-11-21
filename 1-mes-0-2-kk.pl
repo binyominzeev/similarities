@@ -4,16 +4,17 @@ use warnings;
 
 use Data::Dumper;
 use Term::ProgressBar::Simple;
+use List::Util qw(sum max min);
 
 # ========== parameters ==========
 
 my $file="aps-records.txt";
 
-# ========== stopwords ==========
+# ========== top words ==========
 
-my %stopwords;
-my @stopwords=split/\n/, `cat stopwords-en.txt`;
-map { $stopwords{$_}=""; } @stopwords;
+my %words;
+my @words=split/\n/, `head -n2700 0-wdc-1-aps.txt`;
+map { /\t/; $words{$`}=$'; } @words;
 
 # ========== loading %id_nodes ==========
 
@@ -46,7 +47,7 @@ while (<IN>) {
 	if (exists $nodes_id{$node}) {
 		my @szavak=$title=~/[a-zA-Z]+/g;
 		@szavak=map { $nodes{$nodes_id{$node}}->{$_}="" }
-			grep { !exists $stopwords{$_} }
+			grep { exists $words{$_} }
 			map { lc $_; } @szavak;
 	}
 	
@@ -81,11 +82,23 @@ while (<IN>) {
 }
 close IN;
 
+# ========== output hash ==========
+
+my %output;
+
+for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
+	my ($a, $b)=split/\t/, $pair;
+	
+	my $max=max($words{$a}, $words{$b});
+	my $val=int(($pairs{$pair}/$max)*10000)/100;
+	
+	$output{$pair}=$val;
+}
 
 # ========== output ==========
 
 open OUT, ">1-mes-1-aps-2-kk.txt";
-for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
-	print OUT "$pair\t$pairs{$pair}\n";
+for my $pair (sort { $output{$b} <=> $output{$a} } keys %output) {
+	print OUT "$pair\t$output{$pair}\n";
 }
 close OUT;
