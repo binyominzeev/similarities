@@ -1424,8 +1424,33 @@ bz@bz-HP-EliteBook-8530p:~/similarities$ 0-avg-outdeg.pl
 
 N / K = 41842.8
 
+Nagy eltérések vannak viszont.
 
+root@topinav:~/similarities# head 1-mes-1-aps-2-kk.txt 
+quantum	model	1773914.91
+model	quantum	1773914.91
+quantum	electron	1703938.57
+electron	quantum	1703938.57
+quantum	spin	1567961.79
+spin	quantum	1567961.79
+quantum	magnetic	1503118.01
+magnetic	quantum	1503118.01
+scattering	quantum	1433792.27
+quantum	scattering	1433792.27
 
+root@topinav:~/similarities# tail 1-mes-1-aps-2-kk.txt 
+oblique	vitreous	37.34
+ablation	basic	37.34
+colloid	morphological	37.34
+calorimetric	vitreous	37.34
+location	criteria	37.34
+colloid	basic	37.34
+location	calorimetric	37.34
+criteria	locally	37.34
+location	di	37.34
+electrolyte	oblique	37.34
+
+Százalékot is leszámítva, 17,740-szerese a várható értéknek. Jó tudni!
 
 
 
