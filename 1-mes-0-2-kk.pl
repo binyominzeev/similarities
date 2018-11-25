@@ -10,6 +10,8 @@ use List::Util qw(sum max min);
 
 my $file="aps-records.txt";
 
+my $n_per_k=41842.8;
+
 # ========== top words ==========
 
 my %words;
@@ -89,10 +91,10 @@ my %output;
 for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
 	my ($a, $b)=split/\t/, $pair;
 	
-	my $max=max($words{$a}, $words{$b});
-	my $val=int(($pairs{$pair}/$max)*10000)/100;
+	my $val=($words{$a}*$words{$b})/$n_per_k;
+	my $perc=int(($val)*10000)/100;
 	
-	$output{$pair}=$val;
+	$output{$pair}=$perc;
 }
 
 # ========== output ==========

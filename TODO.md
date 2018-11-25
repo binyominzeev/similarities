@@ -1175,9 +1175,9 @@ OK, nem olyan rossz ez, mert alapvetően valóban közeli, de van 1-2 ponton nag
 Időterv (óránkénti):
 
 - Programozás: összehasonlítás, kimutatások (10)
+- 4. fejezet: megírni (10)
 - 1-2. fejezet: átnézni (2)
 - 3. fejezet: átmásolni (5)
-- 4. fejezet: megírni (10)
 - Bevezetők, befejezések, tézisek (3)
 - Összesen: 30 óra
 - Illést megkérdezni, hogy mikorra küldjem
@@ -1386,12 +1386,43 @@ binaries	post	341.66
 
 Ebből látszik, hogy 1. nem szimmetrikus (ez jó), 2. nem normál (ezt még nem értem).
 
+# 2018-11-25
 
+KK esetén nincs logika ebben a mértékben, mert futhat két szó között több él, ahányszor a gyakoribb szó előfordul. Például A és B szó 2-2 alkalommal fordul elő, de mindegyik hivatkozik mindegyikre - K_{2,2}. Ezáltal 4 / 2 = 2 adódna a normálás eredményeként.
 
+Hanem A * B * K / N, ahol A és B a két szó előfordulásainak száma, K a koordinációs szám (vagyis átlagos ki-fokszám), N pedig az összes csúcs a hálózatban. Gyakorlatilag ha ezt 1-re normáljuk, ugyanaz lesz, mint A * B, mert K / N konstans. A képlet pedig úgy adódik, hogy várható értéket számolunk az A és B halmaz között futó élek számára: az A halmazból kiinduló A csúcs mindegyikéből K darab él indul ki, és annak valószínűsége, hogy 1 él a B halmazba érkezik, B/N, élenként.
 
+Mindehhez szükséges K, N konstansok ismerete (igazából K / N elég, ha számítható, esetleg a reciproka, és oszthatunk vele), és a szavak gyakorisága, ami már megvan, csak be kell tölteni.
 
+N = 450084
 
+bz@bz-HP-EliteBook-8530p:~/similarities$ wc -l aps_nodes.txt 
+450084 aps_nodes.txt
+bz@bz-HP-EliteBook-8530p:~/similarities$ tail aps_nodes.txt 
+450075	10.1103/PhysRevLett.74.1699
+450076	10.1103/PhysRevLett.69.2439
+450077	10.1103/PhysRevB.27.1363
+450078	10.1103/PhysRevD.13.2148
+450079	10.1103/PhysRevB.75.144414
+450080	10.1103/PhysRevB.17.4479
+450081	10.1103/PhysRev.82.952.2
+450082	10.1103/PhysRev.48.383.2
+450083	10.1103/PhysRevA.38.5810
+450084	10.1103/RevModPhys.32.744
 
+Élek száma és koordinációs szám közötti összefüggés nem csak az irányítatlanra van? k=2E/N, vagy valami ilyesmi, mert minden élet kétszer számolunk. Szóval az irányított átlaghoz ez nem hinném, hogy felhasználható. Kifokszám-számításhoz: 0-avg-outdeg.pl.
+
+E = 4710547
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ wc -l aps_edges.txt 
+4710547 aps_edges.txt
+
+K = 10.76
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ 0-avg-outdeg.pl 
+4710547/437924 = 10.7565399475708
+
+N / K = 41842.8
 
 
 
