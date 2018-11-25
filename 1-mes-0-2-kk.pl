@@ -91,7 +91,9 @@ my %output;
 for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
 	my ($a, $b)=split/\t/, $pair;
 	
-	my $val=($words{$a}*$words{$b})/$n_per_k;
+	my $norm=($words{$a}*$words{$b})/$n_per_k;
+	my $val=$pairs{$pair}/$norm;
+	
 	my $perc=int(($val)*10000)/100;
 	
 	$output{$pair}=$perc;
