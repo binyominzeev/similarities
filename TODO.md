@@ -1452,7 +1452,9 @@ electrolyte	oblique	37.34
 
 Százalékot is leszámítva, 17,740-szerese a várható értéknek. Jó tudni!
 
+# 2011-11-26
 
+Most kiírtam a szavak értékét és párjait is, hogy pontosabban utána lehessen számolni, illetve azon gondolkodom, hogy vajon ez valóban csak a leggyakoribb szavakból áll. Ha igen, akkor most már ezzel nem játszunk tovább, hanem normálunk és továbblépünk, összehasonlítunk, és a többi adatbázisra számolunk.
 
 
 
