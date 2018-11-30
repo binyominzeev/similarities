@@ -1452,6 +1452,10 @@ electrolyte	oblique	37.34
 
 Százalékot is leszámítva, 17,740-szerese a várható értéknek. Jó tudni!
 
+# 2011-11-26
+
+Most kiírtam a szavak értékét és párjait is, hogy pontosabban utána lehessen számolni, illetve azon gondolkodom, hogy vajon ez valóban csak a leggyakoribb szavakból áll. Ha igen, akkor most már ezzel nem játszunk tovább, hanem normálunk és továbblépünk, összehasonlítunk, és a többi adatbázisra számolunk.
+
 # 2018-11-30
 
 Szúrópróba, konkrét példákon:
@@ -1485,13 +1489,6 @@ A többinél pedig tekinthető a rendelkezésre álló Y értékek átlaga. Noha
 Innentől kezdve próbáljuk alkalmazni rá a meglévő képletet, és mellétenni az egyenest.
 
 Excelben előállítottam a képlet alapján: kk-pdf.ods. Az illesztett egyenes még nem ideális, mert logaritmálni kellene az y-ra vonatkozó képletet. Utána mehet vissza gnuplotba.
-
-
-
-
-
-
-
 
 
 
