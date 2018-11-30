@@ -1452,6 +1452,42 @@ electrolyte	oblique	37.34
 
 Százalékot is leszámítva, 17,740-szerese a várható értéknek. Jó tudni!
 
+# 2018-11-30
+
+Szúrópróba, konkrét példákon:
+
+root@topinav:~/similarities# head 1-mes-1-aps-2-kk.txt 
+tetracyanoquinodimethane	tcnq	100706.51	136	183	599
+tcnq	tetracyanoquinodimethane	99025.27	183	136	589
+tetrathiafulvalene	tetracyanoquinodimethane	76640.56	167	136	416
+lorentz	cpt	74922.35	630	139	1568
+tetracyanoquinodimethane	tetrathiafulvalene	72955.92	136	167	396
+peierls	cugeo	72221.66	510	147	1294
+cummings	jaynes	71680.46	154	152	401
+cugeo	peierls	70603.09	147	510	1265
+jaynes	cummings	70429.18	152	154	394
+binaries	post	68732.16	208	324	1107
+
+Utolsó három oszlop: a két szó előfordulásainak száma, ill. az egyikből másikba mutató linkek száma. Első jónak tűnik. Harmadik sem irrealisztikus.
+
+Lorentz-cpt között az exp. val kb. 2. Ehhez képest az 1568 700-szoros felülszámolás, és ezt is mutatja. Hasonló az első páros, ahol 0.6 összeköttetést várnánk.
+
+Úgy tűnik, mintha az egyenletes elvárásai miatt a kicsiket részesítené előnyben. Bár végül is hihető. Normáljuk a megszokott logaritmikus módon. Feltéve, hogy szintén hatványfüggvényt követ. Érdekes, a Gnuplot tanúsága szerint nem az, noha fat-tailed, de előtte "lekonyul", az elején, nem is rémlik, hogy mikor láttam ilyesmit. 30 körül tetőzik. Szerintem érdekes az ábra, kerüljön be a publikálandók közé. 165 körül ér vissza a kiindulási pontjára. 88-tól kezdve lehetne hatványfüggvényt belelátni.
+
+Azért csökken, mert 100 körül van a várható érték, és azért nem pont ott van, hanem valamivel előtte, mert nem egyenletes az eloszlás (a modell nagyon primitív), ezért nem tökéletes a normálás. A maximum viszont az, hogy Exp.val. 1000-szereséig megy fel és 1/100-áig megy le. Ha csak logaritmikusan leskáláznánk, akkor a többségre, aminek kicsi az értéke, automatikusan kicsi közelségeket kapnánk, így versenyhátrányba szorulna ez a mérték. Már a 10-szeres mérettől felfelé 100 alá süllyed a görbe, ami nagyon alacsony. Tehát egy természetes átsúlyozásra lenne szükség, amivel a kisebb elemek nagyobb súlyt kaphatnának. Illetve az is jó lenne, ha figyelembe lehetne venni a görbe tetejét.
+
+Ezért az első ötlet, hogy ne az X, hanem az Y tengely alapján történjen a normálás. Ennek kérdése, hogy van, ahol kétértelmű, és ott negatív értékek adódnak. Ebből az jönne ki, hogy akik nagyon távol vannak egymástól, azok már közelinek számítanak. Egyszerű megoldás lehetne levágni, és azt mondani, hogy aki ez alatt van, az már automatikusan 0-nak tekintendő. Miért is ne, hiszen biztosan nincs közel. Talán ez nem túl elrugaszkodott feltételezés: minden szónak kell hogy legyen olyan szomszédja, ami várható értéknél nagyobb. Talán az ábra is ezt sugallja – egy próbát megér.
+
+A többinél pedig tekinthető a rendelkezésre álló Y értékek átlaga. Noha ez empirikus függvény használata, nem pedig az illesztetté, ami nem szokott fizikus körökben illendőnek lenni. Lehet használni ugyanazt az illesztést, amit korábban is (de abból nem sima log-tört jött ki? Most is az fog?), és a tetején lesz egy kis hézag, de nem látom, hogy miért okozna zavaró eltéréseket. Tetőzése:
+
+21.1 37442
+
+Innentől kezdve próbáljuk alkalmazni rá a meglévő képletet, és mellétenni az egyenest.
+
+Excelben előállítottam a képlet alapján: kk-pdf.ods. Az illesztett egyenes még nem ideális, mert logaritmálni kellene az y-ra vonatkozó képletet. Utána mehet vissza gnuplotba.
+
+
+
 
 
 

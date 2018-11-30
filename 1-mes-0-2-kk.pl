@@ -103,6 +103,7 @@ for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
 
 open OUT, ">1-mes-1-aps-2-kk.txt";
 for my $pair (sort { $output{$b} <=> $output{$a} } keys %output) {
-	print OUT "$pair\t$output{$pair}\n";
+	my ($a, $b)=split/\t/, $pair;
+	print OUT "$pair\t$output{$pair}\t$words{$a}\t$words{$b}\t$pairs{$pair}\n";
 }
 close OUT;
