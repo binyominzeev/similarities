@@ -1492,7 +1492,7 @@ Excelben előállítottam a képlet alapján: kk-pdf.ods. Az illesztett egyenes 
 
 # 2018-12-03
 
-
+y=ax+b, ahol a=-2.8, b=24.4. Mindez a meglévő x és y természetes alapú logaritmus értékeire vonatkoztatva. Megjelenítése: kk-pdf.gnu, X: [3..12], Y: [-10..16]. -10-et számítjuk 1-nek, 16-ot 0-nak, ez skálázza át: (16-y)/26.
 
 
 
