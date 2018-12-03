@@ -1490,6 +1490,24 @@ Innentől kezdve próbáljuk alkalmazni rá a meglévő képletet, és melléten
 
 Excelben előállítottam a képlet alapján: kk-pdf.ods. Az illesztett egyenes még nem ideális, mert logaritmálni kellene az y-ra vonatkozó képletet. Utána mehet vissza gnuplotba.
 
+# 2018-12-03
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
