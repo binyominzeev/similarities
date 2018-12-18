@@ -12,6 +12,14 @@ my $file="aps-records.txt";
 
 my $n_per_k=41842.8;
 
+my $lin_a=-2.8;
+my $lin_b=24.4;
+
+my $lin_min=-7.85;
+my $lin_max=30.85;
+
+my $lin_full=$lin_max-$lin_min;
+
 # ========== top words ==========
 
 my %words;
@@ -104,6 +112,14 @@ for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
 open OUT, ">1-mes-1-aps-2-kk.txt";
 for my $pair (sort { $output{$b} <=> $output{$a} } keys %output) {
 	my ($a, $b)=split/\t/, $pair;
-	print OUT "$pair\t$output{$pair}\t$words{$a}\t$words{$b}\t$pairs{$pair}\n";
+	
+	my $log_x=log($output{$pair});
+	my $y=$lin_a*$log_x+$lin_b;
+
+	my $y_norm=($y-$lin_min)/$lin_full;
+	$y_norm=1-$y_norm;
+	
+	#print OUT "$pair\t$y_norm\t$y\t$output{$pair}\t$words{$a}\t$words{$b}\t$pairs{$pair}\n";
+	print OUT "$pair\t$y_norm\n";
 }
 close OUT;

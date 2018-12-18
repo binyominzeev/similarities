@@ -1494,6 +1494,39 @@ Excelben előállítottam a képlet alapján: kk-pdf.ods. Az illesztett egyenes 
 
 y=ax+b, ahol a=-2.8, b=24.4. Mindez a meglévő x és y természetes alapú logaritmus értékeire vonatkoztatva. Megjelenítése: kk-pdf.gnu, X: [3..12], Y: [-10..16]. -10-et számítjuk 1-nek, 16-ot 0-nak, ez skálázza át: (16-y)/26.
 
+# 2018-12-18
+
+Min: -7.85
+Max: 15.86
+
+Step-by-step kiszámítás:
+
+1. X: a várható értékhez képest normált érték (100 körül tetőzik)
+2. Y: elemek száma, ahány ilyen van
+3. LX: log-nat-X, LY: log-nat-Y
+4. LYE: LY-estimated, a lineáris függvény alapján
+5. ZO: zero-one, az előző normálása a 0-1 skálára
+
+Min:
+
+1. 0.1
+3. LX: -2.3
+4. LYE: 30.85 (max)
+
+Max:
+
+1. 100706.1
+3. LX: 11.52
+4. LYE: -7.86 (min)
+
+Jó, most megvan a lista, de csak topinav oldalon, mert jelenleg 169MB, nem érdemes fel-letölteni.
+
+Következő lépés a tényleges, négyszeres összehasonlítás.
+
+
+
+
+
 
 
 
