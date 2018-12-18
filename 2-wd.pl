@@ -7,6 +7,9 @@ use Data::Dumper;
 # ======== initialize ========
 
 my $dataset="1-aps";
+
+#my $mode="1-cn";
+#my $mode="2-kk";
 my $mode="4-oc";
 
 # ======== process ========

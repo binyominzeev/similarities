@@ -1501,7 +1501,7 @@ Max: 15.86
 
 Step-by-step kiszámítás:
 
-1. X: a várható értékhez képest normált érték (100 körül tetőzik)
+1. X: a várható értékhez képest normált érték (100(%) körül tetőzik)
 2. Y: elemek száma, ahány ilyen van
 3. LX: log-nat-X, LY: log-nat-Y
 4. LYE: LY-estimated, a lineáris függvény alapján
@@ -1521,9 +1521,23 @@ Max:
 
 Jó, most megvan a lista, de csak topinav oldalon, mert jelenleg 169MB, nem érdemes fel-letölteni.
 
-Következő lépés a tényleges, négyszeres összehasonlítás.
+Következő lépés a tényleges, négyszeres összehasonlítás. Mi a helyzet a szólistákkal, miért van mindegyikre külön? Elvileg ugyanabból a 2700 szóból indultunk, azt csak szűkíteni lehetett. Mégis:
 
+bz@bz-HP-EliteBook-8530p:~/similarities$ wc -l 2-wd*
+ 16594 2-wd-1-aps-1-cn.txt
+ 34090 2-wd-1-aps-2-kk.txt
+ 21104 2-wd-1-aps-4-oc.txt
 
+Lehet, hogy ahhoz a top 2700 szóhoz keres legközelebbi szomszédokat mások között is? Ez vajon az elvárt viselkedés?
+
+Valóban, 1-CN esetén 2700-ból indulunk ki (közös gyökérből: 0-wdc-1-aps), és csak ezek kerülhetnek 1-MES-be. Noha nem pontosan, mert konszekutív szomszédokat keres, és elég, hogy az egyik listás legyen. Jó, most már 1-CN működik, 2074-et ad, pedig nem módosítottam rajta semmit. OK, ugyanígy 2-KK. Így már jobb:
+
+root@topinav:~/similarities# wc -l 2-wd-1-aps-*
+ 2074 2-wd-1-aps-1-cn.txt
+ 2700 2-wd-1-aps-2-kk.txt
+ 2298 2-wd-1-aps-4-oc.txt
+
+Összefoglalva: 2-WD-ig minden megvan, 3-5. lépések hiányoznak, egyesíteni. Aratás!
 
 
 
