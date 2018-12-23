@@ -1572,10 +1572,32 @@ Vajon mind a 4 fájl a legerősebb kapcsolathoz rendeli a legnagyobb számot?
 
 1: IGEN
 2: IGEN
-3: IGEN
+3: NEM
 4: IGEN
 
 Akkor normálhatóak.
+
+Elvileg minden adatsor rendben van, de nem hiszem el, hogy valós eredményt adott a végső evaluáció a mértékenkénti nyertes szavak számára:
+
+aps:
+
+kk	2557
+td	139
+cn	4
+oc	2
+
+A plotok által ellenőrizhető (első körből csak szavankénti, és nem élenkénti). Mondjuk sima textfile-ból, szúrópróbaszerűen is látszik, hogy pl. adaptive a cn-ben a legnagyobb, oda számolta vajon? Algebra szintén.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
