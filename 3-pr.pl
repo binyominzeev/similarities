@@ -10,8 +10,8 @@ my $dataset="1-aps";
 
 #my $mode="1-cn";
 #my $mode="2-kk";
-#my $mode="3-td";
-my $mode="4-oc";
+my $mode="3-td";
+#my $mode="4-oc";
 
 # ======== load words ========
 
@@ -54,9 +54,13 @@ close IN;
 # ======== output ========
 
 open OUT, ">3-pr-$dataset-$mode.txt";
-for my $word (sort { $words_vals{$b} <=> $words_vals{$a} } keys %words_vals) {
+#for my $word (sort { $words_vals{$b} <=> $words_vals{$a} } keys %words_vals) {
+for my $word (sort { $words_vals{$a} <=> $words_vals{$b} } keys %words_vals) {
 	my $ratio=$words_vals{$word}/$max;
 	my $perc=int($ratio*10000)/100;
+	
+	# for 3-td
+	$perc=100-$perc;
 	
 	print OUT "$word\t$perc\n";
 }
