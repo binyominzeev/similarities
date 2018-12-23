@@ -1588,7 +1588,16 @@ oc	2
 
 A plotok által ellenőrizhető (első körből csak szavankénti, és nem élenkénti). Mondjuk sima textfile-ból, szúrópróbaszerűen is látszik, hogy pl. adaptive a cn-ben a legnagyobb, oda számolta vajon? Algebra szintén.
 
+Fontos végeredményben, hogy normáljuk CN és OC-t logaritmikusan, és akkor ez adódik:
 
+aps:
+
+kk	2528
+td	136
+cn	32
+oc	6
+
+Továbbra sem tökéletes, de legalább igaz.
 
 
 
