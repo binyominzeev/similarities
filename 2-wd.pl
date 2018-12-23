@@ -10,7 +10,8 @@ my $dataset="1-aps";
 
 #my $mode="1-cn";
 #my $mode="2-kk";
-my $mode="4-oc";
+my $mode="3-td";
+#my $mode="4-oc";
 
 # ======== process ========
 
@@ -21,7 +22,7 @@ while (<IN>) {
 	chomp;
 	my ($a, $b, $val)=split/\t/, $_;
 	
-	if ($val == 1) { last; }
+	#if ($val == 1) { last; }
 
 	$words{$a}="";
 	$words{$b}="";

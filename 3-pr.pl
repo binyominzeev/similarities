@@ -10,8 +10,8 @@ my $dataset="1-aps";
 
 #my $mode="1-cn";
 #my $mode="2-kk";
-my $mode="3-td";
-#my $mode="4-oc";
+#my $mode="3-td";
+my $mode="4-oc";
 
 # ======== load words ========
 
