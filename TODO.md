@@ -1539,19 +1539,43 @@ root@topinav:~/similarities# wc -l 2-wd-1-aps-*
 
 Összefoglalva: 2-WD-ig minden megvan, 3-5. lépések hiányoznak, egyesíteni. Aratás!
 
+# 2018-12-23
 
+Eszerint ennek is kisebbnek kellene lennie:
 
+bz@bz-HP-EliteBook-8530p:~/similarities$ wc -l 3-pr-1-aps-*
+ 16594 3-pr-1-aps-1-cn.txt
+  5442 3-pr-1-aps-2-kk.txt
+  2700 3-pr-1-aps-3-td.txt
+ 21104 3-pr-1-aps-4-oc.txt
 
+Valóban, így már más:
 
+bz@bz-HP-EliteBook-8530p:~/similarities$ wc -l 3-pr-1-aps-*
+  2074 3-pr-1-aps-1-cn.txt
+  2695 3-pr-1-aps-2-kk.txt
+  2700 3-pr-1-aps-3-td.txt
+  2298 3-pr-1-aps-4-oc.txt
 
+3-TD ki van véve a log-log-normálandóak köréből, és 2-KK is hasonlóan kiveendő, azt hiszem, de talán nem ugyanúgy. Hogyan tesztelhető le ez? Vajon ha a további lépések felé visszük, később könnyebb vagy nehezebb kijavítani? Úgy tűnik, később nehezebb, most könnyebb. Csak nehéz egy egyszerű tesztet kitalálni, hogy jó eredmények jöttek-e ki.
 
+1-CN: 61-ig skálázik (normálva a nagyobbik elem szerint)
+2-KK: 36901 (pedig azt hittem, lenormáltam – valóban, a topinav szerveren!)
+3-TD: 17 (megegyező elemek száma ennyi lehet max.)
+4-OC: 70-ig (elvileg uaz mint 1-CN – akkor vajon szükséges valaha is a log-log-normálás?)
 
+1,2,4: csökkenő sorrendben van eleve
 
+Eszerint 3-pr-hez nem kell egyáltalán semmilyen normálás (esetleg 100-ig normálni 2-KK-t), ahol minél nagyobb, annál erősebb a kapcsolat a két elem között. 100 a legerősebb kapcsolat, és 3-TD már eszerint is működik. Kelleni fog még: külön görbe élekre és csúcsokra, 4-4 darab. Eszerint lehet, hogy még az él-listát is előnyös volna normálni.
 
+Vajon mind a 4 fájl a legerősebb kapcsolathoz rendeli a legnagyobb számot?
 
+1: IGEN
+2: IGEN
+3: IGEN
+4: IGEN
 
-
-
+Akkor normálhatóak.
 
 
 

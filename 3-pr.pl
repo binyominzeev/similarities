@@ -10,7 +10,8 @@ my $dataset="1-aps";
 
 #my $mode="1-cn";
 #my $mode="2-kk";
-my $mode="4-oc";
+my $mode="3-td";
+#my $mode="4-oc";
 
 # ======== load words ========
 
@@ -30,14 +31,16 @@ while (<IN>) {
 	my ($a, $b, $val)=split/\t/, $_;
 	
 	if (exists $words{$a}) {
-		$words_vals{$a}=log($val);
+		#$words_vals{$a}=log($val);
+		$words_vals{$a}=$val;
 		if ($words_vals{$a} > $max) { $max=$words_vals{$a}; }
 		
 		delete $words{$a};
 	}
 
 	if (exists $words{$b}) {
-		$words_vals{$b}=log($val);
+		#$words_vals{$b}=log($val);
+		$words_vals{$b}=$val;
 		if ($words_vals{$b} > $max) { $max=$words_vals{$b}; }
 		
 		delete $words{$b};
@@ -51,7 +54,7 @@ close IN;
 # ======== output ========
 
 open OUT, ">3-pr-$dataset-$mode.txt";
-for my $word (sort keys %words_vals) {
+for my $word (sort { $words_vals{$b} <=> $words_vals{$a} } keys %words_vals) {
 	my $ratio=$words_vals{$word}/$max;
 	my $perc=int($ratio*10000)/100;
 	
