@@ -7,14 +7,13 @@ use Term::ProgressBar::Simple;
 
 # ======== initialize ========
 
-#my $dataset="1-aps";
-#my $file="aps-records.txt";
+# itt: szantoadam@atlasz:~/wordtime/so$ head so-id-title.txt 
 
 my $dataset="2-so";
-my $file="/media/bz/SAMSUNG/elte/ingola/git/pred180/so/records.txt";
+my $file="so-id-title.txt";
 
-my $first_year=1965;
-my $last_year=2009;
+my $first_year="2008-09";
+my $last_year="2015-12";
 
 # ========== stopwords ==========
 
@@ -24,25 +23,33 @@ map { $stopwords{$_}=""; } @stopwords;
 
 # ========== process ==========
 
-my @results=split/\n/, `cat $file`;
-
-my $progress=new Term::ProgressBar::Simple(scalar @results);
+my $progress=new Term::ProgressBar::Simple(11203031);
 
 my %pairs;
 my %words;
 
-for my $line (@results) {
-	my ($id, $year, $title)=split/\t/, $line;
+#my $i=1;
+
+open IN, "<$file";
+while (<IN>) {
+#for my $line (@results) {
+	my ($id, $year, $title)=split/\t/, $_;
 	
-	if ($first_year <= $year && $year <= $last_year) {
+	$year=substr($year, 0, 7);
+	
+	if ($first_year le $year && $year le $last_year) {
 		my @szavak=$title=~/[a-zA-Z]+/g;
 		@szavak=grep { !exists $stopwords{lc $_} } @szavak;
 		
 		map { $words{lc $_}++ } @szavak;
+		
+#		$i++;
+#		if ($i > 10000) { last; }
 	}
 
 	$progress++;
 }
+close IN;
 
 # ========== output ==========
 

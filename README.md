@@ -38,6 +38,6 @@ PL and TXT files are following the file naming patterns, consisting of the follo
 - 2018-11-11: 1-APS comparison/evaluation ready
 - 2018-12-18: 1-APS-2-KK 1-MES, 2-WD for all ready
 - 2018-12-23: 1-APS, 5-EV ready
-
+- 2018-12-23: 2-SO-1-CN, 2-SO-4-OC ready
 
 

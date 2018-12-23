@@ -1599,6 +1599,62 @@ oc	6
 
 Továbbra sem tökéletes, de legalább igaz.
 
+---
+
+SO adatsor:
+
+/media/bz/SAMSUNG/elte/ingola/git/pred180/so/records.txt -->
+similarities/so-records.head.txt
+
+Úgy látom, ez hónaponkénti bontású, 2008-09 és 2015-12 között. Készüljünk fel, hogy a szószámlálás igen fontos lépés (lehet, hogy megvan), ettől függ sok minden, mert csak a top szavakat használjuk. Azt is elevenítsük fel, hogy APS-ben hogyan húztuk meg a vonalat, mert itt is szükség lesz hasonlóra. Ez az (2018-10-12 legvége): „Vagy követeljünk évi 3 átlagos cikket”. Eszerint 88 hónap van a mérésben, mindhez 3: 264 előfordulás.
+
+(words-traffic.txt hasonló a TD-ben használthoz, 30K szót tartalmaz.)
+
+szantoadam@atlasz:~/wordtime/so$ head so-id-title.txt 
+4	2008-07-31T21:42:52.667	When setting a form's opacity should I use a decimal or double?
+6	2008-07-31T22:08:08.620	Percentage width child element in absolutely positioned parent on IE7
+9	2008-07-31T23:40:59.743	How do I calculate someone's age in C#?
+11	2008-07-31T23:55:37.967	How can relative time be calculated in C#?
+13	2008-08-01T00:42:38.903	Determining a web user's time zone
+14	2008-08-01T00:59:11.177	Difference between Math.Floor() and Math.Truncate()
+
+Futtassuk ott. Egyszerű cp, miután mount-oltunk topinavra atlaszt, helyi gépre topinavot.
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ cp 0-wdc-2-so.pl ~/topinavdir/atlaszdir/wordtime/so/
+
+Lefutott, ám a 264 előforduláshoz 9500 szó szükséges, az APS-beni 2700-hoz képest, talán nem nagy eltérés.
+
+szantoadam@atlasz:~/wordtime/so$ head -n9500 0-wdc-2-so.txt | tail
+authenticity	265
+pushpin	265
+rolled	265
+bufferedwriter	265
+bazaar	265
+prototyping	265
+impala	265
+reopening	265
+datamember	265
+uidocumentinteractioncontroller	265
+
+De talán érdemesebb még egy szót hozzátenni évente, és abból 352 adódna limitnek, és 8200 topnak – nem nagy gain:
+
+szantoadam@atlasz:~/wordtime/so$ head -n8200 0-wdc-2-so.txt | tail
+hierarchies	352
+firstname	352
+userdata	352
+japplet	352
+hacking	352
+uniq	352
+customizable	352
+verifyerror	352
+jdom	352
+mobiles	352
+
+Inkább maradjon a 9500. Csak azt másoljuk fel gitre (látható lesz a sorhosszból):
+
+root@topinav:~/atlaszdir/wordtime/so# head -n9500 0-wdc-2-so.txt > 0-wdc-2-so.9500.txt 
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ cp ~/topinavdir/atlaszdir/wordtime/so/0-wdc-2-so.9500.txt 0-wdc-2-so.txt
 
 
 

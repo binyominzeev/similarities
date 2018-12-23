@@ -1,0 +1,100 @@
+4	2008-07-31T21:42:52.667	When setting a form's opacity should I use a decimal or double?
+6	2008-07-31T22:08:08.620	Percentage width child element in absolutely positioned parent on IE7
+9	2008-07-31T23:40:59.743	How do I calculate someone's age in C#?
+11	2008-07-31T23:55:37.967	How can relative time be calculated in C#?
+13	2008-08-01T00:42:38.903	Determining a web user's time zone
+14	2008-08-01T00:59:11.177	Difference between Math.Floor() and Math.Truncate()
+16	2008-08-01T04:59:33.643	Filling a DataSet or DataTable from a LINQ query result set
+17	2008-08-01T05:09:55.993	Binary Data in MySQL
+19	2008-08-01T05:21:22.257	What is the fastest way to get the value of π?
+24	2008-08-01T12:12:19.350	Throw an error in a MySQL trigger
+25	2008-08-01T12:13:50.207	How to use the C socket API in C++ on z/OS
+34	2008-08-01T12:30:57.630	Unloading a ByteArray in Actionscript 3
+36	2008-08-01T12:35:56.917	Check for changes to an SQL Server table?
+39	2008-08-01T12:43:11.503	Reliable timer in a console application
+42	2008-08-01T12:50:18.587	Best way to allow plugins for a PHP application
+48	2008-08-01T13:01:17.303	Multiple submit buttons in an HTML form
+59	2008-08-01T13:14:33.797	How do I get a distinct, ordered list of names from a DataTable using LINQ?
+61	2008-08-01T13:17:20.640	Office 2007 File Type, Mime Types and Identifying Characters
+66	2008-08-01T13:20:46.890	Paging a collection with LINQ
+72	2008-08-01T13:38:27.133	How do I add existing comments to RDoc in Ruby?
+79	2008-08-01T13:56:33.837	How can you get Subclipse in Aptana to work with the newest release of Subversion?
+80	2008-08-01T13:57:07.033	SQLStatement.execute() - multiple queries in one statement
+85	2008-08-01T14:19:52.510	Flat File Databases
+88	2008-08-01T14:36:18.640	Is gettimeofday() guaranteed to be of microsecond resolution?
+90	2008-08-01T14:41:24.277	Good branching and merging tutorials for TortoiseSVN?
+104	2008-08-01T15:12:34.837	Anatomy of a &quot;Memory Leak&quot;
+108	2008-08-01T15:22:29.467	Best Subversion clients for Windows Vista (64bit)
+109	2008-08-01T15:23:05.190	Decoding T-SQL CAST in C#/VB.NET
+120	2008-08-01T15:50:08.537	ASP.NET Site Maps
+123	2008-08-01T16:08:52.353	Java lib or app to convert CSV to XML file?
+126	2008-08-01T16:10:30.337	How would you access Object properties from within an object method?
+129	2008-08-01T16:22:42.420	How to export data from SQL Server 2005 to MySQL
+134	2008-08-01T16:33:38.183	XSD DataSets and ignoring foreign keys
+145	2008-08-01T17:13:08.933	Compressing / Decompressing Folders &amp; Files
+146	2008-08-01T17:14:58.337	How do I track file downloads
+163	2008-08-01T18:00:13.830	How do I sync the SVN revision number with my ASP.NET web site?
+164	2008-08-01T18:02:22.797	Embedding Windows Media Player for all browsers
+173	2008-08-01T18:33:08.333	How do I version my SQL Server database?
+174	2008-08-01T18:33:48.287	How do I print an HTML document from a web service?
+175	2008-08-01T18:36:14.070	Annotating YouTube videos programmatically
+176	2008-08-01T18:37:40.150	error_log per Virtual Host?
+180	2008-08-01T18:42:19.343	Function for creating color wheels
+192	2008-08-01T19:23:13.117	Floating Point Number parsing: Is there a Catch All algorithm?
+194	2008-08-01T19:26:37.883	Upgrading SQL Server 6.5
+227	2008-08-01T21:40:55.833	What's the best way to generate a tag cloud from an array using h1 through h6 for sizing?
+231	2008-08-01T22:08:14.453	Register Windows program with the mailto protocol programmatically
+234	2008-08-01T22:13:34.100	SQL Server 2005 implementation of MySQL REPLACE INTO?
+246	2008-08-01T22:34:42.853	Create a SQLite database based on an XSD Data Set
+260	2008-08-01T23:22:08.983	Adding scripting functionality to .NET applications
+263	2008-08-01T23:27:24.993	GTK implementation of MessageBox
+264	2008-08-01T23:28:51.577	BerkeleyDB Concurrency
+265	2008-08-01T23:29:32.853	Best Practice: Collaborative Environment, Bin Directory, SVN
+289	2008-08-02T00:40:58.200	How do you sort a dictionary by value?
+308	2008-08-02T01:52:54.653	Is there a version control system for database structure changes?
+328	2008-08-02T02:41:34.493	PHP Session Security
+330	2008-08-02T02:51:36.470	Should I use nested classes in this case?
+336	2008-08-02T03:34:44.763	When to use unsigned values over signed ones?
+337	2008-08-02T03:35:55.697	XML Processing in Python
+361	2008-08-02T06:57:57.957	Generate list of all possible permutations of a string
+371	2008-08-02T08:19:18.260	How do you make sure email you send programmatically is not automatically marked as spam?
+382	2008-08-02T08:58:27.540	What is the meaning of the type safety warning in certain Java generics casts?
+387	2008-08-02T09:28:17.683	Lucene Score results
+402	2008-08-02T10:47:08.460	iPhone app in landscape mode, 2008 systems
+419	2008-08-02T11:52:01.543	Unload a COM control when working in VB6 IDE
+427	2008-08-02T12:12:02.363	Programmatically Launch IE Mobile Favorites screen
+438	2008-08-02T12:56:58.590	Implementation of &quot;Remember me&quot; in a Rails application
+469	2008-08-02T15:11:16.430	How can I find the full path to a font from its display name on a Mac?
+470	2008-08-02T15:11:47.523	Homegrown consumption of web services
+482	2008-08-02T16:09:56.780	WinForms ComboBox data binding gotcha
+502	2008-08-02T17:01:58.500	Get a preview JPEG of a PDF on Windows?
+514	2008-08-02T17:26:39.793	Frequent SystemExit in Ruby when making HTTP calls
+535	2008-08-02T18:43:54.787	Continuous Integration System for a Python Codebase
+549	2008-08-02T19:51:50.250	The definitive guide to form-based website authentication
+561	2008-08-02T21:34:24.223	How to use combinations of sets as test data
+562	2008-08-02T21:39:11.733	How to write to Web.Config in Medium Trust?
+564	2008-08-02T21:47:34.820	What is the difference between an int and an Integer in Java and C#?
+580	2008-08-02T23:30:59.090	Deploying SQL Server Databases from Test to Live
+588	2008-08-03T00:03:58.510	Best way to access Exchange using PHP?
+594	2008-08-03T01:15:08.507	cx_Oracle - what is the best way to iterate over a result set?
+601	2008-08-03T02:05:59.620	Robust Random Number Generation
+609	2008-08-03T02:48:43.497	Build for Windows NT 4.0 using Visual Studio 2005?
+622	2008-08-03T05:45:21.423	Most efficient code for the first 10000 prime numbers?
+626	2008-08-03T06:40:54.120	When to use lambda, when to use Proc.new?
+644	2008-08-03T09:55:26.257	Swap unique indexed column values in database
+650	2008-08-03T11:12:52.463	Automatically update version number
+651	2008-08-03T11:21:54.520	Checklist for IIS 6/ASP.NET Windows Authentication?
+657	2008-08-03T11:50:33.137	Encrypting Passwords
+683	2008-08-03T13:19:16.983	Using 'in' to match an attribute of Python objects in an array
+696	2008-08-03T14:03:28.830	Connect PHP to IBM i (AS/400)
+705	2008-08-03T14:41:43.103	Embedded Database for .net that can run off a network
+709	2008-08-03T14:53:53.550	.NET Testing Framework Advice
+717	2008-08-03T15:07:10.073	Why doesn't VFP .NET OLEdb provider work in 64 bit Windows?
+742	2008-08-03T15:55:28.633	Class views in Django
+746	2008-08-03T16:03:48.290	Format string to title case
+752	2008-08-03T16:29:03.607	Get a new object instance from a Type
+761	2008-08-03T17:30:20.473	Localising date format descriptors
+766	2008-08-03T17:44:07.450	Python and MySQL
+769	2008-08-03T18:14:24.267	Solving a linear equation
+773	2008-08-03T18:27:09.687	How do I use Python's itertools.groupby()?
+805	2008-08-03T20:11:26.043	ASP, need to use SFTP
