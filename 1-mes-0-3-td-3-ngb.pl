@@ -10,9 +10,9 @@ use List::Util qw(sum max min);
 # ======== parameters ========
 
 my $categ_ht=5;
-my $len=3;
+my $len=4;
 
-my $dataset="1-aps";
+my $dataset="5-zeit";
 
 # ======== initialize ========
 

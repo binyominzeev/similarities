@@ -8,62 +8,51 @@ use List::Util qw(sum max min);
 
 # ========== parameters ==========
 
-my $file="aps-records.txt";
+# itt: szantoadam@atlasz:~/wordtime/so$ head so-id-title.txt 
 
-my $n_per_k=41842.8;
+my $dataset="5-zeit";
+my $file="zeit_nodes.txt";
 
-my $lin_a=-2.8;
-my $lin_b=24.4;
+my $first_year=1965;
+my $last_year=2014;
 
-my $lin_min=-7.85;
-my $lin_max=30.85;
+my $n_per_k=10648256.82;
+
+my $lin_a=-1.55;
+my $lin_b=15.58;
+
+my $lin_min=-2.552;
+my $lin_max=20.224;
 
 my $lin_full=$lin_max-$lin_min;
 
 # ========== top words ==========
 
 my %words;
-my @words=split/\n/, `head -n2700 0-wdc-1-aps.txt`;
+my @words=split/\n/, `cat 0-wdc-$dataset.txt`;
 map { /\t/; $words{$`}=$'; } @words;
-
-# ========== loading %id_nodes ==========
-
-print "loading %id_nodes...";
-#my %id_nodes;
-my %nodes_id;
-
-open IN, "<aps_nodes.txt";
-while (<IN>) {
-	chomp;
-	my ($id, $node)=split/\t.*\//, $_;
-	#$id_nodes{$id}=$node;
-	$nodes_id{$node}=$id;
-}
-close IN;
-print "done.\n";
 
 # ========== loading %nodes ==========
 
 print "loading %nodes...";
 
 my %nodes;
-my $progress=new Term::ProgressBar::Simple(463347);
 
-open IN, "<$file";
-while (<IN>) {
-	chomp;
-	my ($node, $year, $title)=split/\t/, $_;
+my @results=split/\n/, `cat $file`;
+my $progress=new Term::ProgressBar::Simple(scalar @results);
+
+for my $line (@results) {
+	my ($id, $year, $title)=split/\t/, $line;
 	
-	if (exists $nodes_id{$node}) {
+	if ($first_year <= $year && $year <= $last_year) {
 		my @szavak=$title=~/[a-zA-Z]+/g;
-		@szavak=map { $nodes{$nodes_id{$node}}->{$_}="" }
+		@szavak=map { $nodes{$id}->{$_}="" }
 			grep { exists $words{$_} }
 			map { lc $_; } @szavak;
 	}
 	
 	$progress++;
 }
-close IN;
 print "done.\n";
 
 # ========== loading %pairs ==========
@@ -71,12 +60,14 @@ print "done.\n";
 print "loading %pairs...";
 
 my %pairs;
-$progress=new Term::ProgressBar::Simple(4710547);
+$progress=new Term::ProgressBar::Simple(186046);
 
-open IN, "<aps_edges.txt";
+open IN, "<zeit_edges.txt";
 while (<IN>) {
 	chomp;
 	my ($from, $to)=split/\t/, $_;
+	
+	if (!$from || !$to) { next; }
 	
 	my @from_szavak=keys %{$nodes{$from}};
 	my @to_szavak=keys %{$nodes{$to}};
@@ -109,7 +100,8 @@ for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
 
 # ========== output ==========
 
-open OUT, ">1-mes-1-aps-2-kk.txt";
+open OUT, ">1-mes-$dataset-2-kk.txt";
+open OUT2, ">1-mes-$dataset-2-kk-exp.txt";
 for my $pair (sort { $output{$b} <=> $output{$a} } keys %output) {
 	my ($a, $b)=split/\t/, $pair;
 	
@@ -119,7 +111,9 @@ for my $pair (sort { $output{$b} <=> $output{$a} } keys %output) {
 	my $y_norm=($y-$lin_min)/$lin_full;
 	$y_norm=1-$y_norm;
 	
+	print OUT2 "$pair\t$output{$pair}\n";
 	#print OUT "$pair\t$y_norm\t$y\t$output{$pair}\t$words{$a}\t$words{$b}\t$pairs{$pair}\n";
 	print OUT "$pair\t$y_norm\n";
 }
 close OUT;
+close OUT2;
