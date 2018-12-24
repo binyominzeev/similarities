@@ -1705,6 +1705,12 @@ cn      2
 
 Zeit adatsor processzálása, volt már készen 17-haromszogek/data könyvtárban preprocesszáló, ami az évszámokat kiszedi, ebből lett zeit_years.txt. Eszerint 1965-2014, azaz 50 évre limitálunk, évi 3 év szerint 150 cikk minimum, ami 3200 topszót követel meg 0-wdc-ben.
 
+5-ZEIT:
+
+Nem futtatjuk 2-KK-ra, nem normálható, ld. kk-pdf.gnu, kk-pdf.5-zeit.txt. Már a sima idődiagram is megjeleníthető, hogy adatprobléma miatt hiányzik.
+
+Holnap: 4-PATENT processzálása, és WoS-sal nem tudom, hogy érdemes-e megpróbálkozni.
+
 ---
 
 Amíg a futtatás történik, lehet, hogy szükség lesz párhuzamos futtatásra, és a PhD tényleges megírására. Legjobb, ha az éppen aktuális projekt dokumentálásával foglalkozunk.

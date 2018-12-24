@@ -39,5 +39,5 @@ PL and TXT files are following the file naming patterns, consisting of the follo
 - 2018-12-18: 1-APS-2-KK 1-MES, 2-WD for all ready
 - 2018-12-23: 1-APS, 5-EV ready
 - 2018-12-23: 2-SO-1-CN, 2-SO-4-OC ready
-- 2018-12-24: 2-SO ready, 5-ZEIT 1-CN, 4-OC, 3-TD-1-NORM as well
+- 2018-12-24: 2-SO ready, 5-ZEIT 1-CN, 4-OC, 3-TD as well
 
