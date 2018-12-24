@@ -1656,6 +1656,72 @@ root@topinav:~/atlaszdir/wordtime/so# head -n9500 0-wdc-2-so.txt > 0-wdc-2-so.95
 
 bz@bz-HP-EliteBook-8530p:~/similarities$ cp ~/topinavdir/atlaszdir/wordtime/so/0-wdc-2-so.9500.txt 0-wdc-2-so.txt
 
+# 2018-12-24
+
+Vannak processzált él-adataink SO-hoz, itt: /media/bz/SAMSUNG/elte/hal/17-haromszogek/data/stackoverflow_edges.gz
+
+Ami ID-ket tartalmaz, amik megegyeznek a so_id_title.txt-ben található ID-kkel, de nincsen garancia arra, hogy mindegyiknek van megfelelő elem. Ugyanakkor: ez a hálózat nagyon ritka, kevés él. Összehasonlításképpen: Patentben 3-szor akkora az élfájl, mint a csúcsfájl, ugyanez SO-ban visszafelé (!) 40-szeres (!!) eltérés.
+
+2-KK számára a lineáris függvény paramétereit minden adatsorhoz újra kell becsülni.
+
+
+$n_per_k megállapítása 2-SO számára (ld. fent, 2018-11-25):
+
+N = 11203031
+
+E = 757475
+
+szantoadam@atlasz:~/wordtime/so$ ./0-avg-outdeg.pl 
+757480/719940 = 1.0521432341584
+
+K = 1.05
+
+N / K = 10648256.82
+
+Lineáris illesztés megállapításához létrehozzuk: 1-mes-2-so-2-kk-exp.txt-t, ami a várhatóértékekhez képesti relatív eltéréseket tartalmazza. Ezek gyakoriságát megszámlálva, majd logaritmálva adódik a kívánt, illesztendő görbe (korábban: kk-pdf), majd ebből becsülhetőek a paraméterek.
+
+szantoadam@atlasz:~/wordtime/so$ cut -f3 1-mes-2-so-2-kk-exp.txt | pdf.pl > kk-pdf-2-so.txt
+
+A kapott görbe log-log változatán leolvasott pontok:
+
+P1 = (3.6, 10)
+P2 = (6.7, 5.2)
+
+A = (y2 - y1) / (x2 - x1) = -1.55
+B = y1 - x1 * A = 15.58
+
+1-APS esetén ugyanez:
+
+A = -2.8
+B = 24.4
+
+szantoadam@atlasz:~/wordtime/so$ less 5-ev.txt 
+so:
+
+kk      8140
+td      1336
+oc      24
+cn      2
+
+---
+
+Amíg a futtatás történik, lehet, hogy szükség lesz párhuzamos futtatásra, és a PhD tényleges megírására. Legjobb, ha az éppen aktuális projekt dokumentálásával foglalkozunk.
+
+Mértékek összehasonlításának vázlata:
+
+- TD-kről volt szó korábban, az az egyik, de van még négy
+- Miért fontosak a mértékek, irodalom (mehet később)
+- Összehasonlítás hasznossága: legközelebbi legközelebbi elem megtalálása, különböző helyzetekben különböző lehet hasznos, ezért jó, hogy sokféle adatsort vetünk össze most
+- Az algoritmus leírása
+  - Nagy vonalakban
+  - Az egyes mértékek
+- Eredmények
+  - A mértékek megoszlása csúcsonként és élenként
+  - Négyes ill. páronkénti összehasonlítások
+  - Elemzés, adattípus, adatsor szerinti összehasonlítás, azaz: melyikhez mi illik
+
+
+
 
 
 
