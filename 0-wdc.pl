@@ -7,16 +7,17 @@ use Term::ProgressBar::Simple;
 
 # ======== initialize ========
 
-my $dataset="1-aps";
-my $file="aps-records.txt";
+my $dataset="5-zeit";
+my $file="zeit_nodes.txt";
 
 my $first_year=1965;
-my $last_year=2009;
+my $last_year=2014;
 
 # ========== stopwords ==========
 
 my %stopwords;
-my @stopwords=split/\n/, `cat stopwords-en.txt`;
+#my @stopwords=split/\n/, `cat stopwords-en.txt`;
+my @stopwords=split/\n/, `cat stopwords-de.txt`;
 map { $stopwords{$_}=""; } @stopwords;
 
 # ========== process ==========
