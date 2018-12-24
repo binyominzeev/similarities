@@ -11,19 +11,19 @@ use List::Util qw(sum max min);
 # ======== parameters ========
 
 my $first_year=1965;
-my $last_year=2009;
+my $last_year=2014;
 
 my @test_words=qw/quantum model/;
 
 # ======== initialize ========
 
-my $dataset="1-aps";
-my $file="aps-records.txt";
+my $dataset="5-zeit";
+my $file="zeit_nodes.txt";
 
 # ========== top words ==========
 
 my %words;
-my @words=split/\n/, `head -n2700 0-wdc-1-aps.txt | cut -f1`;
+my @words=split/\n/, `head -n3200 0-wdc-$dataset.txt | cut -f1`;
 map { %{$words{$_}}=(); } @words;
 
 # ========== process ==========
@@ -39,7 +39,7 @@ for my $line (@results) {
 	if (looks_like_number($year) && $first_year <= $year && $year <= $last_year) {
 		$year_count{$year}++;
 
-		my @szavak=$title=~/[a-zA-Z]+/g;
+		my @szavak=$title=~/[a-zA-ZöüäÄÖÜß]+/g;
 		@szavak=grep { exists $words{$_} }
 			map { lc $_ }
 			@szavak;
@@ -91,7 +91,10 @@ sub yearly_max_norm {
 	}
 
 	my $max=max(@b);
-	@b=map { int(100*$_/$max) } @b;
+	
+	if ($max > 0) {
+		@b=map { int(100*$_/$max) } @b;
+	}
 	
 	return \@b;
 }

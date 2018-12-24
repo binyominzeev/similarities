@@ -1703,6 +1703,8 @@ td      1336
 oc      24
 cn      2
 
+Zeit adatsor processzálása, volt már készen 17-haromszogek/data könyvtárban preprocesszáló, ami az évszámokat kiszedi, ebből lett zeit_years.txt. Eszerint 1965-2014, azaz 50 évre limitálunk, évi 3 év szerint 150 cikk minimum, ami 3200 topszót követel meg 0-wdc-ben.
+
 ---
 
 Amíg a futtatás történik, lehet, hogy szükség lesz párhuzamos futtatásra, és a PhD tényleges megírására. Legjobb, ha az éppen aktuális projekt dokumentálásával foglalkozunk.
