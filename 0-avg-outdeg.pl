@@ -7,10 +7,15 @@ use Term::ProgressBar::Simple;
 
 # ======== initialize ========
 
-my $dataset="1-aps";
-my $file="aps_edges.txt";
+#my $dataset="1-aps";
+#my $file="aps_edges.txt";
 
-my $edge_count=4710547;
+#my $edge_count=4710547;
+
+my $dataset="2-so";
+my $file="so_edges.txt";
+
+my $edge_count=757475;
 
 # ========== process ==========
 

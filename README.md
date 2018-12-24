@@ -7,9 +7,9 @@ PL and TXT files are following the file naming patterns, consisting of the follo
 0. WDC: word count, word toplist of dataset
 1. MES: Calculating the measure word by word (cn.pl, kk.pl, aps-cn.txt, ...)
   - _(In the case of 3-TD, this step is distributed into 3 sub-steps:)_
-  - 1-NORM: min-max normalization of time-diagrams for every important word.
-  - 2-BOX: producing 0-9 and 0-1 boxes for every word (in the transformed system).
-  - 3-NGB: identifying nearest neighbors based on neighboring boxes.
+  - 1-NORM: min-max normalization of time-diagrams for every important word
+  - 2-BOX: producing 0-9 and 0-1 boxes for every word (in the transformed system)
+  - 3-NGB: identifying nearest neighbors based on neighboring boxes
 2. WD: Words-list.pl
 3. PR: Calculating the percentage (cn-kk-perc.pl)
 4. UN: Unify the measures, insert zeros (cn-kk-perc-unify.pl)
@@ -38,6 +38,6 @@ PL and TXT files are following the file naming patterns, consisting of the follo
 - 2018-11-11: 1-APS comparison/evaluation ready
 - 2018-12-18: 1-APS-2-KK 1-MES, 2-WD for all ready
 - 2018-12-23: 1-APS, 5-EV ready
-
-
+- 2018-12-23: 2-SO-1-CN, 2-SO-4-OC ready
+- 2018-12-24: 2-SO ready
 
