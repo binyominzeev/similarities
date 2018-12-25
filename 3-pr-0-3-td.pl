@@ -6,11 +6,16 @@ use Data::Dumper;
 
 # ======== initialize ========
 
-my $dataset="1-aps";
+#my $dataset="1-aps";
+#my $dataset="2-so";
+#my $dataset="4-patent";
+my $dataset="5-zeit";
 
 my $mode="3-td";
 
 # ======== load words ========
+
+print "($dataset, $mode)\n";
 
 my %words;
 my @words=split/\n/, `cat 2-wd-$dataset-$mode.txt`;

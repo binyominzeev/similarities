@@ -10,36 +10,62 @@ use List::Util qw(sum max min);
 
 # ======== parameters ========
 
-my $first_year=1965;
-my $last_year=2014;
+#my $dataset="1-aps";
+#my $file="aps-records.txt";
+#my $first_year=1965;
+#my $last_year=2009;
+#my $word_count=2700;
+#my $line_count=463347;
 
-my @test_words=qw/quantum model/;
+#my $dataset="2-so";
+#my $file="so-id-title.txt";
+#my $first_year="2008-09";
+#my $last_year="2015-12";
+#my $word_count=9500;
+#my $line_count=11203031;
 
-# ======== initialize ========
+my $dataset="4-patent";
+my $file="patent_nodes.gz";
+my $first_year=1976;
+my $last_year=2012;
+my $word_count=11500;
+my $line_count=4992224;
 
-my $dataset="5-zeit";
-my $file="zeit_nodes.txt";
+#my $dataset="5-zeit";
+#my $file="zeit_nodes.txt";
+#my $first_year=1965;
+#my $last_year=2014;
+#my $word_count=3200;
+#my $line_count=4016965;
 
 # ========== top words ==========
 
 my %words;
-my @words=split/\n/, `head -n3200 0-wdc-$dataset.txt | cut -f1`;
+my @words=split/\n/, `head -n$word_count 0-wdc-$dataset.txt | cut -f1`;
 map { %{$words{$_}}=(); } @words;
 
 # ========== process ==========
 
-my @results=split/\n/, `cat $file`;
-my $progress=new Term::ProgressBar::Simple(scalar @results);
+print "processing $dataset... ($line_count)\n";
+
+#my @results=split/\n/, `cat $file`;
+my $progress=new Term::ProgressBar::Simple($line_count);
 
 my %year_count;
 
-for my $line (@results) {
-	my ($id, $year, $title)=split/\t/, $line;
+open IN, "zcat $file|";
+#open IN, "<$file";
+while (<IN>) {
+#for my (@results) {
+	my ($id, $year, $title)=split/\t/, $_;
 	
+	$year=substr($year, 0, 4);
+
 	if (looks_like_number($year) && $first_year <= $year && $year <= $last_year) {
 		$year_count{$year}++;
 
-		my @szavak=$title=~/[a-zA-ZöüäÄÖÜß]+/g;
+		#my @szavak=$title=~/[a-zA-ZöüäÄÖÜß]+/g;
+		my @szavak=$title=~/[a-zA-Z]+/g;
 		@szavak=grep { exists $words{$_} }
 			map { lc $_ }
 			@szavak;

@@ -18,7 +18,8 @@ my $categ_ht=5;
 
 # ======== initialize ========
 
-my $dataset="5-zeit";
+my $dataset="4-patent";
+#my $dataset="5-zeit";
 
 # ========== output ==========
 
