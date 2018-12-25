@@ -1756,17 +1756,88 @@ patent_years.pl: évek szerinti limitálás – 1976-2012 – 37 év, * 3 = 111 
 
 Nem jók a számok. 1-CN és 4-OC-t is ugyanúgy kellene megállapítani, ahogy eredetileg gondoltam, lineáris illesztéssel, és 2-KK-t is automatizálni kell. (3-TD elég kézenfekvő anélkül is, az a kivétel.) Eszerint frissítendő a fájlstruktúra, és mindhárom mértékhez elmentendőek az alap számok is (raw néven). Legjobb az lenne, ha addig futna, amíg tesztelnénk Excelből. 
 
+APS-re amúgy sem volt jó az évek kiszámolása, nincsen erre rendszer még, pedig kellene, ezért patent_years.pl-t idemásoljuk:
+
+/home/bz/topinavdir/atlaszdir/local_behaviour/17-haromszogek/data/years.pl
+
+És itt helyben generálja minden adatsorhoz a szükséges adatokat.
+
+Mintavételezés APS-ből, minden 100. sor:
+
+root@topinav:~/similarities# sed -n "1~100 p" 1-mes-1-aps-1-cn-raw.txt | wc -l
+3777
+
+Inkább: R vagy lin. regresszió, a log-logra.
+
+R: 
+
+# library("igraph")
+# data <- scan("3.txt")
+# f <- fit_power_law(data)
+
+$alpha
+[1] 2.183701
+
+$xmin
+[1] 4
 
 
+Alphát kell mínusz eggyel megszorozni, és x = 1-hez az első, azaz legnagyobb értéket beírni.
+
+root@topinav:~/similarities# Rscript power-fit.r < 3.txt 2>/dev/null
 
 
+root@topinav:~/similarities# cut -f3 1-mes-1-aps-1-cn-raw.txt | Rscript power-fit.r 2> /dev/null
+2.183701
 
+Zeit adatsorban nehéz a regexpet rávenni, hogy rendesen match-eljen német (magyar) ékezeteket, mert vagy még többet is match-el, vagy még kevesebbet. A megoldás: cat-tal kell beolvasni és nem open-nel (vagy utf8 az openbe, azt még nem próbáltam).
 
+OK, minden megvan a WoS-t kivéve, és a 4-Patent-3-TD-t (ami nem kicsi). Ugyanakkor: TD végeredmény nem 0-1-normált, hanem integerek, az eltérő számjegyeket sorolja fel, és nincs is rendezve, nem mintha ez baj lenne.
 
+Anomália: Zeit-ben KK nem jó WD-t produkál, 72K a megengedett 3.2K helyett. Pedig fontos lenne, mert erre szépen illeszkedett a power law. Újraszámolandó. 0-wdc-5-zeit.txt-t inkább kézzel editáltam, értelmetlenségeket eltávolítva, ékezeteket lecserélve, Geany-ben. Igen, így most már az ékezetek hibátlanok, WD szintén, ám az eloszlás itt sem hatvány – ezt vagy megnézzük, vagy hagyjuk inkább.
 
+3-PR ügyében 3-TD kapcsán releváns maradt, a másik három 0-1 közé van normálva eleve, ott csak az lenne a feladat, hogy egyetlen szó legközelebbi szomszédjára vetítse, és 100-al felszorozza. Eszerint új verzió: 3-pr.pl.
 
+OK, teljesen jó eredmények jöttek ki:
 
+aps:
 
+kk	1896
+td	640
+cn	124
+oc	43
+
+so:
+
+td	7622
+oc	1440
+kk	284
+cn	160
+
+patent:
+
+td	8942
+kk	2345
+cn	211
+oc	7
+
+zeit:
+
+td	3201
+kk	17
+oc	7
+cn	7
+
+Eszerint általában kk és td viszi a prímet, de SO esetén OC is előrejön, és amúgy sem tartják magukat mindig olyan rosszul, csak Zeit-ban, ami amúgy sem túl jó. Lehet, hogy mégis érdemes lenne WoS-t bevállalni, ha nem túl sok idő (vagy esetleg a végén).
+
+Just for the record, szinte minden számítás topinavon futott:
+
+/home/bz/topinavdir/similarities/5-ev.txt
+
+Kivéve néhány tényleg nagyot, amihez helyi kópiákat készítettem:
+
+SO számára: /home/bz/topinavdir/atlaszdir/wordtime/so/
+Patent számára: /home/bz/topinavdir/atlaszdir/local_behaviour/17-haromszogek/data/
 
 
 
