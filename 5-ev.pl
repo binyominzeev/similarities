@@ -7,8 +7,7 @@ use List::Util qw/max/;
 
 # ======== parameters ========
 
-my @dataset=qw/1-aps/;
-
+my @dataset=qw/1-aps 2-so 4-patent 5-zeit/;
 my @stats=qw/1-cn 2-kk 3-td 4-oc/;
 
 # ======== process ========
@@ -28,14 +27,16 @@ for my $dataset (@dataset) {
 				$count{$dataset}->{$stats[$i]}++;
 				#print "$stats[$i]\t$word\n";
 				
-				if ($i == 2) {
-					print "$stats[$i]\t$word\n";
-				}
+				#if ($i == 2) {
+				#	print "$stats[$i]\t$word\n";
+				#}
 			}
 		}
 	}
 	close IN;
 }
+
+print Dumper \%count;
 
 # ======== output ========
 
