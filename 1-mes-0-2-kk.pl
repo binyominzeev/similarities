@@ -8,44 +8,65 @@ use List::Util qw(sum max min);
 
 # ========== parameters ==========
 
-# itt: szantoadam@atlasz:~/wordtime/so$ head so-id-title.txt 
+#my $dataset="1-aps";
+#my $file="aps-records.txt";
+#my $first_year=1965;
+#my $last_year=2009;
+#my $word_count=2700;
+#my $line_count=463347;
+
+#my $dataset="2-so";
+#my $file="so-id-title.txt";
+#my $first_year="2008-09";
+#my $last_year="2015-12";
+#my $word_count=9500;
+#my $line_count=11203031;
+
+#my $dataset="4-patent";
+#my $file="patent_nodes.gz";
+#my $first_year=1976;
+#my $last_year=2012;
+#my $word_count=11500;
+#my $line_count=4992224;
 
 my $dataset="5-zeit";
 my $file="zeit_nodes.txt";
-
 my $first_year=1965;
 my $last_year=2014;
-
-my $n_per_k=10648256.82;
-
-my $lin_a=-1.55;
-my $lin_b=15.58;
-
-my $lin_min=-2.552;
-my $lin_max=20.224;
-
-my $lin_full=$lin_max-$lin_min;
+my $word_count=3200;
+my $line_count=891431;
 
 # ========== top words ==========
 
 my %words;
-my @words=split/\n/, `cat 0-wdc-$dataset.txt`;
+my @words=split/\n/, `head -n$word_count 0-wdc-$dataset.txt`;
 map { /\t/; $words{$`}=$'; } @words;
 
 # ========== loading %nodes ==========
 
+print "processing $dataset... ($line_count)\n";
+
 print "loading %nodes...";
 
 my %nodes;
+#my $aps_nodes=aps_nodes();
 
 my @results=split/\n/, `cat $file`;
-my $progress=new Term::ProgressBar::Simple(scalar @results);
+my $progress=new Term::ProgressBar::Simple($line_count);
 
-for my $line (@results) {
-	my ($id, $year, $title)=split/\t/, $line;
+#open IN, "zcat $file|";
+#open IN, "<$file";
+#while (<IN>) {
+for (@results) {
+	my ($id, $year, $title)=split/\t/, $_;
+
+#	$year=substr($year, 0, 4);
 	
+#	if ($first_year <= $year && $year <= $last_year && exists $aps_nodes->{$id}) {
 	if ($first_year <= $year && $year <= $last_year) {
-		my @szavak=$title=~/[a-zA-Z]+/g;
+		my @szavak=$title=~/[a-zA-ZöüäÄÖÜß]+/g;
+#		my @szavak=$title=~/[a-zA-Z]+/g;
+#		@szavak=map { $nodes{$aps_nodes->{$id}}->{$_}="" }
 		@szavak=map { $nodes{$id}->{$_}="" }
 			grep { exists $words{$_} }
 			map { lc $_; } @szavak;
@@ -53,6 +74,7 @@ for my $line (@results) {
 	
 	$progress++;
 }
+close IN;
 print "done.\n";
 
 # ========== loading %pairs ==========
@@ -60,14 +82,19 @@ print "done.\n";
 print "loading %pairs...";
 
 my %pairs;
-$progress=new Term::ProgressBar::Simple(186046);
+#$progress=new Term::ProgressBar::Simple(4710547);	# aps
+#$progress=new Term::ProgressBar::Simple(108993629);	# patent
+$progress=new Term::ProgressBar::Simple(186046);	# zeit
 
+#open IN, "zcat patent_edges.gz|";
 open IN, "<zeit_edges.txt";
 while (<IN>) {
 	chomp;
 	my ($from, $to)=split/\t/, $_;
 	
-	if (!$from || !$to) { next; }
+	$progress++;
+
+	if (!$from || !$to || !exists $nodes{$from} || !exists $nodes{$to}) { next; }
 	
 	my @from_szavak=keys %{$nodes{$from}};
 	my @to_szavak=keys %{$nodes{$to}};
@@ -79,41 +106,33 @@ while (<IN>) {
 			}
 		}
 	}
-	$progress++;
 }
 close IN;
 
-# ========== output hash ==========
-
-my %output;
-
-for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
-	my ($a, $b)=split/\t/, $pair;
-	
-	my $norm=($words{$a}*$words{$b})/$n_per_k;
-	my $val=$pairs{$pair}/$norm;
-	
-	my $perc=int(($val)*10000)/100;
-	
-	$output{$pair}=$perc;
-}
-
 # ========== output ==========
 
-open OUT, ">1-mes-$dataset-2-kk.txt";
-open OUT2, ">1-mes-$dataset-2-kk-exp.txt";
-for my $pair (sort { $output{$b} <=> $output{$a} } keys %output) {
-	my ($a, $b)=split/\t/, $pair;
-	
-	my $log_x=log($output{$pair});
-	my $y=$lin_a*$log_x+$lin_b;
-
-	my $y_norm=($y-$lin_min)/$lin_full;
-	$y_norm=1-$y_norm;
-	
-	print OUT2 "$pair\t$output{$pair}\n";
-	#print OUT "$pair\t$y_norm\t$y\t$output{$pair}\t$words{$a}\t$words{$b}\t$pairs{$pair}\n";
-	print OUT "$pair\t$y_norm\n";
+open OUT, ">1-mes-$dataset-2-kk-raw.txt";
+for my $pair (sort { $pairs{$b} <=> $pairs{$a} } keys %pairs) {
+	print OUT "$pair\t$pairs{$pair}\n";
 }
 close OUT;
-close OUT2;
+
+# ========== functions ==========
+
+sub aps_nodes {
+	print "loading %id_nodes...";
+	my %nodes_id;
+
+	open IN, "<aps_nodes.txt";
+	while (<IN>) {
+		chomp;
+		my ($id, $node)=split/\t.*\//, $_;
+		$nodes_id{$node}=$id;
+	}
+	close IN;
+	print "done.\n";
+	
+	return \%nodes_id;
+}
+
+
