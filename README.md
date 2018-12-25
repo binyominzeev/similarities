@@ -10,6 +10,8 @@ PL and TXT files are following the file naming patterns, consisting of the follo
   - 1-NORM: min-max normalization of time-diagrams for every important word
   - 2-BOX: producing 0-9 and 0-1 boxes for every word (in the transformed system)
   - 3-NGB: identifying nearest neighbors based on neighboring boxes
+  - _(In every other case, a RAW file is produced using raw numbers as measurement, and)_
+  - 1b-POW: power law-matching to raw file, in order to calculate the 0-1 normalization
 2. WD: Words-list.pl
 3. PR: Calculating the percentage (cn-kk-perc.pl)
 4. UN: Unify the measures, insert zeros (cn-kk-perc-unify.pl)

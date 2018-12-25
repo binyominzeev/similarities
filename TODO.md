@@ -1728,6 +1728,35 @@ Mértékek összehasonlításának vázlata:
   - Négyes ill. páronkénti összehasonlítások
   - Elemzés, adattípus, adatsor szerinti összehasonlítás, azaz: melyikhez mi illik
 
+# 2018-12-25
+
+Patent_nodes (4,992,219):
+
+3930271 19760106        Golf glove
+3930272 19760106        Crib leg lock
+3930273 19760106        Bed safety side rail arrangement
+3930274 19760106        Assembly for use in recreational activities
+3930275 19760106        Method of fabricating a slipper
+3930276 19760106        Wheel spinning and vehicle conveying apparatus for automatic wheel
+3930277 19760106        Mobile floor sweeper
+3930278 19760106        Paintbrush and guard attachment for edging
+3930279 19760106        Rubber windshield wiper blades having increased flexibility at clamping
+
+Patent_edges (108,993,623, de 7,3M csúcs van, azok kiszűrendőek):
+
+3930271 2379430
+3930271 2782422
+3930272 1549144
+3930272 1609246
+3930272 1667080
+3930272 1834468
+3930272 2545289
+
+patent_years.pl: évek szerinti limitálás – 1976-2012 – 37 év, * 3 = 111 min. Elég sok, 11,500 szó szükséges hozzá! Szóval viszonylag gyakran ismétlődnek a szavak bennük.
+
+Nem jók a számok. 1-CN és 4-OC-t is ugyanúgy kellene megállapítani, ahogy eredetileg gondoltam, lineáris illesztéssel, és 2-KK-t is automatizálni kell. (3-TD elég kézenfekvő anélkül is, az a kivétel.) Eszerint frissítendő a fájlstruktúra, és mindhárom mértékhez elmentendőek az alap számok is (raw néven). Legjobb az lenne, ha addig futna, amíg tesztelnénk Excelből. 
+
+
 
 
 
