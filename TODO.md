@@ -1839,6 +1839,48 @@ Kivéve néhány tényleg nagyot, amihez helyi kópiákat készítettem:
 SO számára: /home/bz/topinavdir/atlaszdir/wordtime/so/
 Patent számára: /home/bz/topinavdir/atlaszdir/local_behaviour/17-haromszogek/data/
 
+# 2018-12-26
+
+Nagy, hátralévő teendők:
+
+1. Web GUI
+2. Szöveg megírása (PhD)
+  - Irodalmazás
+3. Képek, ábrák elkészítése
+4. WoS processzálás
+5. Kézirat készítése ebből
+6. Prediction fejezet PDF-be
+7. PhD utómunkák
+
+Ebből a listából 1., 4., 5. pont elhagyható, végére sorolható.
+
+Most látom, hogy OC-ben nincsen unique-á tevő sor a szavaknál, pedig elvileg kellene. Im kol ze, nem gondolom, hogy kedáj ismét végigfuttatni, módosítva, esetleg ha lesz időnk, mert nem hiszem, hogy a végeredményen szignifikánsan változtatna.
+
+body,63,59,84,91,85,84,62,84,78,66,100,75,84,72,71,59,50,71,60,62,40,49,52,52,44,48,42,41,47,43,45,44,38,39,45,45,49,51,47,46,35,43,44,58,54
+mass,74,97,85,100,86,74,90,65,77,80,75,72,72,69,67,73,51,59,53,63,64,61,51,43,49,50,44,48,52,42,42,33,33,44,44,38,37,38,36,40,39,43,41,50,44
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
