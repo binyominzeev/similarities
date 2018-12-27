@@ -1856,6 +1856,9 @@ Ebből a listából 1., 4., 5. pont elhagyható, végére sorolható.
 
 Most látom, hogy OC-ben nincsen unique-á tevő sor a szavaknál, pedig elvileg kellene. Im kol ze, nem gondolom, hogy kedáj ismét végigfuttatni, módosítva, esetleg ha lesz időnk, mert nem hiszem, hogy a végeredményen szignifikánsan változtatna.
 
+body,63,59,84,91,85,84,62,84,78,66,100,75,84,72,71,59,50,71,60,62,40,49,52,52,44,48,42,41,47,43,45,44,38,39,45,45,49,51,47,46,35,43,44,58,54
+mass,74,97,85,100,86,74,90,65,77,80,75,72,72,69,67,73,51,59,53,63,64,61,51,43,49,50,44,48,52,42,42,33,33,44,44,38,37,38,36,40,39,43,41,50,44
+
 # 2018-12-27
 
 PDF:
@@ -1867,8 +1870,13 @@ Ill. illesztés is mehetne rá. De minek, talán egyszer, megmutatandó az algor
 
 root@topinav:~/similarities# cut -f3 1-mes-5-zeit-1-cn-raw.txt | ~/pdf.pl > pdf_zeit_cn.txt
 
+Lenne logika abban, hogy mégiscsak a pontokat jelenítsük meg, és ne az éleket, mert ott igazságos, hogy minden ponthoz egy érték tartozik, míg itt csak a TD-ben egy (az pont nincs is az ábrán, mivel nincs is lenormálva, érdekes, ez látszólag egybeesik). Szóval nem kellenek pontok ide, bár a címe a figure-nek érdekesen hangzik most, hogy a legközelebbi szomszédok eloszlása. Talán 1 próbát tehetünk, hogy mennyire néz ki másként. Meg most nem sokból állna plusz egy ábrát, plusz egy oldalt betenni, de ha nem indokolt, nem akarjuk.
 
-- APS
+Mégis érdemes, mert azon már normált értékek vannak, és nem hatványfüggvény alakú, hanem inkább egypúpú-jellegű, ezért érdemes is 2-esével tekinteni a pontokat, hogy simább görbét kapjunk, és abból az összehasonlításból már levonhatóak következtetések.
+
+bz@bz-HP-EliteBook-8530p:~/similarities$ cut -f2 3-pr-1-aps-1-cn.txt | ~/pdf.pl 2 > nn_aps_cn.txt 
+
+NN, mint nearest neighbors. És csak ebben van értelme TD-t is rátenni az ábrára, mert itt ugyanolyan típusú, míg az éleknél ő máris percentílis, és nem hatványfüggvény.
 
 
 
