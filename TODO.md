@@ -1856,8 +1856,19 @@ Ebből a listából 1., 4., 5. pont elhagyható, végére sorolható.
 
 Most látom, hogy OC-ben nincsen unique-á tevő sor a szavaknál, pedig elvileg kellene. Im kol ze, nem gondolom, hogy kedáj ismét végigfuttatni, módosítva, esetleg ha lesz időnk, mert nem hiszem, hogy a végeredményen szignifikánsan változtatna.
 
+body,63,59,84,91,85,84,62,84,78,66,100,75,84,72,71,59,50,71,60,62,40,49,52,52,44,48,42,41,47,43,45,44,38,39,45,45,49,51,47,46,35,43,44,58,54
+mass,74,97,85,100,86,74,90,65,77,80,75,72,72,69,67,73,51,59,53,63,64,61,51,43,49,50,44,48,52,42,42,33,33,44,44,38,37,38,36,40,39,43,41,50,44
 
+# 2018-12-27
 
+PDF:
+
+- APS, SO, Patent, Zeit (lehet, hogy ebből mind rossz, igazából ezen múlik)
+- CN, OC, KK
+
+Ill. illesztés is mehetne rá. De minek, talán egyszer, megmutatandó az algoritmust. A futás szerinti power law illesztés a linkeken történik, és nem a csúcsokon, akkor miért akartam a csúcsokat megjeleníteni? Valójában ugyanazok a számok másolódnak át oda is, ezért talán van egy kimondatlan feltételezés, hogy ugyanaz az alfa értékük. Máshogy nem is lehetne nagyon, jól van ez így. Ilyen fájlneveket állítsunk elő:
+
+root@topinav:~/similarities# cut -f3 1-mes-5-zeit-1-cn-raw.txt | ~/pdf.pl > pdf_zeit_cn.txt
 
 
 
