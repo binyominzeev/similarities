@@ -1870,10 +1870,13 @@ Ill. illesztés is mehetne rá. De minek, talán egyszer, megmutatandó az algor
 
 root@topinav:~/similarities# cut -f3 1-mes-5-zeit-1-cn-raw.txt | ~/pdf.pl > pdf_zeit_cn.txt
 
+Lenne logika abban, hogy mégiscsak a pontokat jelenítsük meg, és ne az éleket, mert ott igazságos, hogy minden ponthoz egy érték tartozik, míg itt csak a TD-ben egy (az pont nincs is az ábrán, mivel nincs is lenormálva, érdekes, ez látszólag egybeesik). Szóval nem kellenek pontok ide, bár a címe a figure-nek érdekesen hangzik most, hogy a legközelebbi szomszédok eloszlása. Talán 1 próbát tehetünk, hogy mennyire néz ki másként. Meg most nem sokból állna plusz egy ábrát, plusz egy oldalt betenni, de ha nem indokolt, nem akarjuk.
 
+Mégis érdemes, mert azon már normált értékek vannak, és nem hatványfüggvény alakú, hanem inkább egypúpú-jellegű, ezért érdemes is 2-esével tekinteni a pontokat, hogy simább görbét kapjunk, és abból az összehasonlításból már levonhatóak következtetések.
 
+bz@bz-HP-EliteBook-8530p:~/similarities$ cut -f2 3-pr-1-aps-1-cn.txt | ~/pdf.pl 2 > nn_aps_cn.txt 
 
-
+NN, mint nearest neighbors. És csak ebben van értelme TD-t is rátenni az ábrára, mert itt ugyanolyan típusú, míg az éleknél ő máris percentílis, és nem hatványfüggvény.
 
 
 
