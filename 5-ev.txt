@@ -23,6 +23,6 @@ zeit:
 
 td	3201
 kk	17
-oc	7
 cn	7
+oc	7
 
