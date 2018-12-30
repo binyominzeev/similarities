@@ -1856,9 +1856,6 @@ Ebből a listából 1., 4., 5. pont elhagyható, végére sorolható.
 
 Most látom, hogy OC-ben nincsen unique-á tevő sor a szavaknál, pedig elvileg kellene. Im kol ze, nem gondolom, hogy kedáj ismét végigfuttatni, módosítva, esetleg ha lesz időnk, mert nem hiszem, hogy a végeredményen szignifikánsan változtatna.
 
-body,63,59,84,91,85,84,62,84,78,66,100,75,84,72,71,59,50,71,60,62,40,49,52,52,44,48,42,41,47,43,45,44,38,39,45,45,49,51,47,46,35,43,44,58,54
-mass,74,97,85,100,86,74,90,65,77,80,75,72,72,69,67,73,51,59,53,63,64,61,51,43,49,50,44,48,52,42,42,33,33,44,44,38,37,38,36,40,39,43,41,50,44
-
 # 2018-12-27
 
 PDF:
@@ -1870,18 +1867,59 @@ Ill. illesztés is mehetne rá. De minek, talán egyszer, megmutatandó az algor
 
 root@topinav:~/similarities# cut -f3 1-mes-5-zeit-1-cn-raw.txt | ~/pdf.pl > pdf_zeit_cn.txt
 
-Lenne logika abban, hogy mégiscsak a pontokat jelenítsük meg, és ne az éleket, mert ott igazságos, hogy minden ponthoz egy érték tartozik, míg itt csak a TD-ben egy (az pont nincs is az ábrán, mivel nincs is lenormálva, érdekes, ez látszólag egybeesik). Szóval nem kellenek pontok ide, bár a címe a figure-nek érdekesen hangzik most, hogy a legközelebbi szomszédok eloszlása. Talán 1 próbát tehetünk, hogy mennyire néz ki másként. Meg most nem sokból állna plusz egy ábrát, plusz egy oldalt betenni, de ha nem indokolt, nem akarjuk.
 
-Mégis érdemes, mert azon már normált értékek vannak, és nem hatványfüggvény alakú, hanem inkább egypúpú-jellegű, ezért érdemes is 2-esével tekinteni a pontokat, hogy simább görbét kapjunk, és abból az összehasonlításból már levonhatóak következtetések.
+- APS
 
-bz@bz-HP-EliteBook-8530p:~/similarities$ cut -f2 3-pr-1-aps-1-cn.txt | ~/pdf.pl 2 > nn_aps_cn.txt 
+# 2018-12-30
 
-NN, mint nearest neighbors. És csak ebben van értelme TD-t is rátenni az ábrára, mert itt ugyanolyan típusú, míg az éleknél ő máris percentílis, és nem hatványfüggvény.
+"Evaluating Publication Similarity Measures" megjelent: IEEE CS, Bulletin of the Technical Committee on Data Engineering, 2005, Vol. 28. No. 4. (Dec)
+
+Elsőre látszik, hogy 1 adatsoron futtaták, ami kisebb, mint nálunk a legkisebb. Furthermore, náluk van co-citation, nálunk ez soha nem érne véget, ezen a skálán. Ezért a mi mértékeink frappánsabbak. További chidus, hogy mi egybeskálázunk, hatványfüggvénnyel. Azt nézik, melyik melyikhez hasonlít, ez is érdekes kérdés, de a miénk merészebb, hogy melyik a jobb, cserébe hipotetikusabb alapokon nyugszik. Persze ők nemcsak címre futtatják, hanem teljes szövegre, a miénk ennyivel rugalmasabb (háttérfeltételezés: ha már erre működik, minek több, ill. néha csak ennyi van, pl. videó).
+
+Recommendation: a handbook és hivatkozásai elég kell, hogy legyen. Mi érdekel minket mindebből? Hogy mondanak-e olyat, hogy a megfelelően megválasztott hasonlóság segít. Mivel ők szabadabbak, ezért minden mást is hozzávesznek (felhasználói információ), a nearest neighbor népszerű, de tudományos szempontból elég alapnak számít. Nem látszik, hogy vizsgálja a hatékonyságát a közelség-mérték függvényében. Arról viszont ír, hogy szokott probléma lenni az, hogy milyen gyorsan számol ki mindent-mindennel, és ha a TD jónak bizonyul, arra nekem van egy jó ötletem (innovációm).
+
+Minden más: futottak még. Ill.: mit akarnak az evaluációval elérni, amiben mi is kontribúciót tudunk mutatni.
+
+Olyat találunk, aki jobbnak nevez egy similarity-t a másiknál? Talán Recommendernél. Semantic, Fig. 4. igen: "All similarity measures perform significantly better than the randomly generated set of similarities." Ha jól értem, ez kézzel annotált tanítóhalmaz alapján kontrollál, mi enélkül megyünk a vakvilágba. Egy fontos szó: folksonomy = kollaboratív tagging. Mindenki adhat tag-eket.
+
+Ó, igen, ezt írja az 1. rész végén: "An experimental assessment of the effectiveness of several similarity measures for both tags and resources. For the former, we establish a comparison with user-created tag relations to measure effectiveness."
+
+Time-series: ez csodás forrásnak tűnik a TD számára. Úgy értem, nekik is van ál má liszmoch, beinján evaluation. Jópofa adatsoraik vannak, pl. hogy mennyi áramot fogyasztanak az olaszok. WordsSynonyms lehet, hogy TD-hez hasonló ötlet. Nekik clustering/classification miatt fontos (ez jó, mert akkor nekünk is amiatt lehet az, besides recommendations). Burjánzanak náluk a mértékek, 1-ből 7-et találnak, ami szépen kiemelkedik. Nagyon épít erre, hosszú, képes, Wang: "Experimental comparison of representation methods and distance measures for time series data". Elvileg 3.1-ben írja le a kiértékelés mikéntjét, de nekem abból nem jön át, mit akar.
+
+Inkább olvasom az eredetiekben, amiket hivatkozik: egyszerűen csoportosítja, és ahhoz hasonlítja, hogy a hasonlóak is úgy csoportosulnak-e. Pl. nearest neighbor, és lám, mi sem tettünk nagyon mást. Csak azt nem értem, hogy ez önmaga hogyhogy nem használ hasonlóságot, és akkor saját magához hasonlításnak kellene adódni belőle. Valóban, Cylinder-Bell-Funnel egy meglévő hármas görbesereg, valószínűségileg generált modellje, amiről azt írja, hogy az ember mindig rájön, csak az a kérdés, hogy a gép is rájön-e, hogy melyiket látja. Eszerint, ha éppen közelihez teszi, az adott similarity measure szerint, akkor jó.
+
+Orkut: tetszik a Table 4, hogy konkrét és működő példát ad, ilyesmit én is beletehetnék valahol. Náluk már valóban a recommendation a téma, hogy a sok felhasználó és elem között, túl nagy halmazokban hogyan ajánljanak hatékonyan. Mivel ott valódi a website, mérhető a feedback click alapján.
+
+Összességében mondható, hogy forradalmi és talán vakmerő is a próbálkozás, hogy az eddigiektől eltérő módon, a levegőből vegyük a kontrollmértéket. Ám cserébe rugalmas, és próbálják ki, hátha a gyakorlatban is hatékonyan kamatoztatható.
 
 
+- Publications (full text), links, co-oc
+- Folksonomy, Orkut: mehet egybe, kézzel kontrollált
+- Time-series: más műfaj
+- RS
 
+---
 
+Elveszettnek hitt WoS adatsor helye: 
 
+szantoadam@atlasz:~/local_behaviour/10-paradigm$ wc -l uid_year_refs_kw_kwp.txt 
+35663336 uid_year_refs_kw_kwp.txt
+
+Most atlaszon, screen-ben fut (kb. 10 perces futási idő):
+
+/home/bz/topinavdir/atlaszdir/local_behaviour/17-haromszogek/data/wos_count.pl
+
+Elkészülte után beillesztendő az 1.2-es táblázatba.
+
+szantoadam@atlasz:~/local_behaviour/17-haromszogek/data$ ./wos_count.pl
+progress: 100% [=====================================================]D 0h10m39s
+nodes: 35663336
+edges: 392126014
+progress: 100% [=====================================================]D 0h11m07s
+
+Valamiért ez a definíció kimaradt, ill. javítva egy stopszószűrés által okozott adathiba:
+
+bz@bz-HP-Laptop-15-bs1xx:~/similarities$ cut -f2 3-pr-5-zeit-3-td.txt | ~/pdf.pl 2 > pdf/nn_zeit_td.txt 
 
 
 
