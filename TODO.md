@@ -1994,12 +1994,14 @@ Szempontok:
   - Zeit-ban irreleváns, abszolút, minden másban nagyon szignifikáns
   - CN: vannak szókapcsolatok, talán azért, mert formálisabb az adathalmaz
   - Zeit-ben talán azért nincs gyakori közös szereplés, mert az újságírók feladata a figyelemfelhívás, minél újabb dolgok párosításával. De nem, mert igenis vannak kifejezések, hanem mert németben összekapcsolják a szavakat jellemzően.
+
 - Kapcsolatok ott jók, ahol jók a kapcsolatok
   - APS-ben még TD-nél is jobb, talán azért, mert erősen kapcsolt hálózat, átlagosan 11.75 él csúcsonként
   - Ám Patents épp kétszer annyira, 22.7
   - Valóban Patents-nél is jelentős KK, de meglepő, hogy nem annyira, mint TD
   - SO nagyon nem, sőt, éppen fordítva, és Zeit-ban sem nagyon vannak linkek
   - Ott érthető a végeredmény
+
 - TD ott nem jó, ami alapvetően lassan változik
   - Csak APS-ben teljesít alul, a szokásoshoz képest
   - Biztos, hogy találunk forrást arról, hogy a tudomány lassabban mozdul, mint pl. a tech, ipar (SO), híreknél (Zeit) biztos, és talán Patent-nél is
