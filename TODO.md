@@ -1921,6 +1921,210 @@ Valamiért ez a definíció kimaradt, ill. javítva egy stopszószűrés által 
 
 bz@bz-HP-Laptop-15-bs1xx:~/similarities$ cut -f2 3-pr-5-zeit-3-td.txt | ~/pdf.pl 2 > pdf/nn_zeit_td.txt 
 
+# 2018-12-31
+
+De most jut eszembe, hogy tegnap Zeit-ben az "online" és a "seite" szavak 10,000-et mutattak, és emiatt lett minden más elem 100. Nem 0-nak kellett volna lenniük?
+
+"TD-similarity (since this latter one was originally a distance measure, therefore, it was subtracted from 100%, in order to be able to read as similarity measure)"
+
+Szóval van SM és DM. A DM-ben a 0 a legközelebbiek, az SM-ben az 1. Eszerint ha a maximális elem 10,000, és minden más közel 0, akkor azok def. szt. távoli elemnek számítanak, tehát SM-ben 0-át kellene eredményezniük, és nem 1-et.
+
+Tegyünk egy szúrópróbát, és válasszuk ki a lista tetején álló elemeket. Eszerint elvileg ezeknek kell a legközelebbieknek lennie, tehát SM szerint 1, DM szerint 0 (kb.). Pl. ukraine. Párja bürgerschaftswahlen, 0 – ez megfelelő.
+
+
+ukraine 00000000000000004       0001
+bürgerschaftswahlen     00000000000000004       0001
+
+
+ukraine 1148
+bürgerschaftswahlen     304
+
+ukraine,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,1,2,0,2,2,0,0,0,0,0,1,0,0,0,3,0,2,4,2,1,1,2,9,3,100
+bürgerschaftswahlen,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,100
+
+
+Ebből bizony sajnos 137 és 103 adódik.
+
+root@topinav:~/similarities# wc -l ukr.txt 
+1149 ukr.txt
+root@topinav:~/similarities# less ukr.txt 
+root@topinav:~/similarities# cat ukr.txt | sort | uniq | wc -l
+1091
+
+Konkrét ID duplikátumok vannak benne! De ez még nem magyarázza meg a fenti hibát.
+
+29357	2000	Die Erfindung der Ukraine | ZEIT ONLINE
+29357	2000	 Seite 2 von 6 | Die Erfindung der Ukraine | ZEIT ONLINE
+29357	2000	 Seite 3 von 6 | Die Erfindung der Ukraine | ZEIT ONLINE
+29357	2000	 Seite 4 von 6 | Die Erfindung der Ukraine | ZEIT ONLINE
+29357	2000	 Seite 5 von 6 | Die Erfindung der Ukraine | ZEIT ONLINE
+29357	2000	 Seite 6 von 6 | Die Erfindung der Ukraine | ZEIT ONLINE
+
+(Szóval ID az érdekes, nem a title. Illetve az is érdekes lehet, ha lenne benne bármi új, de nincs. A "Seite" is stopszó kéne hogy legyen.)
+
+Ha csak simán kiiratjuk a processzált rekordokat, nincs eltérés. Akkor mi történt a kettő között? Ja, semmi, csak le lett normálva.
+
+Visszatérve az elejére, nem segít, mert minket korábbi szavak szereplése érdekel, de ott nincs annyira sok előfordulás, hogy kiemelkedjen. Ha valóban 4 a 100%, akkor 1 a 25%, és ez az a küszöb, ami nem éretik el. Valóban:
+
+2010 15
+2011 25
+2012 89
+2013 35
+2014 817
+
+Ez a 10% környékéig jut el csupán. Szóval minden jó, még akkor is, ha hihetetlen. De mégsem értem, mert a box paraméterei szerint 9 jegyű lehet minden szám, akkor hogyhogy a maximális csak 4-ig jut el? Mi több kéne még? Mi szerint normál? Három szélességű ablak szerint. Ennek átlaga 89, 35, 817 -- 313. Ami a 817-hez viszonyítva valóban 38%, azaz 9-es skálán 4-est kap. Szóval minden tökéletes! Térjünk is át a végeredmények elemzésére.
+
+Results: azt vártuk, hogy össze tudjuk hasonlítani az adatsorok jellemzőit a megfelelő mértékekkel. Melyik mérték mihez illik?
+
+APS
+SO
+Patent
+Zeit
+
+CN
+OC
+KK
+TD
+
+Szempontok:
+
+- Kérdés, hogy CN és OC között mi a NM
+  - APS-ben, Patents-ban CN jobb
+  - SO-ban OC
+  - Zeit-ban irreleváns, abszolút, minden másban nagyon szignifikáns
+  - CN: vannak szókapcsolatok, talán azért, mert formálisabb az adathalmaz
+  - Zeit-ben talán azért nincs gyakori közös szereplés, mert az újságírók feladata a figyelemfelhívás, minél újabb dolgok párosításával. De nem, mert igenis vannak kifejezések, hanem mert németben összekapcsolják a szavakat jellemzően.
+- Kapcsolatok ott jók, ahol jók a kapcsolatok
+  - APS-ben még TD-nél is jobb, talán azért, mert erősen kapcsolt hálózat, átlagosan 11.75 él csúcsonként
+  - Ám Patents épp kétszer annyira, 22.7
+  - Valóban Patents-nél is jelentős KK, de meglepő, hogy nem annyira, mint TD
+  - SO nagyon nem, sőt, éppen fordítva, és Zeit-ban sem nagyon vannak linkek
+  - Ott érthető a végeredmény
+- TD ott nem jó, ami alapvetően lassan változik
+  - Csak APS-ben teljesít alul, a szokásoshoz képest
+  - Biztos, hogy találunk forrást arról, hogy a tudomány lassabban mozdul, mint pl. a tech, ipar (SO), híreknél (Zeit) biztos, és talán Patent-nél is
+  - Ilyet nem találtunk, ami a tudomány innovációs rátáját akarja mérni, olyat igen, ezt kellene bővíteni
+
+Innovation in Mature Firms: A Text-Based Analysis
+
+@article{bellstam2017innovation,
+  title={Innovation in Mature Firms: A Text-Based Analysis},
+  author={Bellstam, Gustaf and Bhagat, Sanjai and Cookson, J Anthony},
+  year={2017}
+}
+
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2803232#
+
+
+- Kellene 1-2 egyszerű, jól megválasztott szemléltető példa, melynek célja a figyelemfelkeltés, elgondolkodtatás, mélyebb működés közelebbrőli bemutatása (case study)
+  - Pl. top szavak, amik mindenben vannak, ill. amik az adott halmazra jellemzőek, és közérthetőek
+  - Megmutatni a top kapcsolatainak, legközelebbi szomszédnak a kapcsolatait
+  - TD esetén egyszerű, két görbe
+  - CN, OC esetén is, listásan
+  - Mindent úgy, ahogy a web gui-t szeretném, ha elérünk odáig
+  - 37 szó mindben szerepel, érdemes talán ezeket szondázni közelebbről, /home/bz/similarities/inters/minden.txt
+
+my @stats=qw/1-cn 2-kk 3-td 4-oc/;
+
+bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep generation 4-un-1-aps.txt 
+generation	84.9	82.87	47.06	83.47
+bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep generation 4-un-2-so.txt 
+generation	61.25	46.37	68.43	62.48
+bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep generation 4-un-4-patent.txt 
+generation	65.96	73.6	80	67.42
+bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep generation 4-un-5-zeit.txt 
+generation	0	48.94	99.87	0
+
+Ez is megjeleníthető hasonlóan az összeshez.
+
+bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep signal 4-un-1-aps.txt 
+signal	37.1	57.52	64.71	44.94
+bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep signal 4-un-2-so.txt 
+signal	54.79	43.87	71.06	55.76
+bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep signal 4-un-4-patent.txt 
+signal	78.95	81.02	86.67	79.03
+bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep signal 4-un-5-zeit.txt 
+signal	0	25.64	99.92	0
+
+Jobb a generation, mert azon az látszik, hogy lehet a TD nagyon alacsony, pl. APS esetében. A többi legközelebbi szomszédja is megjeleníthető egy ábrán, TD esetén. CN, OC: lista. KK: közös szomszédok. Elemezzük, listázzuk, vizualizáljuk csak ezt.
+
+TD szomszédok:
+
+bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep generation 1-mes-1-aps-3-td.txt 
+generation	transport	5
+
+root@topinav:~/similarities# grep generation 1-mes-2-so-3-td.txt 
+generation	solution	7
+
+root@topinav:~/similarities# grep generation 1-mes-4-patent-3-td.txt 
+generation	selection	2
+
+root@topinav:~/similarities# grep generation 1-mes-5-zeit-3-td.txt 
+generation	zahl	13
+
+APS-transport
+SO-solution
+Patent-selection
+Zeit-zahl
+
+Ez persze 4 x 2 görbe. Most akár CN-t, akár OC-t vesszük, az sok cím. APS, CN: harmonic generation. Lehet, hogy ez az aszimmetriája miatt érdekesebb az OC-nél. De jó, mert KK és OC szerint is ez APS-ben a szomszédja, csak TD-ben nem.
+
+SO, CN, OC: code generation. KK: generate generation. TD: solution G.
+Patent, CN: power generation. OC, KK: method. TD: selection.
+Zeit, CN, OC: mauer (de hogy lehet? egyszer szerepel, és nem áll semmi más mellette?), KK: seite, de az stopword (újrafuttatandó?), utána: euro. TD: zahl.
+
+Generation-Zeit-probléma: nem is áll, csak szószerkezetben. 0-wdc szerint 566 előfordulás. Pedig van, pl. digitale, ganzen. Az a baja, hogy ezek viszont nem kerülnek a listába, és így a CN-ből kimaradnak. És az OC? Abból is, ha nincsen az egész címben. Ez megmagyarázza CN és OC alulteljesítését. (Egyébként mauer-ra sem nagyon jó az eredmény, mert van egy 4-szer szereplő cikk, és egy teljesen másik is.) Italien-re is látok 3 találatot, pedig az is jó.
+
+Ó, igen, megvan a probléma. A nagy kezdőbetűk. Lefelejtetettem az lc-t, ebből lesz NM. Így már más az output "generation"-re is.
+
+root@topinav:~/similarities# grep generation 1-mes-5-zeit-4-oc-raw.txt | head
+generation	junge	32
+generation	verlorene	21
+generation	land	20
+
+root@topinav:~/similarities# grep generation 1-mes-5-zeit-1-cn-raw.txt | head
+junge	generation	30
+verlorene	generation	21
+jungen	generation	11
+
+Ennek fényében a p-value is jobb:
+
+root@topinav:~/similarities# ./1-mes-1b-pow.pl 
+determining alpha...2.928527 (p_val=0.0009796685)
+determining pdf...
+processing 5-zeit... (837223)
+progress: 100% [=====================================================]D 0h00m01sroot@topinav:~/similarities# ./1-mes-1b-pow.pl 
+determining alpha...2.947685 (p_val=0.0003622533)
+determining pdf...
+processing 5-zeit... (837223)
+
+Ez átírandó a szövegben is. KK nem javul, ott már megvan az lc, p-value magas. Így már 5-ev.txt is mindjárt szebb. Frissítjük a képeket.
+
+APS-re nagyon furcsa p-value adódott viszont sajnos így:
+
+root@topinav:~/similarities# ./1-mes-1b-pow.pl 
+determining alpha...2.246609 (p_val=0.1169288)
+determining pdf... (ez a CN)
+
+root@topinav:~/similarities# ./1-mes-1b-pow.pl 
+determining alpha...3.025477 (p_val=0.7219964)
+determining pdf...
+processing 1-aps... (1207720) (ez az OC)
+
+root@topinav:~/similarities# ./1-mes-1b-pow.pl 
+determining alpha...2.510846 (p_val=0.9992314)
+determining pdf...
+processing 4-patent, 4-oc... (4933170)
+
+root@topinav:~/similarities# ./1-mes-1b-pow.pl 
+determining alpha...2.028294 (p_val=0)
+determining pdf...
+processing 4-patent, 1-cn... (6019542)
+
+
+
+
+
 
 
 
