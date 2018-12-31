@@ -51,6 +51,8 @@ while (<IN>) {
 }
 close IN;
 
+print "$max\n\n";
+
 # ======== output ========
 
 open OUT, ">3-pr-$dataset-$mode.txt";

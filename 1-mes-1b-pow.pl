@@ -9,17 +9,17 @@ use List::Util qw(sum max min);
 # ========== parameters ==========
 
 #my $dataset="1-aps";
-#my $line_count=741421;
+#my $line_count=1207720;
 
-#my $dataset="4-patent";
-#my $line_count=4933170;
+my $dataset="4-patent";
+my $line_count=6019542;
 
-my $dataset="5-zeit";
-my $line_count=837223;
+#my $dataset="5-zeit";
+#my $line_count=837223;
 
 #my $measure="1-cn";
-my $measure="2-kk";
-#my $measure="4-oc";
+#my $measure="2-kk";
+my $measure="4-oc";
 
 # ========== parameters ==========
 
@@ -31,7 +31,7 @@ print "$alpha (p_val=$p_val)\n";
 print "determining pdf...\n";
 my @pdf=split/\n/, `cut -f3 1-mes-$dataset-$measure-raw.txt | ~/pdf.pl 2> /dev/null`;
 
-print "processing $dataset... ($line_count)\n";
+print "processing $dataset, $measure... ($line_count)\n";
 
 my ($one, $first_val)=split/ /, $pdf[0];
 my ($max, $last_val)=split/ /, $pdf[-1];

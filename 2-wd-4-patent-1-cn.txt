@@ -196,6 +196,7 @@ admission
 admixture
 adopting
 adrenergic
+adsl
 adsorbed
 adsorbent
 adsorbents
@@ -344,6 +345,7 @@ allyl
 allylic
 alpha
 alphanumeric
+alstroemeria
 alterable
 alteration
 altered
@@ -487,6 +489,7 @@ antennas
 anterior
 anthracycline
 anthraquinone
+anthurium
 anti
 antiallergic
 antiarrhythmic
@@ -721,6 +724,7 @@ atomized
 atomizer
 atomizing
 atoms
+atp
 atrial
 attach
 attachable
@@ -742,6 +746,7 @@ attraction
 attribute
 attributes
 attrition
+atv
 auction
 audible
 audience
@@ -807,6 +812,7 @@ axle
 axles
 aza
 azabicyclo
+azalea
 azeotrope
 azeotropic
 azetidinone
@@ -1661,6 +1667,7 @@ certification
 certifying
 cervical
 cesium
+cf
 ch
 chain
 chained
@@ -1893,6 +1900,8 @@ clutch
 clutches
 clutter
 cmos
+cmp
+cnc
 cns
 co
 coa
@@ -2422,6 +2431,7 @@ cow
 cowl
 cowling
 cpp
+cpr
 cpu
 cr
 crab
@@ -2442,6 +2452,7 @@ crash
 crate
 crawler
 crawling
+crc
 cream
 create
 created
@@ -2455,6 +2466,7 @@ creep
 creeper
 cremation
 creping
+crf
 crib
 crimp
 crimped
@@ -2497,6 +2509,7 @@ crystallization
 crystallized
 crystallizing
 crystals
+csf
 ct
 cu
 cube
@@ -2629,6 +2642,8 @@ databases
 date
 daylight
 dc
+dct
+ddr
 de
 deacetylase
 deactivated
@@ -3148,6 +3163,8 @@ dividing
 diving
 division
 divot
+dll
+dma
 dmos
 dmt
 dna
@@ -3262,7 +3279,10 @@ dryers
 drying
 drywall
 ds
+dsl
 dsp
+dtmf
+dtv
 dual
 duck
 duct
@@ -3611,6 +3631,7 @@ enzymatic
 enzyme
 enzymes
 ep
+epdm
 epi
 epicyclic
 epidermal
@@ -3939,6 +3960,7 @@ fetal
 fetch
 fetching
 fets
+fft
 fiber
 fiberboard
 fiberglass
@@ -4225,6 +4247,7 @@ foundry
 fountain
 fourier
 fowl
+fpga
 fractal
 fraction
 fractional
@@ -4326,6 +4349,7 @@ fusion
 future
 fuze
 fuzzy
+ga
 gaas
 gaba
 gable
@@ -4478,6 +4502,8 @@ glycosylated
 glycosylation
 glyphosate
 gm
+gmr
+gnss
 goal
 goggle
 goggles
@@ -4678,6 +4704,11 @@ hay
 hazard
 hazardous
 haze
+hcv
+hdd
+hdl
+hdp
+hdtv
 head
 headband
 headboard
@@ -4760,6 +4791,7 @@ heterogeneous
 heterojunction
 heterologous
 heterostructure
+heuchera
 heuristic
 hexagonal
 hexahydro
@@ -4791,6 +4823,7 @@ hit
 hitch
 hitting
 hiv
+hla
 hmg
 hoc
 hockey
@@ -4879,6 +4912,7 @@ hunter
 hunting
 hurricane
 hutch
+hvac
 hyaluronic
 hybrid
 hybridization
@@ -4985,6 +5019,9 @@ identity
 idle
 idler
 idling
+ieee
+igbt
+ige
 igf
 ignited
 igniter
@@ -5082,6 +5119,7 @@ improving
 impulse
 impurities
 impurity
+ims
 inactivating
 inactivation
 inactive
@@ -5241,6 +5279,7 @@ inline
 inner
 inorganic
 inositol
+inp
 input
 inputs
 inputting
@@ -5546,6 +5585,7 @@ josephson
 journal
 joystick
 jpeg
+jtag
 judging
 judgment
 jug
@@ -5716,6 +5756,8 @@ layouts
 lc
 lcd
 ldd
+ldmos
+ldpc
 ldquo
 leach
 leaching
@@ -5769,6 +5811,8 @@ levers
 levitated
 levitation
 lewis
+lga
+lh
 li
 libraries
 library
@@ -6244,6 +6288,7 @@ metric
 metrics
 metrology
 mg
+mhc
 mica
 mice
 micro
@@ -6381,6 +6426,7 @@ mn
 mo
 mobile
 mobility
+mocvd
 modal
 mode
 model
@@ -6504,8 +6550,10 @@ mowers
 mowing
 mp
 mpeg
+mpls
 mram
 mri
+mrna
 ms
 mu
 mucosal
@@ -6690,6 +6738,8 @@ neutralized
 neutralizing
 neutron
 newspaper
+nf
+nh
 ni
 nickel
 nicotine
@@ -6715,6 +6765,7 @@ nitrous
 nk
 nm
 nmda
+nmos
 nmr
 noble
 nodal
@@ -6758,7 +6809,9 @@ noxious
 nozzle
 nozzles
 npn
+nrom
 ns
+ntsc
 nuclear
 nucleating
 nucleation
@@ -6815,6 +6868,7 @@ ocular
 odd
 odor
 odors
+ofdm
 ofdma
 offer
 offering
@@ -6961,6 +7015,7 @@ osmosis
 osmotic
 osteogenic
 osteoporosis
+osteospermum
 osteosynthesis
 ostomy
 ottoman
@@ -7205,10 +7260,14 @@ payload
 payment
 payments
 payout
+pb
 pbx
 pc
 pcb
+pci
 pcm
+pcmcia
+pcr
 pd
 pda
 pde
@@ -7330,6 +7389,7 @@ pet
 petroleum
 pets
 petunia
+pga
 pge
 pgf
 pgi
@@ -7358,6 +7418,7 @@ phenylacetic
 phenylalanine
 phenylene
 phenylenediamine
+phlox
 phone
 phones
 phonetic
@@ -7589,6 +7650,7 @@ plurality
 plus
 plush
 ply
+pmos
 pn
 pneumatic
 pneumatically
@@ -7785,6 +7847,7 @@ powered
 powering
 powertrain
 ppar
+ppp
 practical
 practice
 practicing
@@ -8056,7 +8119,10 @@ psa
 pseudo
 pseudomonas
 pseudorandom
+psk
 psoriasis
+pstn
+pt
 ptc
 ptfe
 public
@@ -8152,6 +8218,7 @@ pyrrolidine
 pyrrolidone
 pyrrolo
 qam
+qos
 quad
 quadrant
 quadrature
@@ -8750,6 +8817,9 @@ rework
 rewritable
 rewriting
 rf
+rfi
+rfid
+rgb
 rhenium
 rheological
 rheology
@@ -8792,6 +8862,7 @@ risk
 rivet
 riveting
 rivets
+rj
 rms
 rna
 road
@@ -9028,9 +9099,11 @@ scrolling
 scrub
 scrubber
 scrubbing
+scsi
 scuba
 sculpture
 sdh
+sdram
 sea
 seal
 sealable
@@ -9371,6 +9444,7 @@ sintered
 sintering
 sinus
 sinusoidal
+sio
 sip
 siphon
 siren
@@ -9693,6 +9767,7 @@ spurious
 sputter
 sputtered
 sputtering
+sql
 square
 squaring
 squeegee
@@ -9704,6 +9779,7 @@ squid
 squirrel
 sr
 sram
+ssz
 stability
 stabilization
 stabilize
@@ -10257,6 +10333,7 @@ taxane
 taxanes
 taxol
 tc
+tcp
 tdd
 tdm
 tdma
@@ -10362,6 +10439,7 @@ texture
 textured
 texturing
 texturizing
+tft
 tgf
 thawing
 theater
@@ -10498,6 +10576,7 @@ timing
 tin
 tine
 tinted
+tio
 tip
 tipped
 tipping
@@ -10792,6 +10871,7 @@ trunnion
 truss
 trust
 trusted
+ttl
 tub
 tube
 tubeless
@@ -10863,6 +10943,7 @@ ultrathin
 ultraviolet
 umbilical
 umbrella
+umts
 unauthorized
 unbalance
 unbalanced
@@ -10966,6 +11047,7 @@ utilized
 utilizes
 utilizing
 uv
+uwb
 vaccination
 vaccine
 vaccines
@@ -11019,6 +11101,7 @@ vasopressin
 vat
 vault
 vco
+vcr
 vcsel
 vector
 vectoring
@@ -11068,6 +11151,7 @@ vessel
 vessels
 vest
 veterinary
+vhf
 vi
 via
 viability
@@ -11123,6 +11207,7 @@ vitreous
 vitro
 vivo
 vlan
+vliw
 vlsi
 voc
 vocabulary
@@ -11143,6 +11228,9 @@ volumes
 volumetric
 vortex
 voting
+vpn
+vsb
+vtr
 vulcanizable
 vulcanization
 vulcanized
@@ -11216,6 +11304,7 @@ waves
 waving
 wax
 waxes
+wcdma
 wdm
 weak
 weakly

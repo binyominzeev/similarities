@@ -52,6 +52,8 @@ my $progress=new Term::ProgressBar::Simple($line_count);
 my %pairs;
 my %words;
 
+my %log;
+
 #open IN, "zcat $file|";
 #open IN, "<$file";
 #while (<IN>) {
@@ -67,7 +69,15 @@ for (@results) {
 	#		my @szavak=$title=~/[a-zA-Z]+/g;
 			@szavak=grep { !exists $stopwords{lc $_} } @szavak;
 			
-			map { $words{lc $_}++ } @szavak;
+			for (@szavak) {
+				my $szo=lc $_;
+				$words{$szo}++;
+				
+#				if ($szo eq "generation") {
+#					print "$id\t$year\t$title\n";
+#				}
+			}
+#			map { $words{lc $_}++; } @szavak;
 		}
 	}
 

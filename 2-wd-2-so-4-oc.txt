@@ -3689,6 +3689,7 @@ icloud
 icmp
 ico
 icollection
+icommand
 icon
 icons
 iconv
@@ -5665,6 +5666,7 @@ ormlite
 orphan
 orphaned
 os
+oserror
 osgi
 osm
 osmdroid

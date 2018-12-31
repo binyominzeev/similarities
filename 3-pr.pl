@@ -7,8 +7,8 @@ use Data::Dumper;
 # ======== initialize ========
 
 #my $dataset="1-aps";
-my $dataset="2-so";
-#my $dataset="4-patent";
+#my $dataset="2-so";
+my $dataset="4-patent";
 #my $dataset="5-zeit";
 
 my $mode="1-cn";

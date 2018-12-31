@@ -17,19 +17,19 @@ use utf8;
 #my $word_count=2700;
 #my $line_count=463347;
 
-my $dataset="2-so";
-my $file="so-id-title.txt";
-my $first_year="2008-09";
-my $last_year="2015-12";
-my $word_count=9500;
-my $line_count=11203031;
+#my $dataset="2-so";
+#my $file="so-id-title.txt";
+#my $first_year="2008-09";
+#my $last_year="2015-12";
+#my $word_count=9500;
+#my $line_count=11203031;
 
-#my $dataset="4-patent";
-#my $file="patent_nodes.gz";
-#my $first_year=1976;
-#my $last_year=2012;
-#my $word_count=11500;
-#my $line_count=4992224;
+my $dataset="4-patent";
+my $file="patent_nodes.gz";
+my $first_year=1976;
+my $last_year=2012;
+my $word_count=11500;
+my $line_count=4992224;
 
 #my $dataset="5-zeit";
 #my $file="zeit_nodes.txt";
@@ -53,23 +53,23 @@ my $progress=new Term::ProgressBar::Simple($line_count);
 
 my %pairs;
 
-#open IN, "zcat $file|";
-open IN, "<$file";
+open IN, "zcat $file|";
+#open IN, "<$file";
 while (<IN>) {
 #for (@results) {
 	chomp;
 	my ($id, $year, $title)=split/\t/, $_;
 	
 	if ($year) {
-		#$year=substr($year, 0, 4);
-		$year=substr($year, 0, 7);
+		$year=substr($year, 0, 4);
+		#$year=substr($year, 0, 7);
 
-		#if ($first_year <= $year && $year <= $last_year) {
-		if ($first_year le $year && $year le $last_year) {
-			#my @szavak=$title=~/[a-zA-ZöüäÄÖÜß]+/g;
+		if ($first_year <= $year && $year <= $last_year) {
+		#if ($first_year le $year && $year le $last_year) {
+#			my @szavak=$title=~/[a-zA-ZöüäÄÖÜß]+/g;
 			my @szavak=$title=~/[a-zA-Z]+/g;
-			@szavak=grep { exists $words{$_} } @szavak;
-			
+			@szavak=grep { exists $words{$_} } map { lc $_ } @szavak;
+						
 			for my $i (0..$#szavak-1) {
 				for my $j ($i+1..$#szavak) {
 					my $x=lc $szavak[$i];
