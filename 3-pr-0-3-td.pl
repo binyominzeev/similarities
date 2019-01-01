@@ -32,18 +32,14 @@ while (<IN>) {
 	chomp;
 	my ($a, $b, $val)=split/\t/, $_;
 	
-	if (exists $words{$a}) {
+	if ($val > $max) { $max=$val; }
+	
+	if (!exists $words_vals{$a} || $val < $words_vals{$a}) {
 		$words_vals{$a}=$val;
-		if ($words_vals{$a} > $max) { $max=$words_vals{$a}; }
-		
-		delete $words{$a};
 	}
 
-	if (exists $words{$b}) {
+	if (!exists $words_vals{$b} || $val < $words_vals{$b}) {
 		$words_vals{$b}=$val;
-		if ($words_vals{$b} > $max) { $max=$words_vals{$b}; }
-		
-		delete $words{$b};
 	}
 	
 	$i++;

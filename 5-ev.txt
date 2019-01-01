@@ -1,28 +1,28 @@
 aps:
 
-kk	1780
-td	619
-cn	219
-oc	84
+kk	1678
+td	740
+cn	206
+oc	79
 
 so:
 
-td	7373
-oc	1466
-cn	541
-kk	128
+td	7832
+oc	1133
+cn	433
+kk	110
 
 patent:
 
-td	8987
-kk	2437
-cn	68
-oc	12
+td	9531
+kk	1907
+cn	55
+oc	11
 
 zeit:
 
-td	2620
-kk	415
-oc	171
-cn	52
+td	2720
+kk	358
+oc	132
+cn	44
 
