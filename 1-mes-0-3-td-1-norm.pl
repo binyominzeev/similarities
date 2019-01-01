@@ -70,15 +70,15 @@ for (@results) {
 			map { lc $_ }
 			@szavak;
 		
-		for (@szavak) {
-			if ($_ eq "ukraine") {
-				print "$id\t$year\t$title\n";
-			}
+#		for (@szavak) {
+#			if ($_ eq "ukraine") {
+#				print "$id\t$year\t$title\n";
+#			}
 			
-			$words{$_}->{$year}++;
-		}
+#			$words{$_}->{$year}++;
+#		}
 		
-#		map { $words{$_}->{$year}++; } @szavak;
+		map { $words{$_}->{$year}++; } @szavak;
 	}
 
 	$progress++;

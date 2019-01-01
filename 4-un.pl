@@ -8,8 +8,8 @@ use Data::Dumper;
 
 #my $dataset="1-aps";
 #my $dataset="2-so";
-my $dataset="4-patent";
-#my $dataset="5-zeit";
+#my $dataset="4-patent";
+my $dataset="5-zeit";
 
 my @stats=qw/1-cn 2-kk 3-td 4-oc/;
 

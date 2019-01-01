@@ -8,12 +8,12 @@ use List::Util qw(sum max min);
 
 # ========== parameters ==========
 
-my $dataset="1-aps";
-my $file="aps-records.txt";
-my $first_year=1965;
-my $last_year=2009;
-my $word_count=2700;
-my $line_count=463347;
+#my $dataset="1-aps";
+#my $file="aps-records.txt";
+#my $first_year=1965;
+#my $last_year=2009;
+#my $word_count=2700;
+#my $line_count=463347;
 
 #my $dataset="2-so";
 #my $file="so-id-title.txt";
@@ -29,12 +29,12 @@ my $line_count=463347;
 #my $word_count=11500;
 #my $line_count=4992224;
 
-#my $dataset="5-zeit";
-#my $file="zeit_nodes.txt";
-#my $first_year=1965;
-#my $last_year=2014;
-#my $word_count=3200;
-#my $line_count=891431;
+my $dataset="5-zeit";
+my $file="zeit_nodes.txt";
+my $first_year=1965;
+my $last_year=2014;
+my $word_count=3200;
+my $line_count=891431;
 
 # ========== top words ==========
 
@@ -64,8 +64,8 @@ for (@results) {
 	
 #	if ($first_year <= $year && $year <= $last_year && exists $aps_nodes->{$id}) {
 	if ($first_year <= $year && $year <= $last_year) {
-		#my @szavak=$title=~/[a-zA-ZöüäÄÖÜß]+/g;
-		my @szavak=$title=~/[a-zA-Z]+/g;
+		my @szavak=$title=~/[a-zA-ZöüäÄÖÜß]+/g;
+#		my @szavak=$title=~/[a-zA-Z]+/g;
 #		@szavak=map { $nodes{$aps_nodes->{$id}}->{$_}="" }
 		@szavak=map { $nodes{$id}->{$_}="" }
 			grep { exists $words{$_} }

@@ -11,15 +11,15 @@ use List::Util qw(sum max min);
 #my $dataset="1-aps";
 #my $line_count=1207720;
 
-my $dataset="4-patent";
-my $line_count=6019542;
+#my $dataset="4-patent";
+#my $line_count=6019542;
 
-#my $dataset="5-zeit";
-#my $line_count=837223;
+my $dataset="5-zeit";
+my $line_count=837223;
 
 #my $measure="1-cn";
-#my $measure="2-kk";
-my $measure="4-oc";
+my $measure="2-kk";
+#my $measure="4-oc";
 
 # ========== parameters ==========
 
