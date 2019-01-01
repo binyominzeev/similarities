@@ -2028,14 +2028,16 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2803232#
 
 my @stats=qw/1-cn 2-kk 3-td 4-oc/;
 
-bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep generation 4-un-1-aps.txt 
-generation	84.9	82.87	47.06	83.47
-bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep generation 4-un-2-so.txt 
-generation	61.25	46.37	68.43	62.48
-bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep generation 4-un-4-patent.txt 
-generation	65.96	73.6	80	67.42
-bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep generation 4-un-5-zeit.txt 
-generation	0	48.94	99.87	0
+root@topinav:~/similarities# grep generation 4-un-1-aps.txt 
+generation	83.84	82.87	70.59	82.68
+root@topinav:~/similarities# grep generation 4-un-2-so.txt 
+generation	61.25	46.37	81.58	59.7
+root@topinav:~/similarities# grep generation 4-un-4-patent.txt 
+generation	59.6	73.6	86.67	65.62
+root@topinav:~/similarities# grep generation 4-un-5-zeit.txt 
+generation	36.94	48.94	38.1	37.64
+
+
 
 Ez is megjeleníthető hasonlóan az összeshez.
 
@@ -2123,12 +2125,96 @@ determining alpha...2.028294 (p_val=0)
 determining pdf...
 processing 4-patent, 1-cn... (6019542)
 
+# 2019-01-01
+
+TD szomszédok (újraszámolás után):
+
+(max: 17)
+bz@bz-HP-Laptop-15-bs1xx:~/similarities$ grep generation 1-mes-1-aps-3-td.txt | head
+transport	generation	5
+oscillations	generation	9
+bulk	generation	9
+chemical	generation	9
+
+(max: 38)
+root@topinav:~/similarities# grep generation 1-mes-2-so-3-td.txt | head
+generation	solution	7
+safe	generation	11
+architecture	generation	12
+
+(max: 15)
+root@topinav:~/similarities# grep generation 1-mes-4-patent-3-td.txt | head
+generation	selection	2
+file	generation	3
+macro	generation	6
+
+(max: 21)
+root@topinav:~/similarities# grep generation 1-mes-5-zeit-3-td.txt | head
+generation	zahl	13
+
+Látható, hogy össze lett keverve a táblázat a figure-rel, mert nem ugyanazok az értékek a maximálisak benne.
+
+
+
+bz@bz-HP-Laptop-15-bs1xx:~/topinavdir/similarities$ grep generation 1-mes-1-aps-3-td-1-norm.txt 
+
+transport,23,22,36,47,26,34,37,31,32,28,25,31,46,32,27,29,35,24,39,35,39,45,68,60,57,57,57,66,69,65,73,68,78,72,69,74,83,83,80,79,99,90,95,89,94
+generation,38,34,44,43,43,23,33,28,35,29,33,37,50,28,37,42,57,45,53,50,51,80,55,62,61,61,66,66,76,78,73,74,64,60,78,80,85,71,81,99,100,98,88,96,93
+bulk,16,14,16,11,22,44,25,21,30,28,35,28,43,51,64,63,41,26,48,40,52,84,70,80,64,59,52,65,67,71,66,55,52,58,91,71,82,68,89,82,100,95,93,69,82
+oscillations,57,66,28,44,46,54,47,26,32,31,31,34,21,43,15,59,45,31,50,44,45,61,67,69,56,50,51,64,58,68,77,74,70,92,82,89,91,82,72,85,93,64,75,86,100
+chemical,14,33,11,10,15,44,29,23,13,9,47,33,9,42,28,66,56,44,57,65,89,64,66,87,52,51,78,71,85,52,68,71,73,75,73,72,82,66,83,94,76,98,97,100,76
+
+
+
+
+
+TD normálása a normális görbéhez képest nagyon fontos, különben még közelebb lennének az elemek! Írjuk bele! Innen látszik! Nem is kell leírni explicit, mert a Pred cikk szövege van hivatkozva a kiszámításnál, és ott szerepel ez.
+
+Sajnos a kép jelenleg nem egyezik a kimutatással, ismét. Nem a maximális, hanem valamely szubmaximális elemet láthatjuk a táblázatban. Lehet, hogy még az 1-mínusz előtt lett maximalizálva, úgy tűnik. Ami ismét újrarajzolandóvá teszi, legalábbis a TD mértéket, mind a 4 adatsor szerint.
+
+Továbbá: döntsük el egyszersmind a 4 adatsor sorrendjét, mert kissé zavaró, hogy néha egyik, néha másik sorrendben szerepel a publikált PDF-ben. Legegyszerűbb a sima betűrend:
+
+- APS
+- Stack Overflow
+- US Patents
+- (WoS)
+- Zeit.de
+
+És mindenhol ehhez ragaszkodjunk.
+
+root@topinav:~/similarities# grep generation 1-mes-1-aps-1-cn.txt | head
+harmonic	generation	0.838498915059417
+mass	generation	0.512002143401697
+
+root@topinav:~/similarities# grep generation 1-mes-1-aps-2-kk.txt | head -n30
+generation	harmonic	0.828771073384785
+harmonic	generation	0.827362958960324
+
+root@topinav:~/similarities# grep generation 1-mes-1-aps-4-oc.txt | head
+generation	harmonic	0.826812792453999
+generation	optical	0.685315461406955
+
+Ábraterv cn-kk-oc-hez (generation-neighbors): Top 10 4-szer, a négy adatsorban, oszlopdiagram, alul elforgatott címkékkel, csökkenő sorrendben, pl. harmonic (CN). Szimmetrizálva, a nagyobbikat venni a pár közül.
+
+Leírandók:
+
+- A kétféle oszlopdiagram összehasonlítása, magyarázat
+  - APS-ben CN-t és OC-t azért találunk, mert igen gyakori szóról van szó (194. leggyakoribb a 2700-ból)
+  - Patent TD-je a nagy kivétel, ahol tendenciák vannak, a normálás ellenére
+- TD: csoportosítások miatt kerülhetnek közel, ill. távol
+  - Zeit-ban és APS-ban eléggé érzékeny, mert 45 ill. 50 elemű az idősor, viszont SO dupla olyan hosszú, ez magyarázhatja, hogy minden hasonlót egybeejt – further plan, hogy pontosabb paraméterek belövése, túlmutat ezen írás keretein, amikor nagyban, távolról összehasonlító módszert akartunk
+- CN-OC-KK-görbén a lecsengéséről is megtudhatjuk, hogy általában milyen közel esik, ill. mennyit veszítünk azáltal, hogy csak 1-et engedünk
+- További fejlesztési lehetőség: webes GUI, ahol eszerint kattintani is lehetne a cikkekre, ill. fentiekben bemutatott szófelhőhöz hasonlóban böngészni
+- Minden elérhető Githubon
 
 
 
 
 
 
+generation	332234455666788	134
+transport	233232355666788	124
+bulk		122243475656787	123
 
 
 
